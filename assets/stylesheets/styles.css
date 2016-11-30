@@ -1,0 +1,24 @@
+body {
+  font-family: Helvetica;
+  font-size: 14px;
+  padding: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+section {
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.4em;
+}
+
+section img {
+  max-width: 100%;
+  border-radius: 6px;
+}
