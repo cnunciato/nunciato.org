@@ -2,7 +2,7 @@
   "name": "chris.nunciato.org",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Warning: no test specified\" && exit 0",
     "start": "http-server -p 4000 -o -c-1"
   },
   "repository": {
