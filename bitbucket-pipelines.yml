@@ -10,3 +10,7 @@ pipelines:
         script:
           - npm install
           - npm test
+    - step:
+        script:
+          - tar -czf nunciato.org .
+          - echo "This is awesome."
