@@ -1,6 +1,11 @@
-build:
+install:
 	npm install
-	npm test
-	touch nunciato.org.tar.gz
+
+build:
 	tar -zcvf nunciato.org.tar.gz --exclude=nunciato.org.tar.gz .
-	echo "This is super-awesome."
+
+test:
+	npm test
+
+start:
+	npm start
