@@ -1,4 +1,7 @@
 - service: web
+  build:
+    image: cnunciato/nunciato-org
+    dockerfile_path: ./Dockerfile
   command: npm test
 
 - type: serial
@@ -8,5 +11,6 @@
       service: web
       type: push
       image_name: cnunciato/nunciato-org
+      # image_tag: latest
       registry: https://index.docker.io/v1/
       encrypted_dockercfg_path: dockercfg.encrypted
