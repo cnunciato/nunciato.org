@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      image: cnunciato/nunciato-org
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./assets:/web/assets
+      - ./index.html:/web/index.html
+      - ./package.json:/web/package.json
+      - ./Makefile:/web/Makefile
