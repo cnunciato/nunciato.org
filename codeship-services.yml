@@ -3,6 +3,7 @@ services:
     build:
       image: cnunciato/nunciato-org
       dockerfile: Dockerfile
+    encrypted_env_file: deployment.env.encrypted
     ports:
       - "4000:4000"
     volumes:

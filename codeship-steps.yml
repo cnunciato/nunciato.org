@@ -13,3 +13,7 @@
       image_name: cnunciato/nunciato-org
       registry: https://index.docker.io/v1/
       encrypted_dockercfg_path: dockercfg.encrypted
+    - name: surge_push
+      tag: master
+      service: web
+      command: npm run surge

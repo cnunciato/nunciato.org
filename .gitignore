@@ -1,3 +1,4 @@
 node_modules/
 codeship.aes
 dockercfg
+deployment.env
