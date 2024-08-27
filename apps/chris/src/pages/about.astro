@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+import Prose from "../components/Prose.astro";
+import { frontmatter, Content } from "../content/pages/about.md";
+---
+
+<Layout
+    title="About Me"
+    description={frontmatter.desription}
+    pubDate={new Date("August 08 2021")}
+    heroImage="/media/images/cascadia-smile.jpg"
+>
+    <Prose>
+        <Content />
+    </Prose>
+</Layout>

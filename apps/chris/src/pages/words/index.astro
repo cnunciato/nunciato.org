@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+
+const words = await getCollection("words");
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <BaseHead title="Photos" description="" />
+    </head>
+    <body>
+        <Header />
+        <div>
+            <ol class="flex flex-wrap gap-2">
+                {
+                    words
+                        .sort((a, b) => (a.data.date > b.data.date ? 0 : 1))
+                        .reverse()
+                        .map(post => (
+                            <li class="gap-2">
+                                <div>
+                                    <a href={`/photos/${post.slug}`}>
+                                        {post.data.title}
+                                    </a>
+                                </div>
+                            </li>
+                        ))
+                }
+            </ol>
+        </div>
+    </body>
+</html>
