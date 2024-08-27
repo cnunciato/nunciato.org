@@ -1,13 +1,12 @@
 {
-    "name": "c.nunciato.org",
-    "main": "index.ts",
-    "devDependencies": {
-        "@types/node": "^18",
-        "typescript": "^5.0.0"
-    },
+    "name": "infra.chris",
+    "type": "module",
+    "main": "dist/index.js",
     "dependencies": {
-        "@pulumi/aws": "^6.0.0",
-        "@pulumi/awsx": "^2.0.2",
-        "@pulumi/pulumi": "^3.113.0"
+        "@repo/pulumi-astro-apprunner": "*"
+    },
+    "scripts": {
+        "build": "tsc",
+        "deploy": "pulumi up"
     }
 }

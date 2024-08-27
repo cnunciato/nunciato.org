@@ -1,2 +1,4 @@
 config:
     aws:region: us-west-2
+    c.nunciato.org:domain: nunciato.org
+    c.nunciato.org:subdomain: chris

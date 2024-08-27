@@ -10,8 +10,7 @@
         "./adapter": "./dist/adapter.js"
     },
     "scripts": {
-        "build": "tsc",
-        "format": "prettier . --write"
+        "build": "tsc"
     },
     "devDependencies": {
         "@types/aws-lambda": "^8.10.143",

@@ -5,7 +5,6 @@
         "build": "turbo build",
         "dev": "turbo dev",
         "lint": "turbo lint",
-        "prune": "turbo prune",
         "format": "prettier . --write --config ./prettier.config.json"
     },
     "devDependencies": {
