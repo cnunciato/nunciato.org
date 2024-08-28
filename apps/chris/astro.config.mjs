@@ -14,12 +14,12 @@ export default defineConfig({
     site: import.meta.env.SITE || "http://localhost:4321",
 
     // Uncomment for server output.
-    output: "server",
-    adapter: node({
-        mode: "standalone",
-    }),
+    // output: "server",
+    // adapter: node({
+    //     mode: "standalone",
+    // }),
 
-    // output: "static",
+    output: "static",
 
     image: {
         domains: ["s3.amazonaws.com"],

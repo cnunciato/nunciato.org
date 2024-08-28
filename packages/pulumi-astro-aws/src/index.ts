@@ -202,6 +202,37 @@ export class AstroSite extends pulumi.ComponentResource {
                 { dependsOn: [ownershipControls, publicAccessBlock] },
             );
 
+            // Look up your existing Route 53 hosted zone.
+            const zone = aws.route53.getZoneOutput({ name: domain });
+
+            // Provision a new ACM certificate.
+            const certificate = new aws.acm.Certificate(
+                "certificate",
+                {
+                    domainName: domainName,
+                    validationMethod: "DNS",
+                },
+                {
+                    // ACM certificates must be created in the us-east-1 region.
+                    provider: new aws.Provider("us-east-provider", {
+                        region: "us-east-1",
+                    }),
+                },
+            );
+
+            // Validate the ACM certificate with DNS.
+            const validationOption = certificate.domainValidationOptions[0];
+            const certificateValidation = new aws.route53.Record(
+                "certificate-validation",
+                {
+                    name: validationOption!.resourceRecordName,
+                    type: validationOption!.resourceRecordType,
+                    records: [validationOption!.resourceRecordValue],
+                    zoneId: zone.zoneId,
+                    ttl: 60,
+                },
+            );
+
             // Create a CloudFront CDN to distribute and cache the website.
             const cdn = new aws.cloudfront.Distribution("cdn", {
                 enabled: true,
@@ -245,10 +276,31 @@ export class AstroSite extends pulumi.ComponentResource {
                         restrictionType: "none",
                     },
                 },
+                aliases: [domainName],
                 viewerCertificate: {
-                    cloudfrontDefaultCertificate: true,
+                    cloudfrontDefaultCertificate: false,
+                    acmCertificateArn: certificate.arn,
+                    sslSupportMethod: "sni-only",
                 },
             });
+
+            // Create a DNS A record to point to the CDN.
+            const record = new aws.route53.Record(
+                domainName,
+                {
+                    name: subdomain,
+                    zoneId: zone.zoneId,
+                    type: "A",
+                    aliases: [
+                        {
+                            name: cdn.domainName,
+                            zoneId: cdn.hostedZoneId,
+                            evaluateTargetHealth: true,
+                        },
+                    ],
+                },
+                { dependsOn: certificate },
+            );
 
             this.url = pulumi.output(publicUrl);
             this.registerOutputs({
