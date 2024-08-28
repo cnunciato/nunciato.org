@@ -1,25 +1,22 @@
 import { defineConfig } from "astro/config";
+import { readFileSync } from "fs";
+
 import mdx from "@astrojs/mdx";
+import node from "@astrojs/node";
+import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import preact from "@astrojs/preact";
 import opengraphImages, { presets } from "astro-opengraph-images";
-import satori, { satoriAstroOG } from "satori-astro";
-
-// Uncomment for server output.
-import node from "@astrojs/node";
+import satori from "satori-astro";
 
 // https://astro.build/config
 export default defineConfig({
-    site: import.meta.env.SITE || "http://localhost:4321",
+    site: "http://localhost:4321",
 
-    // Uncomment for server output.
-    // output: "server",
-    // adapter: node({
-    //     mode: "standalone",
-    // }),
-
-    output: "static",
+    output: "server",
+    adapter: node({
+        mode: "standalone",
+    }),
 
     image: {
         domains: ["s3.amazonaws.com"],
@@ -44,7 +41,7 @@ export default defineConfig({
                         name: "Roboto",
                         weight: 400,
                         style: "normal",
-                        data: fs.readFileSync(
+                        data: readFileSync(
                             "../../node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff",
                         ),
                     },

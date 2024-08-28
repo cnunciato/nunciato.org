@@ -3,11 +3,12 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { siteTitle, siteDescription } from "../consts";
-// import MessageOfTheDay from "../components/MessageOfTheDay";
-import { Prism } from "@astrojs/prism";
+import MessageOfTheDay from "../components/MessageOfTheDay";
 import { Image } from "astro:assets";
+import "@fontsource/patrick-hand-sc";
 
-// import CloudinaryImage from "../components/CloudinaryImage.astro";
+console.log("Astro.url");
+console.log(Astro.url);
 ---
 
 <!doctype html>
@@ -15,81 +16,26 @@ import { Image } from "astro:assets";
     <head>
         <BaseHead title={siteTitle} description={siteDescription} />
     </head>
-    <body class="">
+    <body class="bg-gradient-to-b bg-gray-100">
         <Header />
         <main>
-            <h1>🧑‍🚀 Hi, Astronaut!</h1>
-            <!-- <p><MessageOfTheDay origin={Astro.url.origin} client:load /></p> -->
-            <p>
-                <Prism lang="js" code={`const foo = 'bar';`} />
-            </p>
-            <p>
-                <Image
-                    src="https://s3.amazonaws.com/cnunciato-website-media/images/2024-07-29-07-56-09.jpg"
-                    alt="A thing"
-                    loading="lazy"
-                    decoding="async"
-                    width="300"
-                    inferSize={true}
-                    class:list="rounded shadow-md"
-                />
-            </p>
-            <p>
-                <!-- <CloudinaryImage imageId="2024-07-29-07-56-09_qrnqns" /> -->
-            </p>
-            <p>
-                Welcome to the official <a href="https://astro.build/">Astro</a>
-                blog starter template. This template serves as a lightweight, minimally-styled
-                starting point for anyone looking to build a personal website, blog,
-                or portfolio with Astro.
-            </p>
-            <p>
-                This template comes with a few integrations already configured
-                in your
-                <code>astro.config.mjs</code> file. You can customize your setup
-                with
-                <a href="https://astro.build/integrations">Astro Integrations</a
-                > to add tools like Tailwind, React, or Vue to your project.
-            </p>
-            <p>Here are a few ideas on how to get started with the template:</p>
-            <ul>
-                <li>
-                    Edit this page in <code>src/pages/index.astro</code>
-                </li>
-                <li>
-                    Edit the site header items in <code
-                        >src/components/Header.astro</code
-                    >
-                </li>
-                <li>
-                    Add your name to the footer in <code
-                        >src/components/Footer.astro</code
-                    >
-                </li>
-                <li>
-                    Check out the included blog posts in <code
-                        >src/content/blog/</code
-                    >
-                </li>
-                <li>
-                    Customize the blog post page layout in <code
-                        >src/layouts/BlogPost.astro</code
-                    >
-                </li>
-            </ul>
-            <p>
-                Have fun! If you get stuck, remember to <a
-                    href="https://docs.astro.build/"
-                    >read the docs
-                </a> or <a href="https://astro.build/chat">join us on Discord</a
-                > to ask questions.
-            </p>
-            <p>
-                Looking for a blog template with a bit more personality? Check
-                out <a href="https://github.com/Charca/astro-blog-template"
-                    >astro-blog-template
-                </a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-            </p>
+            <div>
+                <MessageOfTheDay client:load />
+            </div>
+            <div class="flex justify-center hover: transition-all">
+                <div class="p-6 shadow-lg rounded-md border border-gray-200">
+                    <Image
+                        src="https://s3.amazonaws.com/cnunciato-website-media/images/2024-07-29-07-56-09.jpg"
+                        alt="A thing"
+                        loading="lazy"
+                        decoding="async"
+                        width="800"
+                        height="800"
+                        inferSize={true}
+                        class:list="block rounded shadow-inner border border-gray-100"
+                    />
+                </div>
+            </div>
         </main>
         <Footer />
     </body>

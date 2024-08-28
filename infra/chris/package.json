@@ -8,7 +8,7 @@
     },
     "scripts": {
         "build": "tsc",
-        "deploy:dev": "pulumi stack select dev && eval \"$(pulumi env open personal --format shell)\" && pulumi up --yes",
-        "destroy:dev": "pulumi stack select dev && eval \"$(pulumi env open personal --format shell)\" && pulumi destroy --yes"
+        "deploy:dev": "npm run build && pulumi stack select dev && pulumi up --yes",
+        "destroy:dev": "pulumi stack select dev && pulumi destroy --yes"
     }
 }

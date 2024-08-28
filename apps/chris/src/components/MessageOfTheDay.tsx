@@ -1,27 +1,16 @@
 import { signal } from "@preact/signals";
 
-type Props = {
-    origin: string;
-};
+const message = signal("⏳");
 
-export default function MessageOfTheDay({ origin }: Props) {
-    const message = signal("⏳");
+try {
+    const data = await fetch("/api/message.json").then(response =>
+        response.json(),
+    );
+    message.value = data.message;
+} catch (error) {
+    console.error(error);
+}
 
-    async function fetchMessage() {
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        if (import.meta.env.SSR) {
-            const response = await fetch(`${origin}/api/message.json`);
-            const data = await response.json();
-            return data.message;
-        } else if (false) {
-            const response = await fetch(`${origin}/api/message.json`);
-            const data = await response.json();
-            return data.message;
-        }
-    }
-
-    fetchMessage().then(result => (message.value = result));
-
-    return <span>Message of the day: {message}</span>;
+export default function MessageOfTheDay() {
+    return <span>Message of the day: {message.value}</span>;
 }
