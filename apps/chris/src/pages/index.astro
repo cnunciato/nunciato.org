@@ -3,10 +3,11 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { siteTitle, siteDescription } from "../consts";
-import MessageOfTheDay from "../components/MessageOfTheDay";
+// import MessageOfTheDay from "../components/MessageOfTheDay";
 import { Prism } from "@astrojs/prism";
 import { Image } from "astro:assets";
-import CloudinaryImage from "../components/CloudinaryImage.astro";
+
+// import CloudinaryImage from "../components/CloudinaryImage.astro";
 ---
 
 <!doctype html>
@@ -18,7 +19,7 @@ import CloudinaryImage from "../components/CloudinaryImage.astro";
         <Header />
         <main>
             <h1>🧑‍🚀 Hi, Astronaut!</h1>
-            <p><MessageOfTheDay origin={Astro.url.origin} client:load /></p>
+            <!-- <p><MessageOfTheDay origin={Astro.url.origin} client:load /></p> -->
             <p>
                 <Prism lang="js" code={`const foo = 'bar';`} />
             </p>
@@ -34,7 +35,7 @@ import CloudinaryImage from "../components/CloudinaryImage.astro";
                 />
             </p>
             <p>
-                <CloudinaryImage imageId="2024-07-29-07-56-09_qrnqns" />
+                <!-- <CloudinaryImage imageId="2024-07-29-07-56-09_qrnqns" /> -->
             </p>
             <p>
                 Welcome to the official <a href="https://astro.build/">Astro</a>

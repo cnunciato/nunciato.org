@@ -5,9 +5,5 @@
     "license": "MIT",
     "publishConfig": {
         "access": "public"
-    },
-    "dependencies": {
-        "chris": "*",
-        "cloudinary": "^2.4.0"
     }
 }

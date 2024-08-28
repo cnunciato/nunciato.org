@@ -1,6 +1,6 @@
-# nunciato.org
+# \nunciato.org
 
-This is everything.
+Yep. This is everything.
 
 ## Handy commands
 

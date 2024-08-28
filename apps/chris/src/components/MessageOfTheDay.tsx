@@ -1,5 +1,3 @@
-import type { FunctionalComponent } from "preact";
-import type { Signal } from "@preact/signals";
 import { signal } from "@preact/signals";
 
 type Props = {
@@ -10,13 +8,17 @@ export default function MessageOfTheDay({ origin }: Props) {
     const message = signal("⏳");
 
     async function fetchMessage() {
-        // Wait a moment, just to test async.
         await new Promise(resolve => setTimeout(resolve, 1500));
 
-        const response = await fetch(`${origin}/api/message.json`);
-        const data = await response.json();
-
-        return data.message;
+        if (import.meta.env.SSR) {
+            const response = await fetch(`${origin}/api/message.json`);
+            const data = await response.json();
+            return data.message;
+        } else if (false) {
+            const response = await fetch(`${origin}/api/message.json`);
+            const data = await response.json();
+            return data.message;
+        }
     }
 
     fetchMessage().then(result => (message.value = result));

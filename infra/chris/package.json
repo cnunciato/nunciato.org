@@ -4,15 +4,11 @@
     "main": "dist/index.js",
     "devDependencies": {
         "@pulumi/pulumi": "^3",
-        "@repo/pulumi-astro-apprunner": "*"
+        "@repo/pulumi-astro-aws": "*"
     },
     "scripts": {
         "build": "tsc",
         "deploy:dev": "pulumi stack select dev && eval \"$(pulumi env open personal --format shell)\" && pulumi up --yes",
         "destroy:dev": "pulumi stack select dev && eval \"$(pulumi env open personal --format shell)\" && pulumi destroy --yes"
-    },
-    "dependencies": {
-        "chris": "*",
-        "cloudinary": "^2.4.0"
     }
 }

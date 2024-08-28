@@ -1,5 +1,5 @@
 {
-    "name": "@repo/pulumi-astro-apprunner",
+    "name": "@repo/pulumi-astro-aws",
     "type": "module",
     "devDependencies": {
         "@types/node": "^18",
@@ -9,8 +9,7 @@
         "@pulumi/aws": "^6.0.0",
         "@pulumi/awsx": "^2.0.2",
         "@pulumi/pulumi": "^3.113.0",
-        "chris": "*",
-        "cloudinary": "^2.4.0"
+        "@pulumi/synced-folder": "^0.11.1"
     },
     "exports": {
         ".": "./dist/index.js",
