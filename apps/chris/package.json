@@ -1,5 +1,5 @@
 {
-    "name": "apps.chris",
+    "name": "chris",
     "type": "module",
     "private": true,
     "scripts": {
@@ -12,10 +12,11 @@
     },
     "devDependencies": {
         "@astrojs/check": "^0.9.3",
-        "@astrojs/tailwind": "^5.1.0",
         "@astrojs/mdx": "^3.1.4",
+        "@astrojs/prism": "^3.1.0",
         "@astrojs/rss": "^4.0.7",
         "@astrojs/sitemap": "^3.1.6",
+        "@astrojs/tailwind": "^5.1.0",
         "@tailwindcss/typography": "^0.5.14",
         "@types/aws-lambda": "^8.10.143",
         "astro": "^4.14.5",
@@ -26,6 +27,7 @@
     "dependencies": {
         "@astrojs/node": "^8.3.3",
         "@astrojs/preact": "^3.5.1",
+        "cloudinary": "^2.4.0",
         "preact": "^10.23.2"
     }
 }

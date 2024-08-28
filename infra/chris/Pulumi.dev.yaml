@@ -1,4 +1,5 @@
 config:
-    aws:region: us-west-2
-    c.nunciato.org:domain: nunciato.org
-    c.nunciato.org:subdomain: chris
+  aws:region: us-west-2
+  nunciato-chris:domain: nunciato.org
+  nunciato-chris:sourcePath: ../../apps/chris
+  nunciato-chris:subdomain: chris-dev

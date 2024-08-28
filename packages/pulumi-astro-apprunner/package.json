@@ -8,7 +8,9 @@
     "dependencies": {
         "@pulumi/aws": "^6.0.0",
         "@pulumi/awsx": "^2.0.2",
-        "@pulumi/pulumi": "^3.113.0"
+        "@pulumi/pulumi": "^3.113.0",
+        "chris": "*",
+        "cloudinary": "^2.4.0"
     },
     "exports": {
         ".": "./dist/index.js",

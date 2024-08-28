@@ -5,5 +5,9 @@
     "license": "MIT",
     "files": [
         "prettier.config.mjs"
-    ]
+    ],
+    "dependencies": {
+        "chris": "*",
+        "cloudinary": "^2.4.0"
+    }
 }

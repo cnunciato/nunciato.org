@@ -1,12 +1,18 @@
 {
-    "name": "infra.chris",
+    "name": "chris.infra",
     "type": "module",
     "main": "dist/index.js",
-    "dependencies": {
+    "devDependencies": {
+        "@pulumi/pulumi": "^3",
         "@repo/pulumi-astro-apprunner": "*"
     },
     "scripts": {
         "build": "tsc",
-        "deploy": "pulumi up"
+        "deploy:dev": "pulumi stack select dev && eval \"$(pulumi env open personal --format shell)\" && pulumi up --yes",
+        "destroy:dev": "pulumi stack select dev && eval \"$(pulumi env open personal --format shell)\" && pulumi destroy --yes"
+    },
+    "dependencies": {
+        "chris": "*",
+        "cloudinary": "^2.4.0"
     }
 }

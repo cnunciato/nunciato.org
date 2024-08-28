@@ -1,0 +1,38 @@
+---
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+    cloud_name: import.meta.env.CLOUDINARY_CLOUD_NAME,
+    api_key: import.meta.env.CLOUDINARY_API_KEY,
+    api_secret: import.meta.env.CLOUDINARY_API_SECRET,
+});
+
+interface Props {
+    imageId: string;
+}
+
+const { imageId } = Astro.props;
+const url = cloudinary.url(imageId, {
+    transformation: [
+        {
+            fetch_format: "auto",
+            quality: "auto",
+            width: 400,
+            height: 400,
+            crop: "fill",
+            gravity: "auto",
+        },
+        {
+            color: "#fff",
+            overlay: {
+                font_family: "Roboto",
+                font_size: 60,
+                font_weight: "bold",
+                text: "Once upon a time",
+            },
+        },
+    ],
+});
+---
+
+<img src={url} alt="" />

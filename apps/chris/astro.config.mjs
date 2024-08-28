@@ -7,10 +7,24 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://chris.nunciato.org",
-    integrations: [mdx(), sitemap(), tailwind(), preact()],
+    site: import.meta.env.SITE || "http://localhost:4321",
+
     output: "server",
+
     adapter: node({
         mode: "standalone",
     }),
+
+    image: {
+        domains: ["s3.amazonaws.com"],
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "s3.amazonaws.com",
+                pathname: "cnunciato-website-media",
+            },
+        ],
+    },
+
+    integrations: [mdx(), sitemap(), tailwind(), preact()],
 });

@@ -22,6 +22,7 @@ export class AstroSite extends pulumi.ComponentResource {
         const domain = args.domain;
         const subdomain = args.subdomain;
         const domainName = `${subdomain}.${domain}`;
+        const publicUrl = `https://${subdomain}.${domain}`;
 
         const repo = new awsx.ecr.Repository("repo", {
             forceDelete: true,
@@ -56,6 +57,9 @@ export class AstroSite extends pulumi.ComponentResource {
                     imageRepositoryType: "ECR",
                     imageConfiguration: {
                         port: "4321",
+                        runtimeEnvironmentVariables: {
+                            SITE: publicUrl,
+                        },
                     },
                 },
             },
@@ -147,7 +151,7 @@ export class AstroSite extends pulumi.ComponentResource {
         );
 
         this.serviceUrl = pulumi.interpolate`https://${service.serviceUrl}`;
-        this.url = pulumi.output(`https://${domainName}`);
+        this.url = pulumi.output(publicUrl);
 
         this.registerOutputs({
             serviceUrl: this.serviceUrl,
