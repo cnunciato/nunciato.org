@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
+import { join } from "path";
 
 import mdx from "@astrojs/mdx";
 import node from "@astrojs/node";
@@ -9,7 +10,12 @@ import tailwind from "@astrojs/tailwind";
 import opengraphImages, { presets } from "astro-opengraph-images";
 import satori from "satori-astro";
 
-const output = "server";
+const output = "hybrid";
+let modulePath = "../../node_modules";
+
+if (!existsSync(modulePath)) {
+    modulePath = "node_modules";
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +24,7 @@ export default defineConfig({
     output,
 
     adapter:
-        output === "server"
+        output !== "static"
             ? node({
                   mode: "standalone",
               })
@@ -40,9 +46,24 @@ export default defineConfig({
         sitemap(),
         tailwind(),
         preact(),
-        // opengraphImages({
-        //     render: presets.simpleBlog,
-        // }),
+        opengraphImages({
+            render: presets.vercel,
+            options: {
+                fonts: [
+                    {
+                        name: "Roboto",
+                        weight: 400,
+                        style: "normal",
+                        data: readFileSync(
+                            join(
+                                modulePath,
+                                "@fontsource/roboto/files/roboto-latin-400-normal.woff",
+                            ),
+                        ),
+                    },
+                ],
+            },
+        }),
         satori(),
     ],
 });

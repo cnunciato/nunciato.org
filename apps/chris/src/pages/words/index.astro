@@ -24,7 +24,7 @@ const words = await getCollection("words");
                         .map(post => (
                             <li class="gap-2">
                                 <div>
-                                    <a href={`/photos/${post.slug}`}>
+                                    <a href={`/words/${post.slug}`}>
                                         {post.data.title}
                                     </a>
                                 </div>
