@@ -14,8 +14,8 @@
         "**/Thumbs.db": true,
         "**/.turbo": true,
         "**/.astro": true,
-        "**/dist": true,
-        "**/node_modules": true
+        "**/dist": true
+        // "**/node_modules": true
     },
 
     "prettier.configPath": "./prettier.config.json",
