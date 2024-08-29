@@ -9,9 +9,10 @@ RUN npm install --omit=dev
 FROM base AS build-deps
 RUN npm install
 
+ARG SITE_URL=http://localhost:4321
 FROM build-deps AS build
 COPY . .
-RUN npm run build
+RUN npm run build -- --site ${SITE_URL}
 
 FROM base AS runtime
 COPY --from=prod-deps /app/node_modules ./node_modules

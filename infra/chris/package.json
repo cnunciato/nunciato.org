@@ -8,6 +8,7 @@
     },
     "scripts": {
         "build": "tsc",
+        "preview:dev": "npm run build && pulumi stack select dev && pulumi preview",
         "deploy:dev": "npm run build && pulumi stack select dev && pulumi up --yes",
         "destroy:dev": "pulumi stack select dev && pulumi destroy --yes"
     }

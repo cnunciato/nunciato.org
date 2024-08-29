@@ -85,10 +85,6 @@ export function getStaticSite(
             // ACM certificates must be created in the us-east-1 region.
             provider: new aws.Provider("us-east-provider", {
                 region: "us-east-1",
-                // accessKey: aws.config.accessKey,
-                // secretKey: aws.config.secretKey,
-                // token: aws.config.token,
-                // assumeRole: aws.config.assumeRole,
             }),
 
             parent,

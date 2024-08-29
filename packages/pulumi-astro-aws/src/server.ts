@@ -51,6 +51,9 @@ export function getServerSite(
             repositoryUrl: repo.url,
             context: sourcePath,
             platform: "linux/amd64",
+            args: {
+                SITE_URL: publicUrl,
+            },
         },
         { parent },
     );
@@ -94,10 +97,6 @@ export function getServerSite(
         "us-east-provider",
         {
             region: "us-east-1",
-            // accessKey: aws.config.accessKey,
-            // secretKey: aws.config.secretKey,
-            // token: aws.config.token,
-            // assumeRole: aws.config.assumeRole,
         },
         { parent },
     );

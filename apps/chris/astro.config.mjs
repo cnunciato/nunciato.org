@@ -9,14 +9,20 @@ import tailwind from "@astrojs/tailwind";
 import opengraphImages, { presets } from "astro-opengraph-images";
 import satori from "satori-astro";
 
+const output = "server";
+
 // https://astro.build/config
 export default defineConfig({
     site: "http://localhost:4321",
 
-    output: "server",
-    adapter: node({
-        mode: "standalone",
-    }),
+    output,
+
+    adapter:
+        output === "server"
+            ? node({
+                  mode: "standalone",
+              })
+            : undefined,
 
     image: {
         domains: ["s3.amazonaws.com"],
@@ -34,21 +40,9 @@ export default defineConfig({
         sitemap(),
         tailwind(),
         preact(),
-        opengraphImages({
-            options: {
-                fonts: [
-                    {
-                        name: "Roboto",
-                        weight: 400,
-                        style: "normal",
-                        data: readFileSync(
-                            "../../node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff",
-                        ),
-                    },
-                ],
-            },
-            render: presets.blackAndWhite,
-        }),
+        // opengraphImages({
+        //     render: presets.simpleBlog,
+        // }),
         satori(),
     ],
 });
