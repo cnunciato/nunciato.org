@@ -3,9 +3,7 @@ import { signal } from "@preact/signals";
 const message = signal("⏳");
 
 try {
-    const data = await fetch("/api/message.json").then(response =>
-        response.json(),
-    );
+    const data = await fetch("/api/message.json").then(response => response.json());
     message.value = data.message;
 } catch (error) {
     console.error(error);

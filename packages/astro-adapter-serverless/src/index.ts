@@ -11,10 +11,7 @@ import { Readable } from "node:stream";
 
 import { type APIGatewayProxyStructuredResultV2 } from "aws-lambda";
 
-export type CloudfrontResult = Omit<
-    APIGatewayProxyStructuredResultV2,
-    "body"
-> & {
+export type CloudfrontResult = Omit<APIGatewayProxyStructuredResultV2, "body"> & {
     body: Readable | string;
 };
 
@@ -29,8 +26,7 @@ const createReadableStream = (val: ArrayBuffer | string): Readable =>
         },
     });
 
-const parseContentType = (header?: string | null) =>
-    header?.split(";")[0] ?? "";
+const parseContentType = (header?: string | null) => header?.split(";")[0] ?? "";
 
 const createRequestBody = (
     method: string,
@@ -86,10 +82,7 @@ const createLambdaFunctionResponse = async (
         knownBinaryMediaTypes,
     );
 
-    const body = await createAPIGatewayProxyEventV2ResponseBody(
-        response,
-        isBase64Encoded,
-    );
+    const body = await createAPIGatewayProxyEventV2ResponseBody(response, isBase64Encoded);
 
     return {
         body,
@@ -172,11 +165,8 @@ const createExports = (
             headers.set("cookie", event.cookies.join("; "));
         }
 
-        const domainName =
-            headers.get("x-forwarded-host") ?? event.requestContext.domainName;
-        const qs = event.rawQueryString.length
-            ? `?${event.rawQueryString}`
-            : "";
+        const domainName = headers.get("x-forwarded-host") ?? event.requestContext.domainName;
+        const qs = event.rawQueryString.length ? `?${event.rawQueryString}` : "";
         const url = new URL(
             `${event.rawPath.replace(/\/?index\.html$/u, "")}${qs}`,
             `https://${domainName}`,
@@ -201,18 +191,15 @@ const createExports = (
         console.log({ routeData });
 
         if (!routeData) {
-            const request404 = new Request(
-                new URL(`404${qs}`, `https://${domainName}`),
-                {
-                    body: createRequestBody(
-                        event.requestContext.http.method,
-                        event.body,
-                        event.isBase64Encoded,
-                    ),
-                    headers,
-                    method: event.requestContext.http.method,
-                },
-            );
+            const request404 = new Request(new URL(`404${qs}`, `https://${domainName}`), {
+                body: createRequestBody(
+                    event.requestContext.http.method,
+                    event.body,
+                    event.isBase64Encoded,
+                ),
+                headers,
+                method: event.requestContext.http.method,
+            });
 
             routeData = app.match(request404);
 
@@ -231,11 +218,7 @@ const createExports = (
             routeData,
         });
 
-        return createLambdaFunctionResponse(
-            app,
-            response,
-            knownBinaryMediaTypes,
-        );
+        return createLambdaFunctionResponse(app, response, knownBinaryMediaTypes);
     };
 
     return {

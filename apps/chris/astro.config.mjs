@@ -7,7 +7,6 @@ import node from "@astrojs/node";
 import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import opengraphImages, { presets } from "astro-opengraph-images";
 import satori from "satori-astro";
 
 const output = "hybrid";
@@ -41,29 +40,5 @@ export default defineConfig({
         ],
     },
 
-    integrations: [
-        mdx(),
-        sitemap(),
-        tailwind(),
-        preact(),
-        opengraphImages({
-            render: presets.vercel,
-            options: {
-                fonts: [
-                    {
-                        name: "Roboto",
-                        weight: 400,
-                        style: "normal",
-                        data: readFileSync(
-                            join(
-                                modulePath,
-                                "@fontsource/roboto/files/roboto-latin-400-normal.woff",
-                            ),
-                        ),
-                    },
-                ],
-            },
-        }),
-        satori(),
-    ],
+    integrations: [mdx(), sitemap(), tailwind(), preact(), satori()],
 });

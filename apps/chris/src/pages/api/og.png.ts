@@ -9,9 +9,7 @@ export const GET: APIRoute = async () => {
     const fontData: ArrayBuffer = await fontFile.arrayBuffer();
 
     return await satoriAstroOG({
-        template: html`<div
-            class="flex flex-col bg-gray-900 text-white text-4xl h-full px-12 py-8"
-        >
+        template: html`<div class="flex flex-col bg-gray-900 text-white text-4xl h-full px-12 py-8">
             <h1 class="my-4 py-0">This is a title.</h1>
             <p class="my-0">It's awesome. You should check it out.</p>
         </div>`,

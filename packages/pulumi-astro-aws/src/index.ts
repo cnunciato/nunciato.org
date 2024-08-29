@@ -12,11 +12,7 @@ interface AstroSiteArgs {
 export class AstroSite extends pulumi.ComponentResource {
     url: pulumi.Output<string>;
 
-    constructor(
-        name: string,
-        args: AstroSiteArgs,
-        opts?: pulumi.ComponentResourceOptions,
-    ) {
+    constructor(name: string, args: AstroSiteArgs, opts?: pulumi.ComponentResourceOptions) {
         super("pkg:index:AstroSite", name, args, opts);
 
         const domain = args.domain;
@@ -26,23 +22,9 @@ export class AstroSite extends pulumi.ComponentResource {
         const sourcePath = args.sourcePath;
 
         if (args.output === "server") {
-            getServerSite(
-                domain,
-                subdomain,
-                domainName,
-                sourcePath,
-                publicUrl,
-                this,
-            );
+            getServerSite(domain, subdomain, domainName, sourcePath, publicUrl, this);
         } else {
-            getStaticSite(
-                domain,
-                subdomain,
-                domainName,
-                sourcePath,
-                publicUrl,
-                this,
-            );
+            getStaticSite(domain, subdomain, domainName, sourcePath, publicUrl, this);
         }
 
         this.url = pulumi.output(publicUrl);

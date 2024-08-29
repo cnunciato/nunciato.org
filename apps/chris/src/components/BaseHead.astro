@@ -3,9 +3,8 @@
 // all pages through the use of the <BaseHead /> component.
 import "../styles/global.css";
 
-// import { ViewTransitions } from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
 import { SEO } from "astro-seo";
-import { getImagePath } from "astro-opengraph-images";
 
 interface Props {
     title: string;
@@ -17,7 +16,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 const { url, site } = Astro;
-const openGraphImageUrl = getImagePath({ url, site });
+
+// TODO: Make this somehow dynamically-generatable.
+const openGraphImageUrl = "/api/og.png";
 ---
 
 <!-- Global Metadata -->
@@ -27,20 +28,8 @@ const openGraphImageUrl = getImagePath({ url, site });
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link
-    rel="preload"
-    href="/fonts/atkinson-regular.woff"
-    as="font"
-    type="font/woff"
-    crossorigin
-/>
-<link
-    rel="preload"
-    href="/fonts/atkinson-bold.woff"
-    as="font"
-    type="font/woff"
-    crossorigin
-/>
+<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -80,4 +69,4 @@ const openGraphImageUrl = getImagePath({ url, site });
 
 <link rel="stylesheet" href="/styles/code.css" />
 
-<!-- <ViewTransitions /> -->
+<ViewTransitions />

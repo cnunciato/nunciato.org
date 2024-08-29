@@ -16,13 +16,9 @@ execSync(`npm run build -- --site "https://${subdomain}.${domain}"`, {
 });
 
 // Choose a deployment type based on the build output.
-const output = existsSync(join(sourcePath, "dist", "server"))
-    ? "server"
-    : "static";
+const output = existsSync(join(sourcePath, "dist", "server")) ? "server" : "static";
 
-log.info(
-    `Detected '${output}' output. ${!runtime.isDryRun() ? "Deploying..." : ""}`,
-);
+log.info(`Detected '${output}' output. ${!runtime.isDryRun() ? "Deploying..." : ""}`);
 const site = new AstroSite("site", {
     sourcePath,
     domain,

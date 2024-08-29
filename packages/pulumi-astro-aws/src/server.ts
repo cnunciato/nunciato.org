@@ -39,8 +39,7 @@ export function getServerSite(
         "attachment",
         {
             role: role.name,
-            policyArn:
-                aws.iam.ManagedPolicy.AWSAppRunnerServicePolicyForECRAccess,
+            policyArn: aws.iam.ManagedPolicy.AWSAppRunnerServicePolicyForECRAccess,
         },
         { parent },
     );

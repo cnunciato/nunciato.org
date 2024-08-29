@@ -29,10 +29,7 @@ const { title, description, photo } = p.data;
         <Header />
         <div class="flex justify-center p-8">
             <img
-                src={photo.url.replace(
-                    "s3/",
-                    "https://s3.amazonaws.com/cnunciato-website-media/",
-                )}
+                src={photo.url.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/")}
             />
         </div>
     </body>
