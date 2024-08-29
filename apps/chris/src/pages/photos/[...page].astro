@@ -38,7 +38,7 @@ const { page } = Astro.props;
                         return (
                             <li class="gap-2">
                                 <div>
-                                    <a class="block" href={`/photos/${p.id}`}>
+                                    <a class="block" href={`/photos/${p.slug}`}>
                                         <img
                                             loading="lazy"
                                             src={photo.preview.replace(

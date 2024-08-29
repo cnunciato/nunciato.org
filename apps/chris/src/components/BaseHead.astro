@@ -14,11 +14,9 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
-const { url, site } = Astro;
-
-// TODO: Make this somehow dynamically-generatable.
-const openGraphImageUrl = "/api/og.png";
+const { url, site, props } = Astro;
+const [_, collection, slug] = url.pathname.split("/");
+const { title, description, image = `/api/og.png?type=${collection}&id=${slug}` } = props;
 ---
 
 <!-- Global Metadata -->
@@ -44,18 +42,18 @@ const openGraphImageUrl = "/api/og.png";
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={openGraphImageUrl} />
+<meta property="og:image" content={image} />
 
 <SEO
     openGraph={{
         basic: {
             title: title,
             type: "website",
-            image: openGraphImageUrl,
+            image,
             url: url,
         },
         optional: {
-            description: "My page description",
+            description,
         },
     }}
 />

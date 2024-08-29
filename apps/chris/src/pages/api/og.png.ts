@@ -24,7 +24,15 @@ export const GET: APIRoute = async ({ url }: APIContext) => {
         }
     }
 
-    // Use the metadata to render the image.
+    if (contentType === "photos") {
+        const words = await getCollection(contentType);
+        const photo = words.find(w => w.slug === contentId);
+
+        if (photo) {
+            title = photo.data.title;
+            description = photo.data.description || "";
+        }
+    }
 
     const fontFile = await fetch(
         "https://og-playground.vercel.app/inter-latin-ext-700-normal.woff",
