@@ -5,15 +5,16 @@ import { html } from "satori-html";
 
 export const prerender = false;
 
+// https://github.com/vercel/satori
+// https://og-playground.vercel.app/
+
 export const GET: APIRoute = async ({ url }: APIContext) => {
-    // Pull the content type and ID from the querystring.
     const contentType = url.searchParams.get("type");
     const contentId = url.searchParams.get("id");
 
     let title = "This is a title.";
     let description = "It's awesome. You should check it out";
 
-    // Look 'em up.
     if (contentType === "words") {
         const words = await getCollection(contentType);
         const post = words.find(w => w.slug === contentId);
@@ -37,11 +38,12 @@ export const GET: APIRoute = async ({ url }: APIContext) => {
     const fontFile = await fetch(
         "https://og-playground.vercel.app/inter-latin-ext-700-normal.woff",
     );
+
     const fontData: ArrayBuffer = await fontFile.arrayBuffer();
 
     return await satoriAstroOG({
-        template: html`<div class="flex flex-col bg-gray-900 text-white text-4xl h-full px-12 py-8">
-            <h1 class="my-4 py-0">${title}</h1>
+        template: html`<div class="flex flex-col bg-black text-white text-4xl h-full px-12 py-8">
+            <h1 class="my-4 py-0 text-fuchsia-800">${title}</h1>
             <p class="my-0">${description}</p>
         </div>`,
         width: 1200,
