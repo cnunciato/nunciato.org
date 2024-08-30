@@ -1,39 +1,44 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import { siteTitle, siteDescription } from "../consts";
-import MessageOfTheDay from "../components/MessageOfTheDay";
+// import MessageOfTheDay from "../components/MessageOfTheDay";
 import { Image } from "astro:assets";
-import "@fontsource/patrick-hand-sc";
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import { getCollection } from "astro:content";
+import Prose from "../components/Prose.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+// Grab the most recent photo.
+const collection = await getCollection("photos");
+const photos = collection.sort((a, b) => (a.data.date > b.data.date ? 0 : 1)).reverse();
+const [photo] = photos;
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <BaseHead title={siteTitle} description={siteDescription} />
-    </head>
-    <body class="bg-gradient-to-b bg-gray-100">
-        <Header />
-        <main>
-            <div>
-                <MessageOfTheDay client:load />
+<DefaultLayout title={siteTitle} description={siteDescription}>
+    <!-- <MessageOfTheDay client:load /> -->
+    <div class="flex justify-center hover: transition-all">
+        <div class="p-6 shadow-lg rounded-md border border-gray-200">
+            <a href={`/photos/${photo.slug}`}>
+                <Image
+                    src={photo.data.photo.url.replace(
+                        "s3/",
+                        "https://s3.amazonaws.com/cnunciato-website-media/",
+                    )}
+                    alt={photo.data.title}
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="800"
+                    inferSize={true}
+                    class:list="block rounded shadow-inner border border-gray-100"
+                />
+            </a>
+            <div class="mt-6">
+                <Prose>
+                    <p>
+                        <FormattedDate date={photo.data.date} />
+                    </p>
+                </Prose>
             </div>
-            <div class="flex justify-center hover: transition-all">
-                <div class="p-6 shadow-lg rounded-md border border-gray-200">
-                    <Image
-                        src="https://s3.amazonaws.com/cnunciato-website-media/images/2024-07-29-07-56-09.jpg"
-                        alt="A thing"
-                        loading="lazy"
-                        decoding="async"
-                        width="800"
-                        height="800"
-                        inferSize={true}
-                        class:list="block rounded shadow-inner border border-gray-100"
-                    />
-                </div>
-            </div>
-        </main>
-        <Footer />
-    </body>
-</html>
+        </div>
+    </div>
+</DefaultLayout>

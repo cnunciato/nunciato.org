@@ -1,2 +1,14 @@
+@import "@fontsource/source-sans-pro";
+@import "@fontsource/source-serif-pro";
+@import "@fontsource/source-code-pro";
+
 body {
+}
+
+a {
+    @apply underline text-blue-800;
+
+    &:visited {
+        @apply text-blue-600;
+    }
 }

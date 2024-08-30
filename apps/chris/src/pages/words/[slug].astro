@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Header from "../../components/Header.astro";
-import BaseHead from "../../components/BaseHead.astro";
+import BlogPost from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
     const words = await getCollection("words");
@@ -10,22 +9,15 @@ export async function getStaticPaths() {
         params: {
             slug: post.slug,
         },
-        props: { photo: post },
+        props: { post: post },
     }));
 }
 
-const { photo: p } = Astro.props;
-const { title, description, photo } = p.data;
+const { post } = Astro.props;
+const { Content } = await post.render();
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <BaseHead title={title} description={description || ""} />
-    </head>
-    <body>
-        <Header />
-    </body>
-</html>
+<BlogPost title={post.data.title} description={post.data.description} date={post.data.date}>
+    <h1>{post.data.title}</h1>
+    <Content />
+</BlogPost>

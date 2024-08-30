@@ -1,8 +1,9 @@
 ---
 import type { PaginateFunction } from "astro";
 import { getCollection } from "astro:content";
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+import Prose from "../../components/Prose.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
     const collection = await getCollection("photos");
@@ -13,58 +14,50 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
 const { page } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <BaseHead title="Photos" description="" />
-    </head>
-    <body class="bg-blue-950 text-white">
-        <Header />
-        <div class="justify-center">
-            <ol class="flex flex-wrap gap-4 justify-center">
-                {
-                    page.data.map(p => {
-                        const { title, date, photo } = p.data;
-                        const { body } = p;
+<DefaultLayout title="Photos" , description="All the photos">
+    <Prose>
+        <h1>Photos</h1>
+    </Prose>
+    <ol class="mt-8 flex flex-wrap gap-4 justify-start">
+        {
+            page.data.map(p => {
+                const { title, date, photo } = p.data;
+                const { body } = p;
 
-                        const wordCount = body
-                            .trim()
-                            .split(" ")
-                            .map(w => w.trim())
-                            .filter(w => w !== "").length;
+                const wordCount = body
+                    .trim()
+                    .split(" ")
+                    .map(w => w.trim())
+                    .filter(w => w !== "").length;
 
-                        return (
-                            <li class="gap-2">
-                                <div>
-                                    <a class="block" href={`/photos/${p.slug}`}>
-                                        <img
-                                            loading="lazy"
-                                            src={photo.preview.replace(
-                                                "s3/",
-                                                "https://s3.amazonaws.com/cnunciato-website-media/",
-                                            )}
-                                            class="overflow-hidden w-96 h-96 object-cover top shadow-md rounded-md"
-                                            alt={title}
-                                        />
-                                    </a>
-                                    <div class="text-xs text-center mt-2 mb-3">
-                                        <span>{date.toDateString()}</span>
+                return (
+                    <li class="gap-2">
+                        <div>
+                            <a class="block" href={`/photos/${p.slug}`}>
+                                <img
+                                    loading="lazy"
+                                    src={photo.preview.replace(
+                                        "s3/",
+                                        "https://s3.amazonaws.com/cnunciato-website-media/",
+                                    )}
+                                    class="overflow-hidden w-48 h-48 object-cover top shadow-md rounded-md"
+                                    alt={title}
+                                />
+                            </a>
+                            <div class="text-xs text-center mt-2 mb-3">
+                                <FormattedDate date={p.data.date} />
 
-                                        {wordCount > 0 && (
-                                            <span>
-                                                {wordCount}
-                                                {wordCount === 1 ? "word" : "words"}
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-                            </li>
-                        );
-                    })
-                }
-            </ol>
-        </div>
-    </body>
-</html>
+                                {wordCount > 0 && (
+                                    <span>
+                                        {wordCount}
+                                        {wordCount === 1 ? "word" : "words"}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                    </li>
+                );
+            })
+        }
+    </ol>
+</DefaultLayout>
