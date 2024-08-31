@@ -19,6 +19,12 @@
             "options": {
                 "tabWidth": 4
             }
+        },
+        {
+            "files": "*.yaml",
+            "options": {
+                "tabWidth": 2
+            }
         }
     ]
 }
