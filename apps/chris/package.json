@@ -43,5 +43,8 @@
         "preact": "^10.23.2",
         "satori-astro": "^0.0.1",
         "satori-html": "^0.3.2"
+    },
+    "optionalDependencies": {
+        "@rollup/rollup-linux-x64-gnu": "^4"
     }
 }
