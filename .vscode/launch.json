@@ -6,6 +6,12 @@
             "name": "Development server",
             "request": "launch",
             "type": "node-terminal"
+        },
+        {
+            "command": "npm run deploy:dev -w chris.infra",
+            "name": "Deploy dev stack",
+            "request": "launch",
+            "type": "node-terminal"
         }
     ]
 }

@@ -4,11 +4,11 @@ config:
   chris.nunciato.org:output: static
   chris.nunciato.org:processorAWSAccessKeyID: AKIAZKAKOEYIQHYXABS6
   chris.nunciato.org:processorAWSSecretAccessKey:
-    secure: AAABAKF2Ce7UfAozrSmVzsWyg4mBRY1/iFvDkLKML1nzXBmehFyLqxLXOGtItiYMa73WWVVbCSgUGhpYtLVmOuLJWR4HPbbY
+    secure: AAABANNzAHgL1zcLR9nr2v0VHQrsWvRbmYrn6U2imIskxRcffI8hw0D4UoQiqF0t2crAay7XTRtbAKtJx90WkqUWOKfFSO8k
   chris.nunciato.org:processorDestinationRepo: cnunciato/nunciato.org
   chris.nunciato.org:processorDestinationRepoContentPath: apps/chris/src/content
   chris.nunciato.org:processorGitHubAccessToken:
-    secure: AAABAD9VVd+fuObKDIxKcBSGu7qQrQBu7Uqc7jpU7AwtqFi3KLNYQvUgPguZ1RfBQ/nE5PfQvzL1yjrHpc0dTz1tqRNuYY9h
+    secure: AAABAO80B62IOZyu4K/Q3ooGUEtuvuYEyY6GzvSVRFx8SEtoPm2xPqv3G4Qew9geFYqOq2f3iB2e/1DE34F5UbEzIhbsNDrA
   chris.nunciato.org:processorPath: ../../packages/upload-processor
   chris.nunciato.org:sourcePath: ../../apps/chris
-  chris.nunciato.org:subdomain: chris-dev
+  chris.nunciato.org:subdomain: chris

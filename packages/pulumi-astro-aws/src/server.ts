@@ -127,17 +127,6 @@ export function getServerSite(
         { parent },
     );
 
-    const validation = new aws.acm.CertificateValidation(
-        "validation",
-        {
-            certificateArn: certificate.arn,
-        },
-        {
-            provider: usEast1,
-            parent,
-        },
-    );
-
     const association = new aws.apprunner.CustomDomainAssociation(
         "custom-domain",
         {
