@@ -29,7 +29,7 @@ WORKDIR /usr/src/app
 # Copy the app into the container.
 COPY . ./
 
-# Install it.
+# Install and build.
 RUN npm install
 RUN npm run build
 

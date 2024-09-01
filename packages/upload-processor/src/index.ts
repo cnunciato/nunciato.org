@@ -553,7 +553,7 @@ function tagsToFilename(tags: Tags): string | undefined {
 
 // Derive the submission type.
 function fileToItemType(path: string): "photo" | "video" | "sound" | undefined {
-    const mimeType = mime.lookup(path);
+    const mimeType = mime.getType(path);
 
     if (mimeType) {
         const [type] = mimeType.split("/");
