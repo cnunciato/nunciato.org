@@ -114,9 +114,9 @@ mediaBucket.onObjectCreated(
             aws.iam.ManagedPolicy.AWSLambdaExecute,
             aws.iam.ManagedPolicy.AmazonECSFullAccess,
         ],
-        runtime: "nodejs18.x",
+        // runtime: "nodejs18.x",
         callback: async bucketArgs => {
-            // console.log("Callback invoked with ", JSON.stringify(bucketArgs.Records));
+            console.log("Callback invoked with ", JSON.stringify(bucketArgs.Records));
 
             if (!bucketArgs.Records) {
                 return;
@@ -150,7 +150,7 @@ mediaBucket.onObjectCreated(
                 });
 
                 const result = await ecsClient.send(ecsCommand);
-                // console.log(JSON.stringify(result, null, 4));
+                console.log(JSON.stringify(result, null, 4));
             }
         },
     }),

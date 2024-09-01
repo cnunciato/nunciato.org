@@ -2,7 +2,7 @@
     "name": "chris.infra",
     "main": "dist/index.js",
     "devDependencies": {
-        "@pulumi/pulumi": "^3",
+        "@pulumi/pulumi": "3.74.0",
         "@repo/pulumi-astro-aws": "*"
     },
     "scripts": {
