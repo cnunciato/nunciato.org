@@ -114,7 +114,7 @@ mediaBucket.onObjectCreated(
             aws.iam.ManagedPolicy.AWSLambdaExecute,
             aws.iam.ManagedPolicy.AmazonECSFullAccess,
         ],
-        // runtime: "nodejs18.x",
+        runtime: "nodejs18.x",
         callback: async bucketArgs => {
             console.log("Callback invoked with ", JSON.stringify(bucketArgs.Records));
 
