@@ -107,7 +107,13 @@ const mediaBucket = new aws.s3.Bucket("media", {
     forceDestroy: true,
 });
 
-all([cluster.arn, task.taskDefinition.arn]).apply(([clusterARN, taskDefinitionARN]) => {
+all([
+    cluster.arn,
+    task.taskDefinition.arn,
+    vpc.publicSubnetIds,
+    securityGroup.id,
+    mediaBucket.id,
+]).apply(([clusterARN, taskDefinitionARN, vpcPublicSubnetId, securityGroupId, mediaBucketId]) => {
     mediaBucket.onObjectCreated(
         "onUploadEvent",
         new aws.lambda.CallbackFunction<aws.s3.BucketEvent, void>("onUploadHandler", {
@@ -132,8 +138,8 @@ all([cluster.arn, task.taskDefinition.arn]).apply(([clusterARN, taskDefinitionAR
                         networkConfiguration: {
                             awsvpcConfiguration: {
                                 assignPublicIp: "ENABLED",
-                                subnets: vpc.publicSubnetIds.get(),
-                                securityGroups: [securityGroup.id.get()],
+                                subnets: vpcPublicSubnetId,
+                                securityGroups: [securityGroupId],
                             },
                         },
                         overrides: {
@@ -143,7 +149,7 @@ all([cluster.arn, task.taskDefinition.arn]).apply(([clusterARN, taskDefinitionAR
                                     command: [
                                         "npm",
                                         "start",
-                                        `s3://${mediaBucket.id.get()}/${record.s3.object.key}`,
+                                        `s3://${mediaBucketId}/${record.s3.object.key}`,
                                     ],
                                 },
                             ],
