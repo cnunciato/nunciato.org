@@ -6,6 +6,7 @@ import DefaultLayout from "../layouts/DefaultLayout.astro";
 import { getCollection } from "astro:content";
 import Prose from "../components/Prose.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import Widget from "../components/Widget";
 
 // Grab the most recent photo.
 const collection = await getCollection("photos");
@@ -15,6 +16,15 @@ const [photo] = photos;
 
 <DefaultLayout title={siteTitle} description={siteDescription}>
     <!-- <MessageOfTheDay client:load /> -->
+
+    <div class="block">
+        <Widget client:load />
+        <Widget client:load />
+        <Widget client:load />
+        <Widget client:load />
+        <Widget client:load />
+    </div>
+
     <div class="flex justify-center hover: transition-all">
         <div class="p-6 shadow-lg rounded-md border border-gray-200">
             <a href={`/photos/${photo.slug}`}>

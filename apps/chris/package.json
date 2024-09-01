@@ -39,8 +39,11 @@
         "@fontsource/source-serif-pro": "^5.0.8",
         "@fontsource/twinkle-star": "^5.0.21",
         "@fontsource/zilla-slab": "^5.0.14",
+        "@nanostores/persistent": "^0.10.2",
+        "@nanostores/preact": "^0.5.2",
         "astro-seo": "^0.8.4",
         "cloudinary": "^2.4.0",
+        "nanostores": "^0.11.3",
         "preact": "^10.23.2",
         "satori-astro": "^0.0.1",
         "satori-html": "^0.3.2"
