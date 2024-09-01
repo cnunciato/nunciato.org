@@ -2,8 +2,9 @@
     "name": "chris.infra",
     "main": "dist/index.js",
     "devDependencies": {
-        "@pulumi/pulumi": "3.74.0",
-        "@repo/pulumi-astro-aws": "*"
+        "@pulumi/pulumi": "^3",
+        "@repo/pulumi-astro-aws": "*",
+        "typescript": "^5.5.4"
     },
     "scripts": {
         "build": "tsc",

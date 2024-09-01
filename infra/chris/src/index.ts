@@ -107,6 +107,9 @@ const mediaBucket = new aws.s3.Bucket("media", {
     forceDestroy: true,
 });
 
+const clusterARN = cluster.arn.get();
+const taskDefinitionARN = task.taskDefinition.get().arn.get();
+
 mediaBucket.onObjectCreated(
     "onUploadEvent",
     new aws.lambda.CallbackFunction<aws.s3.BucketEvent, void>("onUploadHandler", {
@@ -114,7 +117,7 @@ mediaBucket.onObjectCreated(
             aws.iam.ManagedPolicy.AWSLambdaExecute,
             aws.iam.ManagedPolicy.AmazonECSFullAccess,
         ],
-        runtime: "nodejs18.x",
+        // runtime: "nodejs18.x",
         callback: async bucketArgs => {
             console.log("Callback invoked with ", JSON.stringify(bucketArgs.Records));
 
@@ -125,8 +128,8 @@ mediaBucket.onObjectCreated(
             for await (const record of bucketArgs.Records) {
                 const ecsClient = new ecs.ECSClient({ region: "us-west-2" });
                 const ecsCommand = new ecs.RunTaskCommand({
-                    cluster: cluster.arn.get(),
-                    taskDefinition: task.taskDefinition.get().arn.get(),
+                    cluster: clusterARN,
+                    taskDefinition: taskDefinitionARN,
                     launchType: "FARGATE",
                     networkConfiguration: {
                         awsvpcConfiguration: {
