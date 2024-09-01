@@ -3,8 +3,8 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc",
-        "start": "tsc && node dist/index",
-        "process": "tsc && node dist/index",
+        "start": "node dist/index",
+        "process": "node dist/index",
         "yaml": "json2yaml --depth 3"
     },
     "dependencies": {

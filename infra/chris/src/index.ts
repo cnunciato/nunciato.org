@@ -115,8 +115,8 @@ all([
     mediaBucket.id,
 ]).apply(([clusterARN, taskDefinitionARN, vpcPublicSubnetId, securityGroupId, mediaBucketId]) => {
     mediaBucket.onObjectCreated(
-        "onUploadEvent",
-        new aws.lambda.CallbackFunction<aws.s3.BucketEvent, void>("onUploadHandler", {
+        "upload-listener",
+        new aws.lambda.CallbackFunction<aws.s3.BucketEvent, void>("upload-handler", {
             policies: [
                 aws.iam.ManagedPolicy.AWSLambdaExecute,
                 aws.iam.ManagedPolicy.AmazonECSFullAccess,
