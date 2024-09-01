@@ -3,7 +3,8 @@
     "main": "dist/index.js",
     "devDependencies": {
         "@pulumi/pulumi": "^3",
-        "@repo/pulumi-astro-aws": "*"
+        "@repo/pulumi-astro-aws": "*",
+        "typescript": "^5.5.4"
     },
     "scripts": {
         "build": "tsc",
