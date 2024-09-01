@@ -107,6 +107,23 @@ const mediaBucket = new aws.s3.Bucket("media", {
     forceDestroy: true,
 });
 
+// So this is a bit of drag. There's apparently a bug in our closure
+// serialization that's causing `pulumi` to be pulled in, resulting in errors.
+//
+// More here:
+// https://github.com/pulumi/pulumi/issues/14671#issuecomment-1870935620 For
+// whatever reason, though, this does not seem to repro with this code, which is
+// much like the code I have below (or had, before I refactored to use
+// .all().apply()):
+//
+// bucket.onObjectCreated("upload-listener", new
+//     aws.lambda.CallbackFunction("upload-handler", { callback: () => {
+//     console.log(`Hello from ${bucket.id.get()}!`);
+//     }
+// }));
+//
+// Why that is, I'm not yet sure.
+//
 all([
     cluster.arn,
     task.taskDefinition.arn,
