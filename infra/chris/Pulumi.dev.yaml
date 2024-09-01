@@ -1,5 +1,3 @@
-environment:
-  - personal
 config:
   aws:region: us-west-2
   chris.nunciato.org:domain: nunciato.org
@@ -8,9 +6,12 @@ config:
   chris.nunciato.org:processorAWSSecretAccessKey:
     secure: AAABAKF2Ce7UfAozrSmVzsWyg4mBRY1/iFvDkLKML1nzXBmehFyLqxLXOGtItiYMa73WWVVbCSgUGhpYtLVmOuLJWR4HPbbY
   chris.nunciato.org:processorDestinationRepo: cnunciato/nunciato.org
+  chris.nunciato.org:processorDestinationRepoBranch: dev
   chris.nunciato.org:processorDestinationRepoContentPath: apps/chris/src/content
   chris.nunciato.org:processorGitHubAccessToken:
     secure: AAABAD9VVd+fuObKDIxKcBSGu7qQrQBu7Uqc7jpU7AwtqFi3KLNYQvUgPguZ1RfBQ/nE5PfQvzL1yjrHpc0dTz1tqRNuYY9h
   chris.nunciato.org:processorPath: ../../packages/upload-processor
   chris.nunciato.org:sourcePath: ../../apps/chris
   chris.nunciato.org:subdomain: chris-dev
+environment:
+  - personal

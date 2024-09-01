@@ -113,6 +113,7 @@ const source = process.argv[2];
 
 const username = process.env.USER || "cnunciato";
 const repo = process.env.REPO || "cnunciato/website-next";
+const branch = process.env.REPO_BRANCH || "main";
 const repoContentPath = process.env.REPO_CONTENT_PATH || "content";
 const gitUsername = process.env.GIT_USER_NAME || "cnunciato";
 const gitEmail = process.env.GIT_USER_EMAIL || "c@nunciato.org";
@@ -267,6 +268,7 @@ function submitToGitHub(file: ContentFile): Promise<any> {
                         name: gitUsername,
                         email: gitEmail,
                     },
+                    branch,
                     content: Buffer.from(yamlContent).toString("base64"),
                 },
             },

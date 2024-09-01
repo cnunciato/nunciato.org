@@ -14,6 +14,7 @@ const processorAWSAccessKeyID = config.require("processorAWSAccessKeyID");
 const processorAWSSecretAccessKey = config.require("processorAWSSecretAccessKey");
 const processorGitHubAccessToken = config.require("processorGitHubAccessToken");
 const processorDestinationRepo = config.require("processorDestinationRepo");
+const processorDestinationRepoBranch = config.require("processorDestinationRepoBranch");
 const processorDestinationRepoContentPath = config.require("processorDestinationRepoContentPath");
 
 log.info("Building site...");
@@ -89,6 +90,10 @@ const task = new awsx.ecs.FargateTaskDefinition("processor-task", {
             {
                 name: "REPO",
                 value: processorDestinationRepo,
+            },
+            {
+                name: "REPO_BRANCH",
+                value: processorDestinationRepoBranch,
             },
             {
                 name: "REPO_CONTENT_PATH",
