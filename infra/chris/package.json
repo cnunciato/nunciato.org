@@ -1,6 +1,5 @@
 {
     "name": "chris.infra",
-    "type": "module",
     "main": "dist/index.js",
     "devDependencies": {
         "@pulumi/pulumi": "^3",
