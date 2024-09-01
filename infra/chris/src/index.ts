@@ -37,6 +37,7 @@ const site = new AstroSite("site", {
 
 import * as aws from "@pulumi/aws";
 import * as awsx from "@pulumi/awsx";
+import * as ecs from "@aws-sdk/client-ecs";
 
 const vpc = new awsx.ec2.DefaultVpc("default-vpc");
 
@@ -100,5 +101,54 @@ const task = new awsx.ecs.FargateTaskDefinition("processor-task", {
 const mediaBucket = new aws.s3.Bucket("media", {
     forceDestroy: true,
 });
+
+mediaBucket.onObjectCreated(
+    "onUploadEvent",
+    new aws.lambda.CallbackFunction<aws.s3.BucketEvent, void>("onUploadHandler", {
+        policies: [
+            aws.iam.ManagedPolicy.AWSLambdaExecute,
+            aws.iam.ManagedPolicy.AmazonECSFullAccess,
+        ],
+        runtime: "nodejs18.x",
+        callback: async bucketArgs => {
+            console.log("Callback invoked with ", JSON.stringify(bucketArgs.Records));
+
+            if (!bucketArgs.Records) {
+                return;
+            }
+
+            for await (const record of bucketArgs.Records) {
+                const ecsClient = new ecs.ECSClient({ region: "us-west-2" });
+                const ecsCommand = new ecs.RunTaskCommand({
+                    cluster: cluster.arn.get(),
+                    taskDefinition: task.taskDefinition.get().arn.get(),
+                    launchType: "FARGATE",
+                    networkConfiguration: {
+                        awsvpcConfiguration: {
+                            assignPublicIp: "ENABLED",
+                            subnets: vpc.publicSubnetIds.get(),
+                            securityGroups: [securityGroup.id.get()],
+                        },
+                    },
+                    overrides: {
+                        containerOverrides: [
+                            {
+                                name: "processor-task",
+                                command: [
+                                    "npm",
+                                    "start",
+                                    `s3://${mediaBucket.id.get()}/${record.s3.object.key}`,
+                                ],
+                            },
+                        ],
+                    },
+                });
+
+                const result = await ecsClient.send(ecsCommand);
+                console.log(JSON.stringify(result, null, 4));
+            }
+        },
+    }),
+);
 
 export const { url } = site;
