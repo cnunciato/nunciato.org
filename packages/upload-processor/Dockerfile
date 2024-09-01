@@ -27,10 +27,11 @@ RUN ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --up
 WORKDIR /usr/src/app
 
 # Copy the app into the container.
-COPY *.json *.ts ./
+COPY . ./
 
-# Install it.
+# Install and build.
 RUN npm install
+RUN npm run build
 
 # And go!
 EXPOSE 8080
