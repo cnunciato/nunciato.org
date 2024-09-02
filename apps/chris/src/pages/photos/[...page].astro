@@ -8,7 +8,7 @@ import FormattedDate from "../../components/FormattedDate.astro";
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
     const collection = await getCollection("photos");
     const photos = collection.sort((a, b) => (a.data.date > b.data.date ? 0 : 1)).reverse();
-    return paginate(photos, { pageSize: 50 });
+    return paginate(photos, { pageSize: 100 });
 }
 
 const { page } = Astro.props;
@@ -18,7 +18,7 @@ const { page } = Astro.props;
     <Prose>
         <h1>Photos</h1>
     </Prose>
-    <ol class="mt-8 flex flex-wrap gap-4 justify-start">
+    <ol class="mt-8 flex flex-col md:flex-row md:flex-wrap gap-4 justify-evenly">
         {
             page.data.map(p => {
                 const { title, date, photo } = p.data;
@@ -32,7 +32,7 @@ const { page } = Astro.props;
 
                 return (
                     <li class="gap-2">
-                        <div>
+                        <div class="p-6 shadow-lg rounded-lg border border-neutral-200">
                             <a class="block" href={`/photos/${p.slug}`}>
                                 <img
                                     loading="lazy"
@@ -40,17 +40,15 @@ const { page } = Astro.props;
                                         "s3/",
                                         "https://s3.amazonaws.com/cnunciato-website-media/",
                                     )}
-                                    class="overflow-hidden w-48 h-48 object-cover top shadow-md rounded-md"
+                                    class="block rounded-lg shadow-inner  border border-neutral-100 overflow-hidden md:w-80 md:h-80 object-cover top"
                                     alt={title}
                                 />
                             </a>
-                            <div class="text-xs text-center mt-2 mb-3">
+                            <div class="text-sm mt-4 flex justify-between">
                                 <FormattedDate date={p.data.date} />
 
                                 {wordCount > 0 && (
                                     <span>
-                                        {" "}
-                                        &bull;
                                         {wordCount}
                                         {wordCount === 1 ? "word" : "words"}
                                     </span>

@@ -9,36 +9,40 @@ import FormattedDate from "../components/FormattedDate.astro";
 
 // Grab the most recent photo.
 const collection = await getCollection("photos");
-const photos = collection.sort((a, b) => (a.data.date > b.data.date ? 0 : 1)).reverse();
-const [photo] = photos;
+const photos = collection
+    .sort((a, b) => (a.data.date > b.data.date ? 0 : 1))
+    .reverse()
+    .slice(0, 3);
+
+console.log(photos);
 ---
 
 <DefaultLayout title={siteTitle} description={siteDescription}>
     <!-- <MessageOfTheDay client:load /> -->
-    <div class="flex justify-center hover: transition-all">
-        <div class="p-6 shadow-lg rounded-md border border-gray-200">
-            <a href={`/photos/${photo.slug}`}>
-                <Image
-                    src={photo.data.photo.url.replace(
-                        "s3/",
-                        "https://s3.amazonaws.com/cnunciato-website-media/",
-                    )}
-                    alt={photo.data.title}
-                    loading="lazy"
-                    decoding="async"
-                    width="800"
-                    height="800"
-                    inferSize={true}
-                    class:list="block rounded shadow-inner border border-gray-100"
-                />
-            </a>
-            <div class="mt-6">
-                <Prose>
-                    <p>
-                        <FormattedDate date={photo.data.date} />
-                    </p>
-                </Prose>
-            </div>
-        </div>
-    </div>
+    <ol class="flex justify-center hover: transition-all gap-4">
+        {
+            photos.map(photo => (
+                <li class="p-6 shadow-lg rounded-lg border border-neutral-200">
+                    <a href={`/photos/${photo.slug}`}>
+                        <img
+                            src={photo.data.photo.preview.replace(
+                                "s3/",
+                                "https://s3.amazonaws.com/cnunciato-website-media/",
+                            )}
+                            alt=""
+                            class="block rounded-lg shadow-inner border border-neutral-100 overflow-hidden h-96 object-cover top"
+                        />
+                    </a>
+                    <div class="mt-6">
+                        <Prose>
+                            <figcaption>{photo.data.title}</figcaption>
+                            <p>
+                                <FormattedDate date={photo.data.date} />
+                            </p>
+                        </Prose>
+                    </div>
+                </li>
+            ))
+        }
+    </ol>
 </DefaultLayout>

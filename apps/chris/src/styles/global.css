@@ -3,12 +3,13 @@
 @import "@fontsource/source-code-pro";
 
 body {
+    @apply bg-neutral-100 px-4;
 }
 
 a {
-    @apply underline text-slate-800;
+    @apply underline text-neutral-800;
 
     &:visited {
-        @apply text-slate-600;
+        @apply text-neutral-600;
     }
 }

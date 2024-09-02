@@ -4,8 +4,12 @@ import { siteTitle } from "../consts";
 ---
 
 <style>
+    a {
+        @apply no-underline;
+    }
+
     nav {
-        @apply container mx-auto flex justify-between py-8;
+        @apply container mx-auto flex justify-between my-8;
     }
 
     ul {
@@ -13,13 +17,17 @@ import { siteTitle } from "../consts";
     }
 
     svg {
-        @apply h-6 w-6;
+        @apply h-5 w-5;
     }
 </style>
 
-<header>
+<header class="mb-16">
     <nav>
-        <h2><a href="/">{siteTitle}</a></h2>
+        <h1>
+            <span class="font-sans font-extrabold text-xl">
+                <a href="/">{siteTitle}</a>
+            </span>
+        </h1>
 
         <ul>
             <HeaderLink href="/">Home</HeaderLink>
