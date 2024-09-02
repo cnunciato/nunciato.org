@@ -12,8 +12,8 @@ const words = await getCollection("words");
 ---
 
 <DefaultLayout title={title} description={description || ""}>
-    <div class="flex">
-        <nav class="w-2/12">
+    <div class="flex flex-col lg:flex-row">
+        <nav class="lg:w-2/12 order-last lg:order-first mt-4 lg:mt-0">
             <ol class="list-none list-outside pl-4">
                 {
                     words
@@ -39,12 +39,14 @@ const words = await getCollection("words");
             </ol>
         </nav>
         <div class="flex flex-grow justify-center">
-            <article class="block mx-auto max-w-4xl bg-white shadow-lg p-16 rounded-lg w-full">
+            <article
+                class="block mx-auto max-w-4xl bg-white shadow-lg p-8 lg:p-16 rounded-lg w-full"
+            >
                 <Prose>
                     <slot />
                 </Prose>
             </article>
         </div>
-        <div class="w-2/12"></div>
+        <div class="lg:w-2/12"></div>
     </div>
 </DefaultLayout>

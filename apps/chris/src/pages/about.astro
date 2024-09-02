@@ -8,9 +8,13 @@ const { title, description } = frontmatter;
 
 <DefaultLayout title={title} description={description}>
     <Prose>
-        <div class="mx-auto max-w-4xl bg-white shadow-lg p-16 rounded-lg">
+        <div class="mx-auto max-w-4xl bg-white shadow-lg p-8 lg:p-16 rounded-lg">
+            <img
+                class="mt-0"
+                src="/media/images/cascadia-smile.jpg"
+                alt="Me giving a programming talk at Town Hall Seattle, 2019"
+            />
             <h1>{title}</h1>
-            <img src="/media/images/cascadia-smile.jpg" alt="" />
             <Content />
         </div>
     </Prose>

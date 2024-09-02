@@ -4,39 +4,27 @@ import { siteTitle } from "../consts";
 ---
 
 <style>
-    a {
-        @apply no-underline;
-    }
-
-    nav {
-        @apply container mx-auto flex justify-between my-8;
-    }
-
-    ul {
-        @apply flex items-center gap-6;
-    }
-
     svg {
         @apply h-5 w-5;
     }
 </style>
 
-<header class="mb-16">
-    <nav>
-        <h1>
-            <span class="font-sans font-extrabold text-xl">
-                <a href="/">{siteTitle}</a>
+<header class="mb-8 md:mb-16">
+    <nav class="container mx-auto flex items-center justify-evenly mt-8 mb-4 md:mb-8">
+        <h1 class="w-2/12 hidden md:flex whitespace-nowrap">
+            <span class="font-sans font-extrabold text-lg md:text-xl">
+                <a class="no-underline" href="/">{siteTitle}</a>
             </span>
         </h1>
 
-        <ul>
-            <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/photos">Photos</HeaderLink>
-            <HeaderLink href="/words">Words</HeaderLink>
-            <HeaderLink href="/about">About</HeaderLink>
+        <ul class="justify-center w-6/12 flex items-center gap-2 md:gap-6">
+            <li class="hidden md:block"><HeaderLink href="/">Home</HeaderLink></li>
+            <li><HeaderLink href="/photos">Photos</HeaderLink></li>
+            <li><HeaderLink href="/words">Words</HeaderLink></li>
+            <li><HeaderLink href="/about">About</HeaderLink></li>
         </ul>
 
-        <ul>
+        <ul class="w-2/12 hidden md:flex justify-end items-center gap-2 md:gap-6">
             <a href="https://twitter.com/cnunciato" target="_blank">
                 <span class="sr-only">Follow me on Twitter</span>
                 <svg viewBox="0 0 16 16" aria-hidden="true"

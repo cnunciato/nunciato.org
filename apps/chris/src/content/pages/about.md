@@ -1,5 +1,5 @@
 ---
-title: About me
+title: About
 ---
 
 Hi! I'm Christian Nunciato. I live in Seattle (well, actually just _outside_ Seattle) and based solely on number-of-hours-logged, you could say I'm a dad, programmer, photographer, writer and occasional maker of silly little movies. By day, I work at an awesome little startup called [Pulumi](https://pulumi.com/). By night, owing mainly to my dadness, I sleep.
