@@ -19,7 +19,7 @@ console.log(photos);
 
 <DefaultLayout title={siteTitle} description={siteDescription}>
     <!-- <MessageOfTheDay client:load /> -->
-    <ol class="flex justify-center hover: transition-all gap-4">
+    <ol class="flex flex-col md:flex-row justify-center gap-4">
         {
             photos.map(photo => (
                 <li class="p-6 shadow-lg rounded-lg border border-neutral-200">
@@ -30,15 +30,17 @@ console.log(photos);
                                 "https://s3.amazonaws.com/cnunciato-website-media/",
                             )}
                             alt=""
-                            class="block rounded-lg shadow-inner border border-neutral-100 overflow-hidden h-96 object-cover top"
+                            class="block rounded-lg shadow-inner border border-neutral-100 overflow-hidden md:w-96 md:h-96 object-cover top"
                         />
                     </a>
                     <div class="mt-6">
                         <Prose>
-                            <figcaption>{photo.data.title}</figcaption>
-                            <p>
+                            <figcaption>
+                                <h2 class="my-2 text-lg">{photo.data.title}</h2>
+                            </figcaption>
+                            <div>
                                 <FormattedDate date={photo.data.date} />
-                            </p>
+                            </div>
                         </Prose>
                     </div>
                 </li>

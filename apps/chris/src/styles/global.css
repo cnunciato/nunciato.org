@@ -6,6 +6,15 @@ body {
     @apply bg-neutral-100 px-4;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply font-sans;
+}
+
 a {
     @apply underline text-neutral-800;
 
