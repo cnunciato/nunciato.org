@@ -1,18 +1,50 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import DefaultLayout from "./DefaultLayout.astro";
 import Prose from "../components/Prose.astro";
 
 type Props = CollectionEntry<"words">["data"];
-
 const { title, description } = Astro.props;
+const { slug } = Astro.params;
+
+const words = await getCollection("words");
 ---
 
 <DefaultLayout title={title} description={description || ""}>
-    <article>
-        <Prose>
-            <slot />
-        </Prose>
-    </article>
+    <div class="flex">
+        <nav class="w-2/12">
+            <ol class="list-none list-outside pl-4">
+                {
+                    words
+                        .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
+                        .reverse()
+                        .map(post => (
+                            <li
+                                class:list={[
+                                    "my-4 py-2 px-3 rounded-lg",
+                                    post.slug === slug ? "bg-neutral-200" : undefined,
+                                ]}
+                            >
+                                <div>
+                                    <a href={`/words/${post.slug}`}>{post.data.title}</a>
+                                </div>
+                                <div>
+                                    <FormattedDate date={post.data.date} />
+                                </div>
+                            </li>
+                        ))
+                }
+            </ol>
+        </nav>
+        <div class="flex flex-grow justify-center">
+            <article class="block mx-auto max-w-4xl bg-white shadow-lg p-16 rounded-lg">
+                <Prose>
+                    <slot />
+                </Prose>
+            </article>
+        </div>
+        <div class="w-2/12"></div>
+    </div>
 </DefaultLayout>

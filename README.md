@@ -1,35 +1,22 @@
 # nunciato.org
 
-The monorepo that ships my website and other things. :rocket:
+The monorepo I use to manage [my website](https://chris.nunciato.org) and a few other things. :rocket:
 
 ## Handy commands
 
-### Install all project dependencies
-
 ```bash
+# Install all project dependencies
 npm install && npm install --workspaces
-```
 
-### Run dev servers
-
-```bash
+# Run dev servers
 npm run dev
-```
 
-### Build all the things
-
-```bash
+# Build all the things
 npm run build
-```
 
-### Deploy to dev environments
-
-```bash
+# Deploy to dev environments
 npm run deploy:dev --workspace chris.infra
-```
 
-### Tear down dev environments
-
-```bash
+# Tear down dev environments
 npm run destroy:dev --workspace chris.infra
 ```

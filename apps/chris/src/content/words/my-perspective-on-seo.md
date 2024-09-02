@@ -20,4 +20,4 @@ Here's what I said.
 >
 > Basically, just write lots of good-quality content and encourage people to link to you, and you’ll be fine. It can take a little time to build up that relevance, but it’ll happen.
 
-As a content person myself, I know there's a lot more to it than this --- way more, in fact. But the impact curve to the right of these three points is a _long_ tail that most people just don't need to care about. If you get these foundational things right, you're way ahead of the game, and the web will find its way to you. The rest won't make nearly as much of a difference.
+As a content person myself, I know there's a lot more to it than this -- way more, in fact. But the impact curve to the right of these three points is a _long_ tail that most people just don't need to care about. If you get these foundational things right, you're way ahead of the game, and the web will find its way to you. The rest won't make nearly as much of a difference.

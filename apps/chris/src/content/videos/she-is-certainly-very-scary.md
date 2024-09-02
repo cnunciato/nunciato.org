@@ -23,4 +23,4 @@ video:
     poster: "s3/posters/2018-01-19-03-20-01.jpg"
 ---
 
-There's a fountain outside a nearby coffee shop where the kids like to play. I'm not exactly sure where her imagination had taken her on this particular evening (come to think of it, I never am), but the result was pretty hilarious --- and also a little terrifying.
+There's a fountain outside a nearby coffee shop where the kids like to play. I'm not exactly sure where her imagination had taken her on this particular evening (come to think of it, I never am), but the result was pretty hilariousand also a little terrifying.

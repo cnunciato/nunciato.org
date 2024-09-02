@@ -36,9 +36,9 @@ links:
       url: https://habitat.sh/
 ---
 
-When I set out to build this site, I had just a few modest goals: I wanted to be able to share my [photos](/photos/) and [videos](/videos/), post the occasional [sound clip](/sounds/), gather things into [collections](/collections/), keep track of what I'm reading and watching, and share a little [writing](/words/) from time to time. I figured it'd be easy --- after all, I'm a software engineer, it's 2018, there's open-source software all over the place, and I've been building web apps for close to 20 years now. How hard could it be?
+When I set out to build this site, I had just a few modest goals: I wanted to be able to share my [photos](/photos/) and [videos](/videos/), post the occasional [sound clip](/sounds/), gather things into [collections](/collections/), keep track of what I'm reading and watching, and share a little [writing](/words/) from time to time. I figured it'd be easyafter all, I'm a software engineer, it's 2018, there's open-source software all over the place, and I've been building web apps for close to 20 years now. How hard could it be?
 
-Definitely way harder than I imagined, for sure --- mainly because of how _huge_ these photo and video files can be. Coming up with a workflow that didn't require a full afternoon just to post a few snapshots or clips wasn't easy, but I did it, so I thought I'd make a little video about it.
+Definitely way harder than I imagined, for suremainly because of how _huge_ these photo and video files can be. Coming up with a workflow that didn't require a full afternoon just to post a few snapshots or clips wasn't easy, but I did it, so I thought I'd make a little video about it.
 
 Please enjoy.
 

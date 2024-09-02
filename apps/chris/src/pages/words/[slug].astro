@@ -15,13 +15,17 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const { slug } = Astro.params;
 const { Content } = await post.render();
 ---
 
-<BlogPost title={post.data.title} description={post.data.description} date={post.data.date}>
-    <div class="mx-auto max-w-4xl bg-white shadow-lg p-16 rounded-lg">
-        <h1>{post.data.title}</h1>
-        <FormattedDate date={post.data.date} />
-        <Content />
-    </div>
+<BlogPost
+    title={post.data.title}
+    description={post.data.description}
+    date={post.data.date}
+    slug={slug}
+>
+    <h1>{post.data.title}</h1>
+    <FormattedDate date={post.data.date} />
+    <Content />
 </BlogPost>
