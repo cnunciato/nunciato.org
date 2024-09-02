@@ -21,7 +21,7 @@ const { page } = Astro.props;
     <ol class="mt-8 flex flex-col md:flex-row md:flex-wrap gap-4 justify-evenly">
         {
             page.data.map(p => {
-                const { title, date, photo } = p.data;
+                const { title, photo } = p.data;
                 const { body } = p;
 
                 const wordCount = body
