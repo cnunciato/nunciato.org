@@ -8,7 +8,10 @@ const { title, description } = frontmatter;
 
 <DefaultLayout title={title} description={description}>
     <Prose>
-        <h1>{title}</h1>
-        <Content />
+        <div class="mx-auto max-w-4xl bg-white shadow-lg p-16 rounded-lg">
+            <h1>{title}</h1>
+            <img src="/media/images/cascadia-smile.jpg" alt="" />
+            <Content />
+        </div>
     </Prose>
 </DefaultLayout>

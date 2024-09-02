@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Header from "../../components/Header.astro";
 import BaseHead from "../../components/BaseHead.astro";
 import DefaultLayout from "../../layouts/DefaultLayout.astro";
+import Prose from "../../components/Prose.astro";
 
 export async function getStaticPaths() {
     const photos = await getCollection("photos");
@@ -17,11 +18,22 @@ export async function getStaticPaths() {
 
 const { photo: p } = Astro.props;
 const { title, description, photo } = p.data;
+const { Content } = await p.render();
 ---
 
 <DefaultLayout title={title} description={description || ""}>
-    <img
-        class="rounded-lg shadow-lg"
-        src={photo.url.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/")}
-    />
+    <div>
+        <img
+            class="rounded-lg shadow-lg"
+            src={photo.url.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/")}
+        />
+    </div>
+    <div class="my-12">
+        <Prose>
+            <h2>{title}</h2>
+            <div>
+                <Content />
+            </div>
+        </Prose>
+    </div>
 </DefaultLayout>
