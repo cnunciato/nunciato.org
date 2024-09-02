@@ -25,6 +25,18 @@ const { Content } = await post.render();
     date={post.data.date}
     slug={slug}
 >
+    {
+        post.data.photo?.preview && (
+            <div class="md:float-right md:w-80 md:ml-2 md:mb-2">
+                <img
+                    src={post.data.photo.preview.replace(
+                        "s3/",
+                        "https://s3.amazonaws.com/cnunciato-website-media/",
+                    )}
+                />
+            </div>
+        )
+    }
     <h1>{post.data.title}</h1>
     <FormattedDate date={post.data.date} />
     <Content />

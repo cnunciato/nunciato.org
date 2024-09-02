@@ -1,23 +1,21 @@
 import { defineCollection, z } from "astro:content";
 
-const blog = defineCollection({
-    type: "content",
-    schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        pubDate: z.coerce.date(),
-        updatedDate: z.coerce.date().optional(),
-        heroImage: z.string().optional(),
-    }),
-});
-
 const photos = defineCollection({
     type: "content",
     schema: z.object({
         title: z.string(),
         description: z.string().optional(),
         date: z.coerce.date(),
-        photo: z.any().optional(),
+        photo: z
+            .object({
+                title: z.string().optional().nullable(),
+                caption: z.string().optional().nullable(),
+                preview: z.string().optional().nullable(),
+                thumb: z.string().optional().nullable(),
+                url: z.string().optional().nullable(),
+                created: z.coerce.date().optional().nullable(),
+            })
+            .optional(),
         links: z.any().optional(),
         draft: z.any().optional(),
         drop: z.any().optional(),
@@ -33,15 +31,18 @@ const words = defineCollection({
         summary: z.string().optional(),
         photo: z
             .object({
-                preview: z.string(),
-                caption: z.string().optional(),
+                title: z.string().optional().nullable(),
+                caption: z.string().optional().nullable(),
+                preview: z.string().optional().nullable(),
+                thumb: z.string().optional().nullable(),
+                url: z.string().optional().nullable(),
+                created: z.coerce.date().optional().nullable(),
             })
             .optional(),
     }),
 });
 
 export const collections = {
-    blog,
     photos,
     words,
 };

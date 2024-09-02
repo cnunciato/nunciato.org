@@ -33,7 +33,7 @@ const { page } = Astro.props;
                             <a class="block" href={`/photos/${p.slug}`}>
                                 <img
                                     loading="lazy"
-                                    src={photo.preview.replace(
+                                    src={photo?.preview?.replace(
                                         "s3/",
                                         "https://s3.amazonaws.com/cnunciato-website-media/",
                                     )}
@@ -56,5 +56,22 @@ const { page } = Astro.props;
                 );
             })
         }
+    </ol>
+    <ol class="flex justify-center my-12 gap-2 text-2xl">
+        <li>
+            <a class="rounded bg-neutral-200 p-2 px-6 no-underline" href={page.url.first}>&laquo;</a
+            >
+        </li>
+        <li>
+            <a class="rounded bg-neutral-200 p-2 px-6 no-underline" href={page.url.prev}>&lsaquo;</a
+            >
+        </li>
+        <li>
+            <a class="rounded bg-neutral-200 p-2 px-6 no-underline" href={page.url.next}>&rsaquo;</a
+            >
+        </li>
+        <li>
+            <a class="rounded bg-neutral-200 p-2 px-6 no-underline" href={page.url.last}>&raquo;</a>
+        </li>
     </ol>
 </DefaultLayout>

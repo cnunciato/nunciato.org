@@ -7,7 +7,7 @@ photo:
     preview: /media/images/lightroom-classic.jpg
 ---
 
-I've been a user of [Adobe Lightroom](https://www.adobe.com/products/photoshop-lightroom.html) for several years now, and I've generally been happy with it. While I've never been in love with the Lightroom interfaceit works, but design-wise it's a bit on the clunky side, and dated, and it often performs sluggishy even on my newish Macbook Probut it's generally gotten the job done, and there aren't, even in 2018, many photo-management apps that can handle tens of thousands of photos and videos.
+I've been a user of [Adobe Lightroom](https://www.adobe.com/products/photoshop-lightroom.html) for several years now, and I've generally been happy with it. While I've never been in love with the Lightroom interface -- it works, but design-wise it's a bit on the clunky side, and dated, and it often performs sluggishy even on my newish Macbook Pro -- but it's generally gotten the job done, and there aren't, even in 2018, many photo-management apps that can handle tens of thousands of photos and videos.
 
 I'm not the only one in my house who takes pictures anymore, either. My wife is a great photographer herself (she has a much better eye than I do, actually), and my kids are starting to get into it, too. So managing everyone's photos, and making sure we all have access to them, has been a serious challenge for me over the years. I've thrown together many an awful hack, some involving external drives, some shared network drives, synchronization schemes, DropBox (nope), even dedicated computers, but nothing ever seemed to work, mainly because Lightroom operates as a window onto your filesystem: you can do just about anything you want with it, but your pictures have to be _on your computer_ (or on a drive connected to it), which makes sharing your library with your scrapbooking wife an invariably awkward and frustrating process.
 
@@ -43,15 +43,13 @@ I'll run through the steps in detail below, in case you happen to find yourself 
 
 Okay! Let's make this work.
 
----
-
 ## Step 1: Create Two Folders on Your Desktop
 
 Pretty straightforward. Again, I named mine `Exports` and `Originals`.
 
 ## Step 2: Export Your Dateless Photos
 
-In Lightroom CC, click **By Date**, then scroll to the **No Date** folder and click it. Choose Edit &raquo; Select All, then File &raquo; Save To, then browse to your `Exports` folder and click Choose. Let the process finishit'll probably take a few minutes.
+In Lightroom CC, click **By Date**, then scroll to the **No Date** folder and click it. Choose Edit &raquo; Select All, then File &raquo; Save To, then browse to your `Exports` folder and click Choose. Let the process finish -- it'll probably take a few minutes.
 
 ## Step 3: Find Your Originals
 
@@ -100,11 +98,11 @@ $ ./find-originals.sh \
 
 When that finally finished, I had about 9,500 files in `Originals`, which matched the number of images in the **No Date** bucket in Lightroom CC. I could now safely delete the bad ones.
 
-Feel free to comment out the actual `cp` statement at first, just to make sure you've wired things up correctly. When you're ready, run it for real. (We're just copying, here, so don't worryall you have to lose is a little time and disk space, temporarily.)
+Feel free to comment out the actual `cp` statement at first, just to make sure you've wired things up correctly. When you're ready, run it for real. (We're just copying, here, so don't worry -- all you have to lose is a little time and disk space, temporarily.)
 
 ## Step 4: Kill All No-Dates
 
-You can do it! After all, you still have your Lightroom Classic originalsand now copies of them, evenand you've verified the number of files in `Originals` matches the count of your **No Date**s in Lightroom CC. So go onselect all, Edit &raquo; Delete, and get 'em outta there.
+You can do it! After all, you still have your Lightroom Classic originals -- and now copies of them, even -- and you've verified the number of files in `Originals` matches the count of your **No Date**s in Lightroom CC. So go onselect all, Edit &raquo; Delete, and get 'em outta there.
 
 Well done.
 
@@ -116,7 +114,7 @@ As I said, I was sure a good number of my photos really didn't have EXIF dates (
 
 There's an [amazing little command-line app](https://sno.phy.queensu.ca/~phil/exiftool/) called `exiftool` that'll both tell you which files are lacking certain EXIF fields (e.g., dates) and also let you set their values, either "in place" (meaning on the source file itself) or, if you're a little paranoid like me, on a copy of the file, preserving your original.
 
-So I did this in two steps: first, I ran `exiftool` to find out how many dateless photos I had, and then I ran it for real to copy each file and burn a capture date into it. (I shoot a lot of video, too, and `exiftool` handles video formats, alsoeven the obscure ones from the early 2000s! It's really great stuff.)
+So I did this in two steps: first, I ran `exiftool` to find out how many dateless photos I had, and then I ran it for real to copy each file and burn a capture date into it. (I shoot a lot of video, too, and `exiftool` handles video formats, also -- even the obscure ones from the early 2000s! It's really great stuff.)
 
 So assuming you've still got that same Terminal open on your desktop, run `exiftool` on your `Originals` folder to get a count of how many dateless images you're dealing with:
 
@@ -170,6 +168,4 @@ Well done! With any luck, once Step 7 completes, that **No Date** folder should 
 
 <!-- ![Cheers.](s3/images/20140622-14-56-18-4.jpg) -->
 
----
-
-I'm sure I'll write more about Lightroom in general; while I'm definitely a CC convert now, I still use Classic to manage my kids' catalogs (they each have their ownthey shoot way too many pictures of absolutely nothing), and the CC software is continually evolving, which is awesome (and yes, occasionally frustrating). Nothing is perfect, but man, I have to sayon the whole, glitches and all, I'm still really impressed, and stoked that we've finally found system that works pretty much seamlessly for us.
+I'm sure I'll write more about Lightroom in general; while I'm definitely a CC convert now, I still use Classic to manage my kids' catalogs (they each have their ownthey shoot way too many pictures of absolutely nothing), and the CC software is continually evolving, which is awesome (and yes, occasionally frustrating). Nothing is perfect, but man, I have to say -- on the whole, glitches and all, I'm still really impressed, and stoked that we've finally found system that works pretty much seamlessly for us.

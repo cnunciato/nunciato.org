@@ -21,7 +21,5 @@ Thanks for stopping by. You'll also find me on [Twitter](https://twitter.com/cnu
 ## Podcasts
 
 -   [JavaScript Jabber: Infrastructure as Code](https://devchat.tv/js-jabber/jsj-466-infrastructure-as-code-with-christian-nunciato/) with [Aimee Knight](https://twitter.com/Aimee_Knight) and [AJ ONeal](https://twitter.com/coolaj86) (January, 2021)
-
 -   [The Weekly Squeak: Pulumi in Action](https://anchor.fm/theweeklysqueak/episodes/Christian-Nunciato---Pulumi-in-Action-ejngvd) with [Chris Chinchilla](https://twitter.com/ChrisChinch) (September, 2020)
-
 -   [CloudSkills.fm: Pulumi in Action](https://cloudskills.io/blog/episode-088) with [Mike Pfeiffer](https://twitter.com/mike_pfeiffer) (August, 2020)

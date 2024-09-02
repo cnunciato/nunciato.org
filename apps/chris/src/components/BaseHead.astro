@@ -33,7 +33,10 @@ const { title, description, image = `/api/og.png?type=${collection}&id=${slug}` 
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
+<title>
+    {title}
+    {url.pathname !== "/" ? "| Christian Nunciato" : "| Mostly pictures, sometimes words."}
+</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
