@@ -2,7 +2,6 @@
 import type { PaginateFunction } from "astro";
 import { getCollection } from "astro:content";
 import DefaultLayout from "../../layouts/DefaultLayout.astro";
-import Prose from "../../components/Prose.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {

@@ -1,6 +1,5 @@
 ---
 import { siteTitle, siteDescription } from "../consts";
-// import MessageOfTheDay from "../components/MessageOfTheDay";
 import DefaultLayout from "../layouts/DefaultLayout.astro";
 import { getCollection } from "astro:content";
 import Prose from "../components/Prose.astro";
@@ -15,14 +14,13 @@ const photos = collection
 ---
 
 <DefaultLayout title={siteTitle} description={siteDescription}>
-    <!-- <MessageOfTheDay client:load /> -->
     <ol class="flex flex-col md:flex-row justify-center gap-4">
         {
             photos.map(photo => (
                 <li class="p-6 shadow-lg rounded-lg border border-neutral-200">
                     <a href={`/photos/${photo.slug}`}>
                         <img
-                            src={photo.data.photo.preview.replace(
+                            src={photo.data.photo?.preview?.replace(
                                 "s3/",
                                 "https://s3.amazonaws.com/cnunciato-website-media/",
                             )}
