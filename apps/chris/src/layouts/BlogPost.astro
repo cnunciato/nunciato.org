@@ -13,7 +13,7 @@ const words = await getCollection("words");
 
 <DefaultLayout title={title} description={description || ""}>
     <div class="flex flex-col lg:flex-row">
-        <nav class="lg:w-2/12 order-last lg:order-first mt-4 lg:mt-0">
+        <nav class="lg:w-2/12 order-last lg:order-first mt-4 lg:mt-0 lg:pr-4">
             <ol class="list-none list-outside pl-4">
                 {
                     words
@@ -29,7 +29,7 @@ const words = await getCollection("words");
                                     href={`/words/${post.slug}`}
                                 >
                                     <h5 class="font-semibold ">{post.data.title}</h5>
-                                    <div>
+                                    <div class="text-sm font-sans">
                                         <FormattedDate date={post.data.date} />
                                     </div>
                                 </a>
