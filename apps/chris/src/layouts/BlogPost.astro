@@ -20,25 +20,26 @@ const words = await getCollection("words");
                         .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
                         .reverse()
                         .map(post => (
-                            <li
-                                class:list={[
-                                    "my-4 py-2 px-3 rounded-lg",
-                                    post.slug === slug ? "bg-neutral-200" : undefined,
-                                ]}
-                            >
-                                <div>
-                                    <a href={`/words/${post.slug}`}>{post.data.title}</a>
-                                </div>
-                                <div>
-                                    <FormattedDate date={post.data.date} />
-                                </div>
+                            <li class="my-4">
+                                <a
+                                    class:list={[
+                                        "block rounded-lg no-underline py-2 px-3 hover:bg-neutral-200 transition-colors",
+                                        post.slug === slug ? "bg-neutral-200" : undefined,
+                                    ]}
+                                    href={`/words/${post.slug}`}
+                                >
+                                    <h5 class="font-semibold ">{post.data.title}</h5>
+                                    <div>
+                                        <FormattedDate date={post.data.date} />
+                                    </div>
+                                </a>
                             </li>
                         ))
                 }
             </ol>
         </nav>
         <div class="flex flex-grow justify-center">
-            <article class="block mx-auto max-w-4xl bg-white shadow-lg p-16 rounded-lg">
+            <article class="block mx-auto max-w-4xl bg-white shadow-lg p-16 rounded-lg w-full">
                 <Prose>
                     <slot />
                 </Prose>

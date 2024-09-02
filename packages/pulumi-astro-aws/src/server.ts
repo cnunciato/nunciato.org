@@ -148,7 +148,7 @@ export function getServerSite(
                     type: record.type,
                     records: [record.value],
                 },
-                { parent },
+                { parent, deleteBeforeReplace: true },
             );
         });
     });
