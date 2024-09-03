@@ -1,6 +1,7 @@
 ---
 const { file } = Astro.props;
-const src = `/api/audio?f=${file}`;
+const dataUrl = `/api/audio?f=${file}`;
+const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}`;
 ---
 
 <div class="relative h-56 w-full">
@@ -17,17 +18,17 @@ const src = `/api/audio?f=${file}`;
     </div>
 </div>
 
-<audio id="player" controls class="rounded shadow w-full block mt-2" src={`${src}&source=player`}
-></audio>
+<audio id="player" controls class="rounded shadow w-full block mt-2" src={audioUrl}></audio>
 
-<script>
-    const player = document.querySelector("#player")! as HTMLAudioElement;
-    const progress = document.querySelector("#progress")! as HTMLAudioElement;
-    const src = player.src;
+<script define:vars={{ dataUrl }}>
+    const player = document.querySelector("#player");
+    const progress = document.querySelector("#progress");
+
+    console.log(dataUrl);
 
     player.addEventListener("timeupdate", event => {
-        const current = (event.target as HTMLMediaElement).currentTime;
-        const duration = (event.target as HTMLMediaElement).duration;
+        const current = event.target.currentTime;
+        const duration = event.target.duration;
 
         if (current && duration) {
             const complete = (current / duration) * 100;
@@ -35,11 +36,11 @@ const src = `/api/audio?f=${file}`;
         }
     });
 
-    async function fetchSoundData(url: string) {
+    async function fetchSoundData(url) {
         const ctx = new AudioContext();
 
         try {
-            const response = await fetch(`${url}&source=data`, { cache: "reload" });
+            const response = await fetch(url);
             const decoded = await ctx.decodeAudioData(await response.arrayBuffer());
             const raw = decoded.getChannelData(0);
             const samples = 1000;
@@ -57,7 +58,7 @@ const src = `/api/audio?f=${file}`;
                 filtered.push(sum / blockSize);
             }
 
-            const normalize = (filtered: number[]) => {
+            const normalize = filtered => {
                 const multiplier = Math.pow(Math.max(...filtered), -1);
                 return filtered.map(n => n * multiplier);
             };
@@ -66,18 +67,19 @@ const src = `/api/audio?f=${file}`;
             const data = normalized;
 
             return data;
-        } catch (error: any) {
+        } catch (error) {
             console.error(`Unable to fetch the audio file. Error: ${error.message}`);
         }
     }
 
-    const data = await fetchSoundData(src);
-    const waveform = document.querySelector("#waveform")!;
+    fetchSoundData(dataUrl).then(data => {
+        const waveform = document.querySelector("#waveform");
 
-    data!.map(value => {
-        const el = document.createElement("li");
-        el.setAttribute("class", "bg-neutral-700");
-        el.setAttribute("style", `height: ${value * 100}%; width: ${100 / data!.length}%;`);
-        waveform.appendChild(el);
+        data.map(value => {
+            const el = document.createElement("li");
+            el.setAttribute("class", "bg-neutral-700");
+            el.setAttribute("style", `height: ${value * 100}%; width: ${100 / data.length}%;`);
+            waveform.appendChild(el);
+        });
     });
 </script>
