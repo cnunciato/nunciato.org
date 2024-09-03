@@ -15,7 +15,7 @@ const sounds = await getCollection("sounds");
 <DefaultLayout title={title} description={description || ""}>
     <div class="flex flex-col lg:flex-row">
         <nav class="lg:w-2/12 order-last lg:order-first mt-4 lg:mt-0 lg:pr-4">
-            <ol class="list-none list-outside pl-4">
+            <ol class="list-none list-outside">
                 {
                     sounds
                         .filter(sound => sound.data.draft !== true)
