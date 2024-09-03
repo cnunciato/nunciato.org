@@ -6,7 +6,10 @@ import FormattedDate from "../../components/FormattedDate.astro";
 import SoundLayout from "../../layouts/SoundLayout.astro";
 
 const collection = await getCollection("sounds");
-const [sound] = collection.sort((a, b) => (a.data.date > b.data.date ? 1 : -1)).reverse();
+const [sound] = collection
+    .filter(sound => sound.data.draft !== true)
+    .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
+    .reverse();
 const { Content } = await sound.render();
 ---
 

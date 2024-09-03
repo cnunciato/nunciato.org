@@ -17,6 +17,7 @@ const words = await getCollection("words");
             <ol class="list-none list-outside pl-4">
                 {
                     words
+                        .filter(post => post.data.draft !== true)
                         .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
                         .reverse()
                         .map(post => (

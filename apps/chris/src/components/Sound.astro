@@ -1,0 +1,84 @@
+---
+import Waveform from "./SoundWaveform";
+
+const { file } = Astro.props;
+const src = `/api/audio?f=${file}`;
+---
+
+<div class="relative h-56 w-full">
+    <ol
+        id="waveform"
+        class="z-0 absolute flex w-full justify-evenly items-center top-0 right-0 bottom-0 left-0"
+    >
+    </ol>
+    <div
+        id="progress"
+        class="absolute z-10 bg-neutral-200 rounded-lg opacity-50 top-0 right-0 bottom-0 left-0 transition-all"
+        style="width: 0%;"
+    >
+    </div>
+</div>
+
+<audio id="player" controls class="rounded shadow w-full block mt-2" src={src}></audio>
+
+<script>
+    const player = document.querySelector("#player")! as HTMLAudioElement;
+    const progress = document.querySelector("#progress")! as HTMLAudioElement;
+    const src = player.src;
+
+    player.addEventListener("timeupdate", event => {
+        const current = (event.target as HTMLMediaElement).currentTime;
+        const duration = (event.target as HTMLMediaElement).duration;
+
+        if (current && duration) {
+            const complete = (current / duration) * 100;
+            progress.style.width = `${complete}%`;
+        }
+    });
+
+    async function fetchSoundData(url: string) {
+        const ctx = new AudioContext();
+
+        try {
+            const response = await fetch(url);
+            const decoded = await ctx.decodeAudioData(await response.arrayBuffer());
+            const raw = decoded.getChannelData(0);
+            const samples = 1000;
+            const blockSize = Math.floor(raw.length / samples);
+            const filtered = [];
+
+            for (let i = 0; i < samples; i++) {
+                let blockStart = blockSize * i;
+                let sum = 0;
+
+                for (let j = 0; j < blockSize; j++) {
+                    sum = sum + Math.abs(raw[blockStart + j]);
+                }
+
+                filtered.push(sum / blockSize);
+            }
+
+            const normalize = (filtered: number[]) => {
+                const multiplier = Math.pow(Math.max(...filtered), -1);
+                return filtered.map(n => n * multiplier);
+            };
+
+            const normalized = normalize(filtered);
+            const data = normalized;
+
+            return data;
+        } catch (error: any) {
+            console.error(`Unable to fetch the audio file. Error: ${error.message}`);
+        }
+    }
+
+    const data = await fetchSoundData(src);
+    const waveform = document.querySelector("#waveform")!;
+
+    data!.map(value => {
+        const el = document.createElement("li");
+        el.setAttribute("class", "bg-neutral-700");
+        el.setAttribute("style", `height: ${value * 100}%; width: ${100 / data!.length}%;`);
+        waveform.appendChild(el);
+    });
+</script>

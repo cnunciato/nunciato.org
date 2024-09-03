@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import DefaultLayout from "./DefaultLayout.astro";
 import Prose from "../components/Prose.astro";
-import Sound from "../components/Sound";
+import Sound from "../components/Sound.astro";
 
 type Props = CollectionEntry<"sounds">["data"] & { slug: string };
 const { title, description, slug, sound } = Astro.props;
@@ -18,6 +18,7 @@ const sounds = await getCollection("sounds");
             <ol class="list-none list-outside pl-4">
                 {
                     sounds
+                        .filter(sound => sound.data.draft !== true)
                         .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
                         .reverse()
                         .map(sound => (
@@ -48,7 +49,7 @@ const sounds = await getCollection("sounds");
                 </Prose>
 
                 <div class="mx-auto mt-12 rounded-lg shadow-lg p-4 border border-neutral-300">
-                    {sound.url && <Sound url={sound.url} client:load />}
+                    {sound.url && <Sound file={sound.url.replace("s3/audio/", "")} />}
                 </div>
             </article>
         </div>

@@ -29,6 +29,7 @@ const words = defineCollection({
         description: z.string().optional(),
         summary: z.string().optional(),
         date: z.coerce.date(),
+        draft: z.boolean().optional(),
         photo: z
             .object({
                 title: z.string().optional().nullable(),
@@ -40,7 +41,6 @@ const words = defineCollection({
             })
             .optional(),
         links: z.any().optional(),
-        draft: z.any().optional(),
         drop: z.any().optional(),
     }),
 });
@@ -50,6 +50,7 @@ const sounds = defineCollection({
     schema: z.object({
         title: z.string(),
         date: z.coerce.date(),
+        draft: z.boolean().optional(),
         description: z.string().optional(),
         sound: z.object({
             url: z.string(),

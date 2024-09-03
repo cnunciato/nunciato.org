@@ -6,7 +6,10 @@ import FormattedDate from "../../components/FormattedDate.astro";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const collection = await getCollection("words");
-const [post] = collection.sort((a, b) => (a.data.date > b.data.date ? 1 : -1)).reverse();
+const [post] = collection
+    .filter(post => post.data.draft !== true)
+    .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
+    .reverse();
 const { Content } = await post.render();
 ---
 
