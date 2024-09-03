@@ -13,6 +13,7 @@ const photos = defineCollection({
                 preview: z.string().optional().nullable(),
                 thumb: z.string().optional().nullable(),
                 url: z.string().optional().nullable(),
+                exif: z.any().optional(),
                 created: z.coerce.date().optional().nullable(),
             })
             .optional(),

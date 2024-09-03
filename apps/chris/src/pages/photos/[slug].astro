@@ -7,36 +7,35 @@ import FormattedDate from "../../components/FormattedDate.astro";
 export async function getStaticPaths() {
     const photos = await getCollection("photos");
 
-    return photos.map(photo => ({
-        params: {
-            slug: photo.slug,
-        },
-        props: { photo },
-    }));
+    return photos.map(photo => {
+        return {
+            params: {
+                slug: photo.slug,
+            },
+            props: { photo },
+        };
+    });
 }
 
 const { photo: p } = Astro.props;
 const { title, description, photo, date } = p.data;
 const { Content } = await p.render();
+const url = photo?.url?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/");
 ---
 
 <DefaultLayout title={title} description={description || ""}>
-    <div>
-        <img
-            class="rounded-lg shadow-lg"
-            src={photo?.url?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/")}
-        />
+    <div class="max-w-6xl mx-auto">
+        <div>
+            <a href={url} target="_blank">
+                <img class="rounded-lg shadow-lg" src={url} />
+            </a>
+        </div>
+        <div class="my-12">
+            <Prose>
+                <h2>{title}</h2>
+                <div><FormattedDate date={date} /></div>
+                <Content />
+            </Prose>
+        </div>
     </div>
-    <div class="my-12">
-        <Prose>
-            <h2>{title}</h2>
-            <p>
-                <FormattedDate date={date}>
-                    <div>
-                        <Content />
-                    </div>
-                </FormattedDate>
-            </p>
-        </Prose>
-    </div></DefaultLayout
->
+</DefaultLayout>
