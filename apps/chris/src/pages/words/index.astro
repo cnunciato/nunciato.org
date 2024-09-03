@@ -14,6 +14,18 @@ const { Content } = await post.render();
 ---
 
 <BlogLayout title="Words" description="All the blog posts." date={post.data.date} slug={post.slug}>
+    {
+        post.data.photo?.preview && (
+            <div class="md:float-right md:w-80 md:ml-2 md:mb-2">
+                <img
+                    src={post.data.photo.preview.replace(
+                        "s3/",
+                        "https://s3.amazonaws.com/cnunciato-website-media/",
+                    )}
+                />
+            </div>
+        )
+    }
     <h1>{post.data.title}</h1>
     <FormattedDate date={post.data.date} />
     <Content />
