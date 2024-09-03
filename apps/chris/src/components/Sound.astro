@@ -19,7 +19,8 @@ const src = `/api/audio?f=${file}`;
     </div>
 </div>
 
-<audio id="player" controls class="rounded shadow w-full block mt-2" src={src}></audio>
+<audio id="player" controls class="rounded shadow w-full block mt-2" src={`${src}&source=player`}
+></audio>
 
 <script>
     const player = document.querySelector("#player")! as HTMLAudioElement;
@@ -40,7 +41,7 @@ const src = `/api/audio?f=${file}`;
         const ctx = new AudioContext();
 
         try {
-            const response = await fetch(url, { cache: "reload" });
+            const response = await fetch(`${url}&source=data`, { cache: "reload" });
             const decoded = await ctx.decodeAudioData(await response.arrayBuffer());
             const raw = decoded.getChannelData(0);
             const samples = 1000;
