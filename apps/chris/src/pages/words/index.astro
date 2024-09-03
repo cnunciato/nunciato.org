@@ -5,7 +5,7 @@ import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const collection = await getCollection("words");
 const [post] = collection
-    .filter(post => post.data.draft !== true)
+    .filter(post => post.data.draft !== true || import.meta.env.DEV)
     .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
     .reverse();
 const { Content } = await post.render();

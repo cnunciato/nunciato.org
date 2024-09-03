@@ -9,15 +9,17 @@ import { siteTitle } from "../consts";
     }
 </style>
 
-<header class="sticky top-0 bg-neutral-100">
-    <nav class="container mx-auto flex items-center justify-evenly my-6 md:mb-6 py-2">
+<header class="sticky top-0 z-50 bg-neutral-100 bg-opacity-100 rounded -mx-4 md:mx-0">
+    <nav
+        class="container mx-auto flex items-center justify-evenly my-6 md:mb-6 py-2 bg-neutral-100 bg-opacity-100"
+    >
         <h1 class="w-2/12 hidden md:flex whitespace-nowrap">
             <span class="font-sans font-extrabold text-lg md:text-xl">
                 <a class="no-underline" href="/">{siteTitle}</a>
             </span>
         </h1>
 
-        <ul class="justify-center w-6/12 flex items-center gap-1 md:gap-6">
+        <ul class="justify-center w-6/12 flex items-center gap-0 md:gap-6">
             <li><HeaderLink href="/">Home</HeaderLink></li>
             <li><HeaderLink href="/photos">Photos</HeaderLink></li>
             <li><HeaderLink href="/words">Words</HeaderLink></li>
