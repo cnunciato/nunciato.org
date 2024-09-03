@@ -10,21 +10,13 @@ const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}
         class="z-0 absolute flex w-full justify-evenly items-center top-0 right-0 bottom-0 left-0"
     >
     </ol>
-    <div
-        id="progress"
-        class="absolute z-10 bg-neutral-200 rounded-lg opacity-50 top-0 right-0 bottom-0 left-0 transition-all"
-        style="width: 0%;"
-    >
-    </div>
 </div>
 
 <audio id="player" controls class="rounded shadow w-full block mt-2" src={audioUrl}></audio>
 
 <script define:vars={{ dataUrl }}>
     const player = document.querySelector("#player");
-    const progress = document.querySelector("#progress");
-
-    console.log(dataUrl);
+    const samples = 1000;
 
     player.addEventListener("timeupdate", event => {
         const current = event.target.currentTime;
@@ -32,7 +24,14 @@ const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}
 
         if (current && duration) {
             const complete = (current / duration) * 100;
-            progress.style.width = `${complete}%`;
+
+            document
+                .querySelectorAll(
+                    `#waveform li:nth-child(-n+${Math.ceil((complete / 100) * samples)})`,
+                )
+                .forEach(el => {
+                    el.setAttribute("class", "bg-orange-300");
+                });
         }
     });
 
@@ -43,7 +42,6 @@ const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}
             const response = await fetch(url);
             const decoded = await ctx.decodeAudioData(await response.arrayBuffer());
             const raw = decoded.getChannelData(0);
-            const samples = 1000;
             const blockSize = Math.floor(raw.length / samples);
             const filtered = [];
 
@@ -77,7 +75,7 @@ const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}
 
         data.map(value => {
             const el = document.createElement("li");
-            el.setAttribute("class", "bg-neutral-700");
+            el.setAttribute("class", "bg-neutral-600");
             el.setAttribute("style", `height: ${value * 100}%; width: ${100 / data.length}%;`);
             waveform.appendChild(el);
         });
