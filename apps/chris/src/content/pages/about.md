@@ -2,11 +2,11 @@
 title: About
 ---
 
-Hi! I'm Christian Nunciato. I live in Seattle (well, actually just _outside_ Seattle) and based solely on number-of-hours-logged, you could say I'm a dad, programmer, photographer, writer and occasional maker of silly little movies. By day, I work at an awesome little startup called [Pulumi](https://pulumi.com/). By night, owing mainly to my dadness, I sleep.
+Hi! I'm Christian Nunciato. I live in Seattle (well, technically just _outside_ Seattle) and based solely on number-of-hours-logged, you could say I'm a dad, programmer, photographer, writer and occasional maker of silly little movies. By day, I work at an awesome little startup called [Pulumi](https://pulumi.com/). By night, owing to my dadness, I sleep.
 
 This site is still fairly new, so there isn't all that much to say about what it _is_ yet, but if I had to guess, I'd say it'll probably consist mostly of pictures (I take a lot of pictures), videos (I shoot a lot of those, too) and a few words from time to time, mostly on non-technical subjects, much of which you probably won't find all that interesting. (But of course, I hope you do.)
 
-For the geeky among you, this site is built with [Hugo](https://gohugo.io/), the static-site generator, and it's deployed to the [AWS](https://aws.amazon.com/) cloud with [Pulumi](https://pulumi.io/). The admittedly minimal design is my own, hand-crafted of course, with good ol' HTML, CSS (well, [Sass](https://sass-lang.com/), and a little help from the excellent [TailwindCSS](https://tailwindcss.com/)), and a handful of web components built with [Stencil](https://stenciljs.com/).
+For the geeky among you, this site is built with [Astro](https://astro.build/) and deployed to the [AWS cloud](https://aws.amazon.com/) cloud with [Pulumi](https://pulumi.io/). The admittedly minimal design is my own, hand-crafted of course, with good ol' HTML, CSS, and JavaScript, and a little help from the amazing [TailwindCSS](https://tailwindcss.com/).
 
 Thanks for stopping by. You'll also find me on [Twitter](https://twitter.com/cnunciato), [Flickr](https://www.flickr.com/photos/cnunciato), [Instagram](https://www.instagram.com/cnunciato), [Vimeo](https://vimeo.com/cnunciato), [GitHub](https://github.com/cnunciato), [CodePen](https://codepen.io/cnunciato), [LinkedIn](https://linkedin.com/in/cnunciato), and at [chris@nunciato.org](mailto:chris@nunciato.org). Feel free to reach out anytime. 👋
 
