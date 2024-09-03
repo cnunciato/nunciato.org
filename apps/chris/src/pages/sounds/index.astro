@@ -20,6 +20,18 @@ const { Content } = await sound.render();
     slug={sound.slug}
     sound={sound.data.sound}
 >
+    {
+        sound.data.sound?.preview && (
+            <div class="md:float-right md:w-80 md:ml-2 md:mb-2">
+                <img
+                    src={sound.data.sound.preview.replace(
+                        "s3/",
+                        "https://s3.amazonaws.com/cnunciato-website-media/",
+                    )}
+                />
+            </div>
+        )
+    }
     <h1>{sound.data.title}</h1>
     <FormattedDate date={sound.data.date} />
     <Content />
