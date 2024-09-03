@@ -29,6 +29,7 @@ const { Content } = await post.render();
         post.data.photo?.preview && (
             <div class="md:float-right md:w-80 md:ml-2 md:mb-2">
                 <img
+                    class="mt-0"
                     src={post.data.photo.preview.replace(
                         "s3/",
                         "https://s3.amazonaws.com/cnunciato-website-media/",
