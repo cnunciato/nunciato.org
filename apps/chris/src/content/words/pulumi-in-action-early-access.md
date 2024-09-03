@@ -17,4 +17,4 @@ So that's it -- that's the post. I _had_ written around two thousand words recou
 
 ---
 
-**Update**: I'm still writing a bookjust not _this_ book. After the better part of a year, I decided to part ways with Manninglong (and rather odd) storyand [publish the book on my own](https://leanpub.com/pulumi). You'll find the _new_ (and still in-progress!) book on Leanpub. [Check it out](https://leanpub.com/pulumi)!
+**Update**: I'm still writing a book -- just not _this_ book. After the better part of a year, I decided to part ways with Manning -- long (and rather odd, to be honest) story -- and [publish the book on my own](https://leanpub.com/pulumi). You'll find the _new_ (and still in-progress!) book on Leanpub. [Check it out](https://leanpub.com/pulumi)!
