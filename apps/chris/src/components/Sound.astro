@@ -18,24 +18,35 @@ const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}
     const player = document.querySelector("#player");
     const samples = 1000;
 
+    const unplayed = "bg-neutral-600";
+    const played = "bg-orange-300";
+
     player.addEventListener("timeupdate", event => {
         const current = event.target.currentTime;
         const duration = event.target.duration;
 
         if (current && duration) {
             const complete = (current / duration) * 100;
+            const latest = Math.ceil((complete / 100) * samples);
 
-            document
-                .querySelectorAll(
-                    `#waveform li:nth-child(-n+${Math.ceil((complete / 100) * samples)})`,
-                )
-                .forEach(el => {
-                    el.setAttribute("class", "bg-orange-300");
-                });
+            document.querySelectorAll(`#waveform li`).forEach((el, i) => {
+                el.setAttribute("class", i <= latest ? played : unplayed);
+            });
         }
     });
 
-    async function fetchSoundData(url) {
+    fetchWaveform(dataUrl).then(data => {
+        const waveform = document.querySelector("#waveform");
+
+        data.map(value => {
+            const el = document.createElement("li");
+            el.setAttribute("class", unplayed);
+            el.setAttribute("style", `height: ${value * 100}%; width: ${100 / data.length}%;`);
+            waveform.appendChild(el);
+        });
+    });
+
+    async function fetchWaveform(url) {
         const ctx = new AudioContext();
 
         try {
@@ -69,15 +80,4 @@ const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}
             console.error(`Unable to fetch the audio file. Error: ${error.message}`);
         }
     }
-
-    fetchSoundData(dataUrl).then(data => {
-        const waveform = document.querySelector("#waveform");
-
-        data.map(value => {
-            const el = document.createElement("li");
-            el.setAttribute("class", "bg-neutral-600");
-            el.setAttribute("style", `height: ${value * 100}%; width: ${100 / data.length}%;`);
-            waveform.appendChild(el);
-        });
-    });
 </script>
