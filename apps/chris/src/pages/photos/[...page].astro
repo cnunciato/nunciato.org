@@ -3,11 +3,12 @@ import type { PaginateFunction } from "astro";
 import { getCollection } from "astro:content";
 import DefaultLayout from "../../layouts/DefaultLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
+import { byDate, noDrafts } from "../../utils";
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
-    const collection = await getCollection("photos");
-    const photos = collection.sort((a, b) => (a.data.date > b.data.date ? 0 : 1)).reverse();
-    return paginate(photos, { pageSize: 100 });
+    return paginate((await getCollection("photos", noDrafts)).sort(byDate), {
+        pageSize: 100,
+    });
 }
 
 const { page } = Astro.props;

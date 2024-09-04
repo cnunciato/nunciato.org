@@ -2,9 +2,10 @@
 import { getCollection } from "astro:content";
 import SoundLayout from "../../layouts/SoundLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
+import { byDate, noDrafts } from "../../utils";
 
 export async function getStaticPaths() {
-    const words = await getCollection("sounds");
+    const words = await getCollection("sounds", noDrafts);
 
     return words.map(sound => ({
         params: {

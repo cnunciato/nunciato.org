@@ -2,12 +2,9 @@
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import BlogLayout from "../../layouts/BlogLayout.astro";
+import { byDate, noDrafts } from "../../utils";
 
-const collection = await getCollection("words");
-const [post] = collection
-    .filter(post => post.data.draft !== true || import.meta.env.DEV)
-    .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
-    .reverse();
+const [post] = (await getCollection("words", noDrafts)).sort(byDate);
 const { Content } = await post.render();
 ---
 

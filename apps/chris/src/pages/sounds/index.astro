@@ -2,12 +2,9 @@
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import SoundLayout from "../../layouts/SoundLayout.astro";
+import { byDate, noDrafts } from "../../utils";
 
-const collection = await getCollection("sounds");
-const [sound] = collection
-    .filter(sound => sound.data.draft !== true)
-    .sort((a, b) => (a.data.date > b.data.date ? 1 : -1))
-    .reverse();
+const [sound] = (await getCollection("sounds", noDrafts)).sort(byDate);
 const { Content } = await sound.render();
 ---
 

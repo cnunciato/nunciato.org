@@ -3,9 +3,10 @@ import { getCollection } from "astro:content";
 import DefaultLayout from "../../layouts/DefaultLayout.astro";
 import Prose from "../../components/Prose.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
+import { noDrafts } from "../../utils";
 
 export async function getStaticPaths() {
-    const photos = await getCollection("photos");
+    const photos = await getCollection("photos", noDrafts);
 
     return photos.map(photo => {
         return {

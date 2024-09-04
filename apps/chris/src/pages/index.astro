@@ -4,13 +4,9 @@ import DefaultLayout from "../layouts/DefaultLayout.astro";
 import { getCollection } from "astro:content";
 import Prose from "../components/Prose.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import { byDate, noDrafts } from "../utils";
 
-// Grab the most recent photo.
-const collection = await getCollection("photos");
-const photos = collection
-    .sort((a, b) => (a.data.date > b.data.date ? 0 : 1))
-    .reverse()
-    .slice(0, 3);
+const photos = (await getCollection("photos", noDrafts)).sort(byDate).slice(0, 3);
 ---
 
 <DefaultLayout title={siteTitle} description={siteDescription}>

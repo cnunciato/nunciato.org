@@ -2,9 +2,10 @@
 import { getCollection } from "astro:content";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
+import { noDrafts } from "../../utils";
 
 export async function getStaticPaths() {
-    const words = await getCollection("words");
+    const words = await getCollection("words", noDrafts);
 
     return words.map(post => ({
         params: {
