@@ -18,8 +18,8 @@ const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}
     const player = document.querySelector("#player");
     const samples = 1000;
 
-    const unplayed = "bg-neutral-600";
-    const played = "bg-orange-300";
+    const unplayed = "bg-basecolor-700";
+    const played = "bg-accentcolor-300";
 
     player.addEventListener("timeupdate", event => {
         const current = event.target.currentTime;

@@ -1,5 +1,6 @@
 import typography from "@tailwindcss/typography";
 import defaultTheme from "tailwindcss/defaultTheme";
+import colors from "tailwindcss/colors";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -10,6 +11,10 @@ export default {
                 mono: ["Source Code Pro", ...defaultTheme.fontFamily.mono],
                 sans: ["Source Sans Pro", ...defaultTheme.fontFamily.sans],
                 serif: ["Source Serif Pro", ...defaultTheme.fontFamily.serif],
+            },
+            colors: {
+                basecolor: colors.zinc,
+                accentcolor: colors.orange,
             },
         },
     },

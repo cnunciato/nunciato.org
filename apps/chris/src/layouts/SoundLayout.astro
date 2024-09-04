@@ -25,8 +25,8 @@ const sounds = await getCollection("sounds");
                             <li class="my-4">
                                 <a
                                     class:list={[
-                                        "block rounded-lg no-underline py-2 px-3 hover:bg-neutral-200 transition-colors",
-                                        sound.slug === slug ? "bg-neutral-200" : undefined,
+                                        "block rounded-lg no-underline py-2 px-3 hover:bg-basecolor-200 transition-colors",
+                                        sound.slug === slug ? "bg-basecolor-200" : undefined,
                                     ]}
                                     href={`/sounds/${sound.slug}`}
                                 >
@@ -49,7 +49,7 @@ const sounds = await getCollection("sounds");
                 </Prose>
 
                 <div
-                    class="mx-auto clear-both mt-8 rounded-lg shadow-lg p-2 border border-neutral-300"
+                    class="mx-auto clear-both mt-8 rounded-lg shadow-lg p-2 border border-basecolor-300"
                 >
                     {sound.url && <Sound file={sound.url.replace("s3/audio/", "")} />}
                 </div>

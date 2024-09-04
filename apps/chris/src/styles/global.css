@@ -3,7 +3,7 @@
 @import "@fontsource/source-code-pro";
 
 body {
-    @apply bg-neutral-100 px-4;
+    @apply bg-basecolor-100 px-4;
 }
 
 h1,
@@ -16,9 +16,9 @@ h6 {
 }
 
 a {
-    @apply underline text-neutral-800;
+    @apply underline text-basecolor-800;
 
     &:visited {
-        @apply text-neutral-600;
+        @apply text-basecolor-600;
     }
 }
