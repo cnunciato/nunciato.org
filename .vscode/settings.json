@@ -9,5 +9,5 @@
     "files.insertFinalNewline": true,
 
     "prettier.configPath": "./prettier.config.json",
-    "prettier.documentSelectors": ["**/*.{ts,js,cjs,mjs,json,md,astro,mdx}"]
+    "prettier.documentSelectors": ["**/*.{ts,js,cjs,mjs,json,md,astro,mdx,svg}"]
 }

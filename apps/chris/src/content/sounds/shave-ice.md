@@ -4,30 +4,31 @@ date: 2018-06-08T12:47:47Z
 draft: false
 description: In case you were wondering what that sounded like.
 sound:
-  url: s3/audio/shave-ice.mp3
-  preview: 's3/previews/2018-05-29-16-06-43.jpg'
-  thumb: 's3/thumbs/2018-05-29-16-06-43.jpg'
-  duration: 111
+    url: s3/audio/shave-ice.mp3
+    preview: "s3/previews/2018-05-29-16-06-43.jpg"
+    thumb: "s3/thumbs/2018-05-29-16-06-43.jpg"
+    duration: 111
 links:
-  - name: The Fresh Shave
-    url: https://www.thefreshshave.com/
-  - name: What Shave Ice Is
-    url: https://en.wikipedia.org/wiki/Shave_ice
-  - name: LocoCoco
-    url: https://www.yelp.com/biz/loco-coco-shave-ice-koloa-2
-  - name: Kukuila Market
-    url: https://www.yelp.com/biz/kukuiula-market-koloa-2
-  - name: What Poke Is
-    url: https://en.wikipedia.org/wiki/Poke_%28fish_salad%29
-  - name: Makai Sushi
-    url: http://makaisushi.com/
-  - name: Makai on Yelp
-    url: https://www.yelp.com/biz/makai-sushi-koloa
+    - name: The Fresh Shave
+      url: https://www.thefreshshave.com/
+    - name: What Shave Ice Is
+      url: https://en.wikipedia.org/wiki/Shave_ice
+    - name: LocoCoco
+      url: https://www.yelp.com/biz/loco-coco-shave-ice-koloa-2
+    - name: Kukuila Market
+      url: https://www.yelp.com/biz/kukuiula-market-koloa-2
+    - name: What Poke Is
+      url: https://en.wikipedia.org/wiki/Poke_%28fish_salad%29
+    - name: Makai Sushi
+      url: http://makaisushi.com/
+    - name: Makai on Yelp
+      url: https://www.yelp.com/biz/makai-sushi-koloa
 ---
 
 Toward the end of our first on day Kauai, we managed to find [The Fresh Shave](https://www.yelp.com/biz/the-fresh-shave-kalaheo-8), a little trailer parked in a patch of gravel alongside Highway 530 in [Kalaheo](https://www.google.com/maps/place/Kalaheo,+HI+96741/@22.0426634,-159.5858023,12.05z/data=!4m5!3m4!1s0x7c070456fd3d5f5d:0xdb44269b0af6136!8m2!3d21.9286111!4d-159.5302778) that we'd read about in [_Lonely Planet Kauai_](https://shop.lonelyplanet.com/products/kauai-travel-guide-3). It's run by a family [from California](http://www.thegardenisland.com/2017/01/04/business/local-business-expanding-to-california/), so depending on what you're looking for, it might not quite bring the island-native vibe (tending a little to the Northwest-hipstery side, with the vintage trailer and sticker-mustaches), but hey --- it's amazing stuff nonetheless: made with all local and organic fruits and ingredients, an excellent treat after a day at the beach.
 
 <!-- Huge bummer to have to do this. Way out? -->
+
 ![](https://s3.amazonaws.com/cnunciato-website-media/images/2018-05-29-16-07-09.jpg)
 
 ![](https://s3.amazonaws.com/cnunciato-website-media/images/2018-05-29-16-06-08.jpg)

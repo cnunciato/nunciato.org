@@ -40,6 +40,7 @@
         "@fontsource/twinkle-star": "^5.0.21",
         "@fontsource/zilla-slab": "^5.0.14",
         "@nanostores/preact": "^0.5.2",
+        "astro-icon": "^1.1.1",
         "astro-seo": "^0.8.4",
         "cloudinary": "^2.4.0",
         "nanostores": "^0.11.3",

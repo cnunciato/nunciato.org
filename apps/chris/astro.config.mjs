@@ -6,6 +6,7 @@ import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import satori from "satori-astro";
+import icon from "astro-icon";
 
 const output = "hybrid";
 
@@ -33,5 +34,5 @@ export default defineConfig({
         ],
     },
 
-    integrations: [mdx(), sitemap(), tailwind(), preact(), satori()],
+    integrations: [mdx(), sitemap(), tailwind(), preact(), satori(), icon()],
 });
