@@ -41,7 +41,7 @@ import { Icon } from "astro-icon/components";
                 <span class="sr-only">Follow me on GitHub</span>
                 <Icon name="github" />
             </a>
-            <a href="/rss.xml" target="_blank">
+            <a href={new URL("rss.xml", Astro.site)} target="_blank">
                 <span class="sr-only">Subscribe to my RSS feed</span>
                 <Icon name="rss" />
             </a>

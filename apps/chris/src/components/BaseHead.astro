@@ -47,6 +47,14 @@ const { title, description, image = `/api/og.png?type=${collection}&id=${slug}` 
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
 
+<!-- RSS feeds -->
+<link
+    rel="alternate"
+    type="application/rss+xml"
+    title="Your Site's Title"
+    href={new URL("rss.xml", Astro.site)}
+/>
+
 <SEO
     openGraph={{
         basic: {
