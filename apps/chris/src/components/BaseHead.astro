@@ -1,6 +1,7 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
+import { siteTitle } from "../consts";
 import "../styles/global.css";
 
 // import { ViewTransitions } from "astro:transitions";
@@ -51,7 +52,7 @@ const { title, description, image = `/api/og.png?type=${collection}&id=${slug}` 
 <link
     rel="alternate"
     type="application/rss+xml"
-    title="Your Site's Title"
+    title={siteTitle}
     href={new URL("rss.xml", Astro.site)}
 />
 

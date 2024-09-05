@@ -27,7 +27,7 @@ const words = (await getCollection("words", noDrafts)).sort(byDate);
                                 href={`/words/${post.slug}`}
                             >
                                 <h5 class="font-semibold ">{post.data.title}</h5>
-                                <div class="text-sm font-sans">
+                                <div class="text-sm font-sans mt-1">
                                     <FormattedDate date={post.data.date} />
                                 </div>
                             </a>
