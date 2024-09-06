@@ -1,12 +1,13 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import DefaultLayout from "../../layouts/DefaultLayout.astro";
 import Prose from "../../components/Prose.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
-import { noDrafts } from "../../utils";
+import { byDate, noDrafts } from "../../utils";
 
 export async function getStaticPaths() {
-    const photos = await getCollection("photos", noDrafts);
+    const photos = (await getCollection("photos", noDrafts)).sort(byDate);
 
     return photos.map(photo => {
         return {
@@ -18,25 +19,66 @@ export async function getStaticPaths() {
     });
 }
 
-const { photo: p } = Astro.props;
-const { title, description, photo, date } = p.data;
-const { Content } = await p.render();
+const { photo: props } = Astro.props;
+const { title, description, photo, date } = props.data;
+const { Content } = await props.render();
 const url = photo?.url?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/");
+
+const photos = (await getCollection("photos", noDrafts)).sort(byDate);
+const photoIndex = photos.findIndex(p => p.slug === props.slug);
+
+let previousPhoto: CollectionEntry<"photos"> | undefined;
+let nextPhoto: CollectionEntry<"photos"> | undefined;
+
+if (photoIndex > 0) {
+    previousPhoto = photos.at(photoIndex - 1);
+}
+
+if (photoIndex < photos.length - 1) {
+    nextPhoto = photos.at(photoIndex + 1);
+}
 ---
 
 <DefaultLayout title={title} description={description || ""}>
-    <div class="max-w-6xl mx-auto">
-        <div>
-            <a href={url} target="_blank">
-                <img class="rounded-lg shadow-lg" src={url} />
-            </a>
+    <div class="container mx-auto flex">
+        <div class="hidden md:block w-1/12 text-center">
+            {
+                previousPhoto && (
+                    <a
+                        class="inline-block rounded-lg bg-basecolor-200 p-2 px-6 no-underline text-2xl"
+                        href={`/photos/${previousPhoto.slug}`}
+                    >
+                        &lsaquo;
+                    </a>
+                )
+            }
         </div>
-        <div class="my-12">
-            <Prose>
-                <h2>{title}</h2>
-                <div><FormattedDate date={date} /></div>
-                <Content />
-            </Prose>
+        <div class="md:w-10/12">
+            <div>
+                <a href={url} target="_blank">
+                    <img class="rounded-lg shadow-lg" src={url} />
+                </a>
+            </div>
+            <div class="my-12">
+                <Prose>
+                    <h2>{title}</h2>
+                    <div><FormattedDate date={date} /></div>
+                    <Content />
+                </Prose>
+            </div>
+        </div>
+        <div class="hidden md:block w-1/12 text-center">
+            {
+                nextPhoto && (
+                    <a
+                        class="inline-block rounded-lg bg-basecolor-200 p-2 px-6 no-underline text-2xl"
+                        href={`/photos/${nextPhoto.slug}`}
+                    >
+                        &rsaquo;
+                    </a>
+                )
+            }
         </div>
     </div>
+    <div class="max-w-6xl mx-auto"></div>
 </DefaultLayout>

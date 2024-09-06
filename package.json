@@ -2,6 +2,7 @@
     "name": "nunciato.org",
     "private": true,
     "scripts": {
+        "start": "npm run dev",
         "build": "turbo build",
         "dev": "turbo dev",
         "lint": "turbo lint",
