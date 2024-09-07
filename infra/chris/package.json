@@ -10,7 +10,7 @@
         "build": "tsc",
         "preview:dev": "npm run build && pulumi preview --stack dev",
         "preview:production": "npm run build && pulumi preview --stack production",
-        "deploy:dev": "npm run build && pulumi up --yes --stack production",
+        "deploy:dev": "npm run build && pulumi up --yes --stack dev",
         "deploy:production": "npm run build && pulumi up --yes --stack production",
         "destroy:dev": "pulumi destroy --yes --stack dev",
         "destroy:production": "pulumi destroy --yes --stack production",
