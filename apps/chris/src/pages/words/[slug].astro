@@ -28,7 +28,7 @@ const { Content } = await post.render();
 >
     {
         post.data.photo?.preview && (
-            <div class="md:float-right md:w-80 md:ml-2 md:mb-2">
+            <div class="flex justify-center mt-2 md:float-right md:w-80 md:ml-2 md:mb-2">
                 <img
                     class="mt-0"
                     src={post.data.photo.preview.replace(
