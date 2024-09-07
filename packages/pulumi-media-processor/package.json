@@ -1,0 +1,19 @@
+{
+    "name": "@repo/pulumi-media-processor",
+    "devDependencies": {
+        "@types/node": "^18",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^6.0.0",
+        "@pulumi/awsx": "^2.0.2",
+        "@pulumi/pulumi": "^3.113.0"
+    },
+    "exports": {
+        ".": "./dist/index.js",
+        "./index": "./dist/index.js"
+    },
+    "scripts": {
+        "build": "tsc"
+    }
+}
