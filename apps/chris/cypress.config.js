@@ -6,5 +6,7 @@ export default defineConfig({
         supportFile: false,
     },
     reporter: "../../node_modules/buildkite-test-collector/cypress/reporter",
-    reporterOptions: {},
+    reporterOptions: {
+        token_name: "BUILDKITE_ANALYTICS_TOKEN",
+    },
 });
