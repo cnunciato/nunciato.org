@@ -8,7 +8,7 @@
         "sync": "astro sync",
         "build": "rm -rf dist && astro check && astro build",
         "cypress": "npx cypress run",
-        "test": "start-server-and-test start http://localhost:4321 cypress",
+        "test": "npx start-server-and-test start http://localhost:4321 cypress",
         "preview": "astro preview",
         "astro": "astro"
     },
