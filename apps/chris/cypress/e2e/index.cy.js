@@ -6,6 +6,8 @@ describe("Home page", () => {
     it("has the right page title", () => {
         cy.get("title").should("include.text", "Christian Nunciato");
     });
-});
 
-describe("Photos page", () => {});
+    it("has three photo cards", () => {
+        cy.get("main ol li").should("have.length", 3);
+    });
+});
