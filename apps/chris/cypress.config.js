@@ -5,5 +5,6 @@ export default defineConfig({
         baseUrl: "http://localhost:4321",
         supportFile: false,
     },
-    reporter: "buildkite-test-collector/cypress/reporter",
+    reporter: "../../node_modules/buildkite-test-collector/cypress/reporter",
+    reporterOptions: {},
 });
