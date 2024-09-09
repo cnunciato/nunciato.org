@@ -22,6 +22,6 @@ Here's the thing, though: it was never a stick-to-it-ness problem, and it wasn't
 
 But the urge to write _something_ has definitely never left me. The mind I have now may be different from the mind I had in college, but it still wants to write, and it still wants to make movies -- just not the same kinds of writing and movies it did back then. These days, I'm much more interested in finding things out, figuring out what I think about those things and trying to explain them, being a good dad and teacher (the hardest things ever), and just trying to capture the beauty and overall interestingness of the world around me as best I can.
 
-So to that end, expect me to start showing up here a little more often as I work to figure out what that means in terms of writing. I've got [one technical book on the way already](https://pulumibook.info/)maybe not so much a means to an end after all -- and I'm sure there'll be more -- though about what, I've no idea. Time will tell, though. It always does.
+So to that end, expect me to start showing up here a little more often as I work to figure out what that means in terms of writing. I've got [one technical book on the way already](https://pulumibook.info/) -- perhaps not so much a means to an end after all -- and I'm sure there'll be more, though about what, I've no idea. Time will tell. It always does.
 
 [^1]: ... which I love -- though I do still miss California pretty terribly sometimes.
