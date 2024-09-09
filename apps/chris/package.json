@@ -4,11 +4,10 @@
     "private": true,
     "scripts": {
         "dev": "astro dev",
-        "start": "astro dev",
         "sync": "astro sync",
         "build": "rm -rf dist && astro check && astro build",
         "cypress": "pulumi env run personal -- cypress run",
-        "test": "start-server-and-test start http://localhost:4321 cypress",
+        "test": "start-server-and-test preview http://localhost:4321 cypress",
         "preview": "astro preview",
         "astro": "astro"
     },
