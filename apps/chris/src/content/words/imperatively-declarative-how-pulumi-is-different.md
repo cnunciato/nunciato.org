@@ -1,5 +1,5 @@
 ---
-title: Imperatively Declarative: How Pulumi Is Different
+title: "Imperatively Declarative (Or How Pulumi Is Different)"
 date: 2021-08-09
 description: How Pulumi is different.
 summary: How Pulumi is different.
