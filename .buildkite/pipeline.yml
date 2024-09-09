@@ -4,7 +4,7 @@ steps:
       - apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb --yes
       - curl -fsSL https://get.pulumi.com | sh
       - export PATH="/root/.pulumi/bin:\$PATH"
-      - export PULUMI_ACCESS_TOKEN=\$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)
+      - export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
       - npm install && npm install --workspaces
       - npm run build
       - npm run test -w chris
