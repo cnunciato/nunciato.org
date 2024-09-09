@@ -1,6 +1,6 @@
 ---
-title: Imperatively Declarative
-date: 2023-08-09
+title: Imperatively Declarative: How Pulumi Is Different
+date: 2021-08-09
 description: How Pulumi is different.
 summary: How Pulumi is different.
 photo:
