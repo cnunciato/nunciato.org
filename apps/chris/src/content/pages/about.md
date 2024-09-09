@@ -12,7 +12,7 @@ Thanks for stopping by. You'll also find me on [Twitter](https://twitter.com/cnu
 
 ## Books
 
--   [_The Pulumi Book_](https://thepulumibook.com) (In progress, ~40% complete)
+-   [_The Pulumi Book_](https://leanpub.com/pulumi) (In progress, ~40% complete)
 
 ## Talks
 
