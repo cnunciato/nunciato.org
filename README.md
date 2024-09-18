@@ -1,7 +1,5 @@
 # nunciato.org
 
-Testing. Again. And again.
-
 [![Build status](https://badge.buildkite.com/e5f135f3e93056f0498da9ef82a510ee16835bf7ed79d4e294.svg)](https://buildkite.com/nunciato/nunciato-dot-org)
 
 The monorepo I use to manage [my website](https://chris.nunciato.org) and a few other things. :rocket:
@@ -13,7 +11,7 @@ The monorepo I use to manage [my website](https://chris.nunciato.org) and a few 
 npm install && npm install --workspaces
 
 # Run dev servers
-npm the run dev
+npm run dev
 
 # Build all the things
 npm run build
