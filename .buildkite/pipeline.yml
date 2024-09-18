@@ -2,7 +2,6 @@ steps:
   - commands:
       # Install Pulumi and log into Pulumi Cloud.
       - export PATH="\$HOME/.pulumi/bin:\$PATH"
-      - which pulumi
       - export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
 
       # Install app deps and build.
