@@ -45,6 +45,9 @@ sudo dnf install -y nodejs
 
 # Install Pulumi.
 curl -fsSL https://get.pulumi.com | sh
+whoami
+echo $HOME
+which pulumi
 `;
 
 const bucket = new aws.s3.Bucket("bucket");
