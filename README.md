@@ -11,7 +11,7 @@ The monorepo I use to manage [my website](https://chris.nunciato.org) and a few 
 npm install && npm install --workspaces
 
 # Run dev servers
-npm the run dev
+npm run dev
 
 # Build all the things
 npm run build
