@@ -1,7 +1,7 @@
 steps:
   - commands:
       # Install Cypress dependencies for Linux.
-      - dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
+      - sudo dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
 
       # Install Pulumi and log into Pulumi Cloud.
       - curl -fsSL https://get.pulumi.com | sh
