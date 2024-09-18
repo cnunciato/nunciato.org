@@ -8,7 +8,7 @@
             "type": "node-terminal"
         },
         {
-            "command": "npm run deploy:dev -w chris.infra",
+            "command": "npm run deploy:dev -w infra.chris",
             "name": "Deploy dev stack",
             "request": "launch",
             "type": "node-terminal"

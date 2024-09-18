@@ -1,0 +1,5 @@
+name: infra.nunciato.org
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm

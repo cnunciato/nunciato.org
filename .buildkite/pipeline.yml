@@ -12,4 +12,4 @@ steps:
       - npm run test -w chris
 
       # Run Pulumi.
-      - npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w chris.infra
+      - npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris

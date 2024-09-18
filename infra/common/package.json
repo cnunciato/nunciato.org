@@ -1,11 +1,16 @@
 {
-    "name": "infra.chris",
+    "name": "infra.common",
     "main": "dist/index.js",
     "devDependencies": {
+        "@types/node": "^18",
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^6",
+        "@pulumi/awsx": "^2",
+        "@pulumi/github": "^6.3.0",
         "@pulumi/pulumi": "^3",
-        "@repo/pulumi-astro-aws": "*",
-        "@repo/pulumi-media-processor": "*",
-        "typescript": "^5.5.4"
+        "@pulumiverse/buildkite": "^3"
     },
     "scripts": {
         "build": "tsc",
