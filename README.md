@@ -1,6 +1,6 @@
 # nunciato.org
 
-[![Build status](https://badge.buildkite.com/e5f135f3e93056f0498da9ef82a510ee16835bf7ed79d4e294.svg)](https://buildkite.com/nunciato/nunciato-dot-org)
+[![Build status](https://badge.buildkite.com/e337f5834da60ebf4cfe886f70b46c78bfcc69a28749d5c6b7.svg)](https://buildkite.com/nunciato/pipeline)
 
 The monorepo I use to manage [my website](https://chris.nunciato.org) and other things. :rocket:
 
