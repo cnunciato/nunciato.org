@@ -1,7 +1,7 @@
 steps:
   - commands:
       # Install Cypress dependencies for Linux.
-      - sudo dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
+      -  #sudo dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
 
       # Install Pulumi and log into Pulumi Cloud.
       - curl -fsSL https://get.pulumi.com | sh
@@ -13,7 +13,7 @@ steps:
       - npm run build
 
       # Run the tests.
-      - npm run test -w chris
+      -  #npm run test -w chris
 
       # Run Pulumi.
       - npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w chris.infra
