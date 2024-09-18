@@ -1,11 +1,6 @@
 steps:
   - commands:
-      # Install Cypress dependencies for Linux.
-      -  #sudo dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
-
       # Install Pulumi and log into Pulumi Cloud.
-      - curl -fsSL https://get.pulumi.com | sh
-      - export PATH="/root/.pulumi/bin:\$PATH"
       - export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
 
       # Install app deps and build.
@@ -13,7 +8,7 @@ steps:
       - npm run build
 
       # Run the tests.
-      -  #npm run test -w chris
+      - npm run test -w chris
 
       # Run Pulumi.
       - npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w chris.infra
