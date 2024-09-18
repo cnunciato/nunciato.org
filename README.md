@@ -14,7 +14,7 @@ npm install && npm install --workspaces
 npm run dev
 
 # Build all the things
-npm run build
+npm run build 
 
 # Deploy to the dev environments
 npm run deploy:dev --workspace chris.infra
