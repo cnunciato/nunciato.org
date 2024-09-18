@@ -1,5 +1,6 @@
 steps:
   - commands:
+      - whoami
       # Install Cypress dependencies for Linux.
       # - dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
 
