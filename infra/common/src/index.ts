@@ -83,6 +83,7 @@ const stack = new aws.cloudformation.Stack("stack", {
         BuildkiteAgentToken: agentToken.token,
         BootstrapScriptUrl: pulumi.interpolate`s3://${bucket.bucket}/${bucketObject.key}`,
         ManagedPolicyARNs: bucketPolicy.arn,
+        EnableDockerUserNamespaceRemap: "false",
     },
 });
 
