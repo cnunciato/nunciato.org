@@ -14,4 +14,4 @@ const pipeline = {
     ],
 };
 
-console.log(pipeline);
+console.log(JSON.stringify(pipeline, null, 4));
