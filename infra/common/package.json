@@ -21,6 +21,8 @@
         "destroy:dev": "pulumi destroy --yes --stack dev",
         "destroy:production": "pulumi destroy --yes --stack production",
         "logs:dev": "pulumi logs --follow --stack dev",
-        "logs:production": "pulumi logs --follow --stack production"
+        "logs:production": "pulumi logs --follow --stack production",
+        "agent:dev": "buildkite-agent start --token $(pulumi stack output devToken --show-secrets)",
+        "agent:production": "buildkite-agent start --token $(pulumi stack output prodToken --show-secrets)"
     }
 }

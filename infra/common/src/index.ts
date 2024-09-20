@@ -20,9 +20,14 @@ const agentToken = new buildkite.cluster.ClusterAgentToken("agent-token", {
     description: "agent-token",
 });
 
+const localAgentToken = new buildkite.cluster.ClusterAgentToken("local-agent-token", {
+    clusterId: cluster.id,
+    description: "local-agent-token",
+});
+
 const pipelineSteps = `steps:
   - label: ":pipeline:"
-    command: buildkite-agent pipeline upload
+    command: node ./.buildkite/pipeline.js | buildkite-agent pipeline upload
     agents:
       queue: default
 `;
@@ -99,3 +104,6 @@ const webhook = new github.RepositoryWebhook("webhook", {
     active: true,
     events: ["deployment", "push", "pull_request"],
 });
+
+export const { token: prodToken } = agentToken;
+export const { token: devToken } = localAgentToken;
