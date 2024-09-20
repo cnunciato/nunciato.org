@@ -21,7 +21,7 @@ const agentToken = new buildkite.cluster.ClusterAgentToken("agent-token", {
 });
 
 const pipelineSteps = `steps:
-  - label: ":pipeline"
+  - label: ":pipeline:"
     command: buildkite-agent pipeline upload
     agents:
       queue: default
@@ -33,6 +33,7 @@ const pipeline = new buildkite.pipeline.Pipeline("pipeline", {
     repository: "https://github.com/cnunciato/nunciato.org.git",
     defaultBranch: "main",
     steps: pipelineSteps,
+    emoji: ":buildkite:",
 });
 
 const bootstrapScript = `#!/bin/bash

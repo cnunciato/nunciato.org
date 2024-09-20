@@ -43,6 +43,7 @@ const words = defineCollection({
             .optional(),
         links: z.any().optional(),
         drop: z.any().optional(),
+        canonical: z.string().optional(),
     }),
 });
 

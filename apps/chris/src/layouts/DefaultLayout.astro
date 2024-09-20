@@ -6,14 +6,15 @@ import Footer from "../components/Footer.astro";
 type Props = {
     title: string;
     description: string;
+    canonical?: string;
 };
 
-const { title, description } = Astro.props;
+const { title, description, canonical } = Astro.props;
 ---
 
 <html lang="en">
     <head>
-        <BaseHead title={title} description={description} />
+        <BaseHead title={title} description={description} canonical={canonical} />
     </head>
     <body>
         <Header />
