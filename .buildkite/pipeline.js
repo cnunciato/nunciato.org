@@ -2,7 +2,6 @@ const pipeline = {
     steps: [
         {
             commands: [
-                `echo "Hi, world!"`,
                 `export PATH="/.pulumi/bin:$PATH"`,
                 `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
                 `npm install && npm install --workspaces`,
