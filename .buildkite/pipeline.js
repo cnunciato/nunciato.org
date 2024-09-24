@@ -1,6 +1,7 @@
 const pipeline = {
     steps: [
         {
+            label: ":rocket: Ship it!",
             commands: [
                 `export PATH="/.pulumi/bin:$PATH"`,
                 `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
