@@ -6,7 +6,7 @@
         "dev": "astro dev",
         "sync": "astro sync",
         "build": "rm -rf dist && astro check && astro build",
-        "cypress": "pulumi env run personal -- cypress run",
+        "cypress": "pulumi env run cnunciato/default/personal -- cypress run",
         "test": "start-server-and-test preview http://localhost:4321 cypress",
         "preview": "astro preview",
         "astro": "astro"
