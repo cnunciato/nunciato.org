@@ -5,6 +5,7 @@ const pipeline = {
             commands: [
                 `export PATH="/.pulumi/bin:$PATH"`,
                 `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
+                `pulumi whoami`,
                 `npm install && npm install --workspaces`,
                 `npm run build`,
                 `npm run test -w chris`,
