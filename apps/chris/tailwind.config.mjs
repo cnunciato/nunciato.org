@@ -13,7 +13,7 @@ export default {
                 serif: ["Source Serif Pro", ...defaultTheme.fontFamily.serif],
             },
             colors: {
-                basecolor: colors.zinc,
+                basecolor: colors.stone,
                 accentcolor: colors.orange,
             },
         },
