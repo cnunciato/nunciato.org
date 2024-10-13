@@ -25,6 +25,7 @@ const { Content } = await post.render();
     description={post.data.description}
     date={post.data.date}
     slug={slug}
+    canonical={post.data.canonical}
 >
     {
         post.data.photo?.preview && (

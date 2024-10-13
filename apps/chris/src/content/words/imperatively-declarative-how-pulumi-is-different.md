@@ -6,7 +6,7 @@ summary: How Pulumi is different.
 photo:
     preview: /media/images/awsx.jpg
     caption: A Pulumi program defining an Amazon API Gateway REST API
-canonical: "https://pulumibook.info/imperatively-declarative-how-pulumi-is-different/"
+canonical: https://pulumibook.info/imperatively-declarative-how-pulumi-is-different/
 ---
 
 In conversations about [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code), the debate over [imperative versus declarative](https://en.wikipedia.org/wiki/Infrastructure_as_code#Types_of_approaches) tools still comes up from time to time. Actually, there's not much left to debate: declarative's pretty much won. But somehow, the subject still manages to get people going, probably because what "declarative" means isn't quite as clear as it used to be --- and that's partly because of tools like Pulumi.

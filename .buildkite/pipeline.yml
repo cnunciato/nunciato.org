@@ -1,3 +1,6 @@
+# This file is not curently used. It's been replaced by ./buildkite/pipeline.js,
+# but I keep it around just for reference.
+
 steps:
   - commands:
       # Install Pulumi and log into Pulumi Cloud.
