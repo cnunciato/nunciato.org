@@ -1,5 +1,5 @@
 ---
-title: "Imperatively Declarative (Or How Pulumi Is Different)"
+title: "Imperatively Declarative: How Pulumi Is Different"
 date: 2021-08-09
 description: How Pulumi is different.
 summary: How Pulumi is different.
@@ -392,4 +392,6 @@ It's the same thing with infrastructure: we want a declarative mental model, but
 
 It'll be interesting to see where things go from here; [I'm](https://pulumibook.info/about) [certainly](https://www.pulumi.com/about/) [biased](https://thepulumibook.com/), but also a fascinated observer. The trajectory is what interests me most, though --- that, and being able to manage my own infrastructure in ways that feel comfortable to me as a developer. (Which reminds me, I should probably write about how I manage _this_ site sometime....)
 
-    > **Hey look, there's a book!**: I'm currently writing a book about Pulumi. It's still in the works, aimed at helping developers get a foothold into the cloud, and you can grab yourself an in-progress digital copy on Leanpub. [Check it out](https://thepulumibook.com)!
+---
+
+**Enjoy this post?** It's reprinted from [pulumibook.info](https://pulumibook.info), the companion site for the book I'm currently writing about using [Pulumi](https://pulumi.com) with TypeScript and Amazon Web Services. [Check it out](https://pulumibook.info), or grab yourself a copy of the in-progress book today [on Leanpub](https://leanpub.com/pulumi)! 📚

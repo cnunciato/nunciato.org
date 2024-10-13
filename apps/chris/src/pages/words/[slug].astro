@@ -43,7 +43,18 @@ const { Content } = await post.render();
     <h1>{post.data.title}</h1>
     <div class="text-basecolor-500 font-sans">
         <FormattedDate date={post.data.date} />
+        {
+            post.data.canonical && (
+                <span>
+                    &bull; Reprinted from from{" "}
+                    <a href={post.data.canonical} target="_blank">
+                        {new URL(post.data.canonical).hostname}
+                    </a>
+                </span>
+            )
+        }
     </div>
+
     <div class="my-12">
         <Content />
     </div>
