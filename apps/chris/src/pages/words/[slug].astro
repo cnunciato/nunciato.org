@@ -46,7 +46,7 @@ const { Content } = await post.render();
         {
             post.data.canonical && (
                 <span>
-                    &bull; Reprinted from from{" "}
+                    &bull; Reprinted from{" "}
                     <a href={post.data.canonical} target="_blank">
                         {new URL(post.data.canonical).hostname}
                     </a>
