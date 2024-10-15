@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "im in ur hook script"
