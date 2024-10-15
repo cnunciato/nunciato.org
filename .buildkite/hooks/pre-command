@@ -1,3 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bash
 
-console.log("im in ur hook script");
+which node
+#console.log("im in ur hook script");
