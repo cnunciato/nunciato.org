@@ -10,6 +10,7 @@ const pipeline = {
                 `npm run test -w chris`,
                 `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
             ],
+            parallelism: 5,
         },
     ],
 };
