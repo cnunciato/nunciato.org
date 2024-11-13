@@ -1,5 +1,6 @@
 {
     "name": "@repo/pulumi-astro-aws",
+    "version": "0.0.1",
     "devDependencies": {
         "@types/node": "^18",
         "typescript": "^5.0.0"
@@ -16,5 +17,8 @@
     },
     "scripts": {
         "build": "tsc"
+    },
+    "publishConfig": {
+        "registry": "https://packages.buildkite.com/nunciato/my-first-registry/npm/"
     }
 }
