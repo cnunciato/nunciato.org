@@ -1,0 +1,14 @@
+{
+    "steps": [
+        {
+            "commands": [
+                "npm test"
+            ]
+        },
+        {
+            "commands": [
+                "npm run build"
+            ]
+        }
+    ]
+}

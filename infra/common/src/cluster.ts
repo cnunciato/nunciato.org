@@ -10,7 +10,7 @@ interface BuildkiteClusterArgs {
 
 const pipelineSteps = `steps:
   - label: ":pipeline: Generate the pipeline"
-    command: node ./.buildkite/pipeline.js | buildkite-agent pipeline upload
+    command: node ./.buildkite/pipeline.json | buildkite-agent pipeline upload
     agents:
       queue: default
 `;

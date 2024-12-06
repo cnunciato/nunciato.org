@@ -10,7 +10,8 @@
         "@pulumi/awsx": "^2",
         "@pulumi/github": "^6.3.0",
         "@pulumi/pulumi": "^3",
-        "@pulumiverse/buildkite": "^3"
+        "@pulumiverse/buildkite": "^3",
+        "buildkite-pipeline-sdk": "file:../../../../buildkite/pipeline-sdk/sdk/typescript"
     },
     "scripts": {
         "build": "tsc",
