@@ -1,10 +1,17 @@
-const steps = [];
+const { execSync } = require("child_process");
+
+function wasTouched(filePath) {
+    return execSync("git diff --name-only HEAD~1 HEAD")
+        .toString()
+        .split("\n")
+        .some(file => file.includes(filePath));
+}
 
 const pipeline = {
     steps: [
         {
             key: "build",
-            label: ":hammer_and_wrench: Install and build",
+            label: ":hammer_and_wrench: Set up environment",
             commands: [
                 `export PATH="/.pulumi/bin:$PATH"`,
                 `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
@@ -13,11 +20,11 @@ const pipeline = {
     ],
 };
 
-if (true) {
+if (wasTouched("apps/chris")) {
     pipeline.steps.push(
         ...[
             {
-                label: ":hiking_boot: Ship chris.nunciato.org",
+                label: ":hiking_boot: Build and deploy Chris's website",
                 commands: [
                     `npm install && npm install --workspaces`,
                     `npm run build`,
@@ -30,11 +37,11 @@ if (true) {
     );
 }
 
-if (true) {
+if (wasTouched("apps/oliver")) {
     pipeline.steps.push(
         ...[
             {
-                label: ":pig: Ship oliver.nunciato.org",
+                label: ":pig: Build and deploy Oliver's website",
                 commands: [
                     `npm install && npm install --workspaces`,
                     `npm run build`,
