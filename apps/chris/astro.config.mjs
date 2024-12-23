@@ -8,7 +8,7 @@ import tailwind from "@astrojs/tailwind";
 import satori from "satori-astro";
 import icon from "astro-icon";
 
-const output = "hybrid";
+const output = "server";
 
 // https://astro.build/config
 export default defineConfig({

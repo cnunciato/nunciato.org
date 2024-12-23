@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import SoundLayout from "../../layouts/SoundLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import { noDrafts } from "../../utils";
@@ -9,22 +9,22 @@ export async function getStaticPaths() {
 
     return words.map(sound => ({
         params: {
-            slug: sound.slug,
+            id: sound.id,
         },
         props: { sound: sound },
     }));
 }
 
 const { sound } = Astro.props;
-const { slug } = Astro.params;
-const { Content } = await sound.render();
+const { id } = Astro.params;
+const { Content } = await render(sound);
 ---
 
 <SoundLayout
     title={sound.data.title}
     description={sound.data.description}
     date={sound.data.date}
-    slug={slug}
+    id={id}
     sound={sound.data.sound}
 >
     {
