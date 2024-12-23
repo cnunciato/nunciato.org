@@ -3,7 +3,8 @@ const steps = [];
 const pipeline = {
     steps: [
         {
-            label: ":rocket: Ship it!",
+            key: "build",
+            label: ":hammer_and_wrench: Install and build",
             commands: [
                 `export PATH="/.pulumi/bin:$PATH"`,
                 `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
@@ -18,8 +19,14 @@ const pipeline = {
 if (true) {
     pipeline.steps.push(
         ...[
-            `npm run test -w chris`,
-            `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
+            {
+                label: ":hiking_boot: Ship chris.nunciato.org",
+                commands: [
+                    `npm run test -w chris`,
+                    `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
+                ],
+                depends_on: "build",
+            },
         ],
     );
 }
@@ -28,7 +35,13 @@ if (true) {
 if (true) {
     pipeline.steps.push(
         ...[
-            `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
+            {
+                label: ":pig:",
+                commands: [
+                    `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
+                ],
+                depends_on: "build",
+            },
         ],
     );
 }
