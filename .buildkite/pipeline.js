@@ -8,14 +8,11 @@ const pipeline = {
             commands: [
                 `export PATH="/.pulumi/bin:$PATH"`,
                 `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
-                `npm install && npm install --workspaces`,
-                `npm run build`,
             ],
         },
     ],
 };
 
-// Build Chris!
 if (true) {
     pipeline.steps.push(
         ...[
@@ -33,7 +30,6 @@ if (true) {
     );
 }
 
-// Build Oliver!
 if (true) {
     pipeline.steps.push(
         ...[
