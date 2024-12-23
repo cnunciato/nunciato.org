@@ -17,7 +17,7 @@ export const GET: APIRoute = async ({ url }: APIContext) => {
 
     if (contentType === "words") {
         const words = await getCollection(contentType);
-        const post = words.find(w => w.slug === contentId);
+        const post = words.find(w => w.id === contentId);
 
         if (post) {
             title = post.data.title;
@@ -27,7 +27,7 @@ export const GET: APIRoute = async ({ url }: APIContext) => {
 
     if (contentType === "photos") {
         const words = await getCollection(contentType);
-        const photo = words.find(w => w.slug === contentId);
+        const photo = words.find(w => w.id === contentId);
 
         if (photo) {
             title = photo.data.title;

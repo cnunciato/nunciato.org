@@ -1,14 +1,14 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import { byDate, noDrafts } from "../../utils";
 
 const [post] = (await getCollection("words", noDrafts)).sort(byDate);
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
-<BlogLayout title="Words" description="All the blog posts." date={post.data.date} slug={post.slug}>
+<BlogLayout title="Words" description="All the blog posts." date={post.data.date} id={post.id}>
     {
         post.data.photo?.preview && (
             <div class="md:float-right md:w-80 md:ml-2 md:mb-2">

@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import { noDrafts } from "../../utils";
@@ -9,22 +9,22 @@ export async function getStaticPaths() {
 
     return words.map(post => ({
         params: {
-            slug: post.slug,
+            id: post.id,
         },
         props: { post: post },
     }));
 }
 
 const { post } = Astro.props;
-const { slug } = Astro.params;
-const { Content } = await post.render();
+const { id } = Astro.params;
+const { Content } = await render(post);
 ---
 
 <BlogLayout
     title={post.data.title}
     description={post.data.description}
     date={post.data.date}
-    slug={slug}
+    id={id}
     canonical={post.data.canonical}
 >
     {

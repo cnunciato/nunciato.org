@@ -14,7 +14,7 @@ const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}
 
 <audio id="player" controls class="rounded shadow w-full block mt-2" src={audioUrl}></audio>
 
-<script define:vars={{ dataUrl }}>
+<script is:inline define:vars={{ dataUrl }}>
     const player = document.querySelector("#player");
     const samples = 1000;
 

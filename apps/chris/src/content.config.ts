@@ -1,7 +1,8 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const photos = defineCollection({
-    type: "content",
+    loader: glob({ pattern: "**/*.md", base: "./src/content/photos" }),
     schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -24,7 +25,7 @@ const photos = defineCollection({
 });
 
 const words = defineCollection({
-    type: "content",
+    loader: glob({ pattern: "**/*.md", base: "./src/content/words" }),
     schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -48,7 +49,7 @@ const words = defineCollection({
 });
 
 const sounds = defineCollection({
-    type: "content",
+    loader: glob({ pattern: "**/*.md", base: "./src/content/sounds" }),
     schema: z.object({
         title: z.string(),
         date: z.coerce.date(),

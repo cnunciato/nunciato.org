@@ -22,15 +22,17 @@ const { page } = Astro.props;
                 const { body } = p;
 
                 const wordCount = body
-                    .trim()
-                    .split(" ")
-                    .map(w => w.trim())
-                    .filter(w => w !== "").length;
+                    ? body
+                          .trim()
+                          .split(" ")
+                          .map(w => w.trim())
+                          .filter(w => w !== "").length
+                    : 0;
 
                 return (
                     <li class="gap-2">
                         <div class="p-6 shadow-lg rounded-lg border border-basecolor-200">
-                            <a class="block" href={`/photos/${p.slug}`}>
+                            <a class="block" href={`/photos/${p.id}`}>
                                 <img
                                     loading="lazy"
                                     src={photo?.preview?.replace(

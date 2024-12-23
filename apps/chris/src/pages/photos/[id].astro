@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import DefaultLayout from "../../layouts/DefaultLayout.astro";
 import Prose from "../../components/Prose.astro";
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
     return photos.map(photo => {
         return {
             params: {
-                slug: photo.slug,
+                id: photo.id,
             },
             props: { photo },
         };
@@ -21,11 +21,11 @@ export async function getStaticPaths() {
 
 const { photo: props } = Astro.props;
 const { title, description, photo, date } = props.data;
-const { Content } = await props.render();
+const { Content } = await render(props);
 const url = photo?.url?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/");
 
 const photos = (await getCollection("photos", noDrafts)).sort(byDate);
-const photoIndex = photos.findIndex(p => p.slug === props.slug);
+const photoIndex = photos.findIndex(p => p.id === props.id);
 
 let previousPhoto: CollectionEntry<"photos"> | undefined;
 let nextPhoto: CollectionEntry<"photos"> | undefined;
@@ -46,7 +46,7 @@ if (photoIndex < photos.length - 1) {
                 previousPhoto && (
                     <a
                         class="inline-block rounded-lg bg-basecolor-200 p-2 px-6 no-underline text-2xl"
-                        href={`/photos/${previousPhoto.slug}`}
+                        href={`/photos/${previousPhoto.id}`}
                     >
                         &lsaquo;
                     </a>
@@ -72,7 +72,7 @@ if (photoIndex < photos.length - 1) {
                 nextPhoto && (
                     <a
                         class="inline-block rounded-lg bg-basecolor-200 p-2 px-6 no-underline text-2xl"
-                        href={`/photos/${nextPhoto.slug}`}
+                        href={`/photos/${nextPhoto.id}`}
                     >
                         &rsaquo;
                     </a>

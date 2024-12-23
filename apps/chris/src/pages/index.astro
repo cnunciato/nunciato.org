@@ -14,7 +14,7 @@ const photos = (await getCollection("photos", noDrafts)).sort(byDate).slice(0, 3
         {
             photos.map(photo => (
                 <li class="p-6 shadow-lg rounded-lg border border-basecolor-200">
-                    <a href={`/photos/${photo.slug}`}>
+                    <a href={`/photos/${photo.id}`}>
                         <img
                             src={photo.data.photo?.preview?.replace(
                                 "s3/",

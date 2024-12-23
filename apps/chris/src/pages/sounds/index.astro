@@ -1,18 +1,18 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import SoundLayout from "../../layouts/SoundLayout.astro";
 import { byDate, noDrafts } from "../../utils";
 
 const [sound] = (await getCollection("sounds", noDrafts)).sort(byDate);
-const { Content } = await sound.render();
+const { Content } = await render(sound);
 ---
 
 <SoundLayout
     title="Sounds"
     description="All the blog posts."
     date={sound.data.date}
-    slug={sound.slug}
+    id={sound.id}
     sound={sound.data.sound}
 >
     {
