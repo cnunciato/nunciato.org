@@ -4,14 +4,14 @@ const pipeline = {
     steps: [],
 };
 
-function wasTouched(filePath) {
+function touched(filePath) {
     return execSync("git diff --name-only HEAD~1 HEAD")
         .toString()
         .split("\n")
         .some(file => file.includes(filePath));
 }
 
-if (wasTouched("apps/chris")) {
+if (touched("apps/chris")) {
     pipeline.steps.push(
         ...[
             {
@@ -28,7 +28,7 @@ if (wasTouched("apps/chris")) {
     );
 }
 
-if (wasTouched("apps/oliver")) {
+if (touched("apps/oliver")) {
     pipeline.steps.push(
         ...[
             {
