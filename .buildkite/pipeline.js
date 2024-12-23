@@ -1,3 +1,5 @@
+const steps = [];
+
 const pipeline = {
     steps: [
         {
@@ -7,12 +9,28 @@ const pipeline = {
                 `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
                 `npm install && npm install --workspaces`,
                 `npm run build`,
-                `npm run test -w chris`,
-                `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
-                `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
             ],
         },
     ],
 };
+
+// Build Chris!
+if (true) {
+    pipeline.steps.push(
+        ...[
+            `npm run test -w chris`,
+            `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
+        ],
+    );
+}
+
+// Build Oliver!
+if (true) {
+    pipeline.steps.push(
+        ...[
+            `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
+        ],
+    );
+}
 
 console.log(JSON.stringify(pipeline, null, 4));
