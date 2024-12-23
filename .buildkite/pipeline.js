@@ -7,19 +7,6 @@ function wasTouched(filePath) {
         .some(file => file.includes(filePath));
 }
 
-const pipeline = {
-    steps: [
-        {
-            key: "build",
-            label: ":hammer_and_wrench: Set up environment",
-            commands: [
-                `export PATH="/.pulumi/bin:$PATH"`,
-                `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
-            ],
-        },
-    ],
-};
-
 if (wasTouched("apps/chris")) {
     pipeline.steps.push(
         ...[
