@@ -1,5 +1,9 @@
 const { execSync } = require("child_process");
 
+const pipeline = {
+    steps: [],
+};
+
 function wasTouched(filePath) {
     return execSync("git diff --name-only HEAD~1 HEAD")
         .toString()
