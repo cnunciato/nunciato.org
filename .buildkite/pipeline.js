@@ -22,6 +22,8 @@ if (true) {
             {
                 label: ":hiking_boot: Ship chris.nunciato.org",
                 commands: [
+                    `npm install && npm install --workspaces`,
+                    `npm run build`,
                     `npm run test -w chris`,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
                 ],
@@ -36,8 +38,10 @@ if (true) {
     pipeline.steps.push(
         ...[
             {
-                label: ":pig:",
+                label: ":pig: Ship oliver.nunciato.org",
                 commands: [
+                    `npm install && npm install --workspaces`,
+                    `npm run build`,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
                 ],
                 depends_on: "build",
