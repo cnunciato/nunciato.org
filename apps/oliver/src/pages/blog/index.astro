@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content'
+
+import { LayoutBase } from '@/layouts'
+import { FormattedDate } from '@/components'
+import type { IBlogPostCollection } from '@/types'
+
+const posts = (await getCollection('blog')).sort((a: IBlogPostCollection, b: IBlogPostCollection) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+---
+
+<LayoutBase classNameMain="pt-12 px-4">
+  <section class="w-full">
+    <ul class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
+      {
+        posts.map((post: IBlogPostCollection) => (
+          <li class="w-full">
+            <a href={`/blog/${post.slug}/`}>
+              <img transition:name={`image-${post.data.heroImage}`} class="w-full rounded-3xl" src={post.data.heroImage} alt="" />
+              <div class="p-2">
+                <h4 class="text-xl font-bold">{post.data.title}</h4>
+                <p class="text-xs text-foreground-500">
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</LayoutBase>

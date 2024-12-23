@@ -1,0 +1,32 @@
+---
+import { ViewTransitions } from 'astro:transitions'
+
+import { Header, Footer } from '@/components'
+
+import LayoutBaseHead, { type Props as LayoutBaseHeadProps } from './LayoutBaseHead.astro'
+
+import '@fontsource-variable/comfortaa'
+import '@/styles/global.css'
+
+interface Props extends LayoutBaseHeadProps {
+  classNameMain?: string
+  disableViewTransitions?: boolean
+  lang?: string
+}
+
+const { title, classNameMain, disableViewTransitions, description, lang = 'es' } = Astro.props
+---
+
+<html lang={lang}>
+  <head>
+    <LayoutBaseHead title={title} description={description} />
+    {!disableViewTransitions && <ViewTransitions />}
+  </head>
+  <body class="w-full min-h-screen flex flex-col text-foreground bg-background overflow-x-hidden">
+    <Header />
+    <main class:list={['flex-1 w-full max-w-screen-xl mx-auto', classNameMain]}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

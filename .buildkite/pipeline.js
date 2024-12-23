@@ -9,8 +9,8 @@ const pipeline = {
                 `npm run build`,
                 `npm run test -w chris`,
                 `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
+                `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
             ],
-            // parallelism: 5,
         },
     ],
 };

@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+import { FormattedDate } from '@/components'
+
+import LayoutBase from './LayoutBase.astro'
+
+type Props = CollectionEntry<'blog'>['data']
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props
+---
+
+<LayoutBase classNameMain="pt-8 px-4 lg:px-8" title={title} description={description}>
+  <article>
+    <div class="flex justify-center items-center w-full">
+      <img
+        transition:name={`image-${heroImage}`}
+        class="w-full h-[30vh] md:h-[45vh] lg:h-[60vh] object-cover mx-auto rounded-3xl shadow-md transition-all"
+        src={heroImage}
+        alt={title}
+      />
+    </div>
+    <div class="m-auto lg:px-20 py-12">
+      <h1 class="text-center text-6xl lg:text-8xl text-primary leading-tight">{title}</h1>
+      <div class="flex flex-col justify-center items-center mb-12">
+        <span class="text-primary-200 text-sm leading-none mb-0.5">Published on <FormattedDate date={pubDate} /></span>
+        {
+          updatedDate && (
+            <span class="text-neutral-500 text-xs leading-none">
+              Last updated on <FormattedDate date={updatedDate} />
+            </span>
+          )
+        }
+      </div>
+      <slot />
+    </div>
+  </article>
+</LayoutBase>

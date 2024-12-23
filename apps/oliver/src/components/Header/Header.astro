@@ -1,0 +1,23 @@
+---
+import { SITE_TITLE } from '@/constants'
+
+import HeaderLink from './HeaderLink.astro'
+import LinkToGithub from '../LinkToGithub.astro'
+---
+
+<header class="sticky top-0 z-40">
+  <nav class="flex items-center justify-between backdrop-blur-2xl p-4 border-b border-background-900">
+    <div class="hidden md:flex flex-1">
+      <h2 class="text-xl font-bold"><a href="/">{SITE_TITLE}</a></h2>
+    </div>
+    <div class="flex items-center gap-4">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+    </div>
+    <div class="flex-1 flex justify-end">
+      <LinkToGithub />
+      <!-- <HeaderMenu /> -->
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,18 @@
+---
+import FooterCopyright from './FooterCopyright.astro'
+import FooterGradient from './FooterGradient.astro'
+import FooterSocialLinks from './FooterSocialLinks.astro'
+
+export interface Props {
+  disableGradient?: boolean
+  hideSocialLinks?: boolean
+}
+
+const { disableGradient, hideSocialLinks } = Astro.props
+---
+
+<footer class="relative pt-20 pb-4 space-y-4 overflow-hidden">
+  { !disableGradient && <FooterGradient /> }
+  { !hideSocialLinks && <FooterSocialLinks /> }
+  <FooterCopyright />
+</footer>

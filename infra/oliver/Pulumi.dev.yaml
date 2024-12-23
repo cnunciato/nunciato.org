@@ -1,0 +1,8 @@
+config:
+  aws:region: us-west-2
+  oliver.nunciato.org:domain: nunciato.org
+  oliver.nunciato.org:output: static
+  oliver.nunciato.org:sourcePath: ../../apps/oliver
+  oliver.nunciato.org:subdomain: oliver-dev
+environment:
+  - personal
