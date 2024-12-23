@@ -4,6 +4,8 @@ const pipeline = {
     steps: [],
 };
 
+const buildSteps = [`npm install && npm install --workspaces`, `npm run build`];
+
 function touched(filePath) {
     return execSync("git diff --name-only HEAD~1 HEAD")
         .toString()
@@ -17,8 +19,7 @@ if (touched("apps/chris")) {
             {
                 label: ":hiking_boot: Build and deploy Chris's website",
                 commands: [
-                    `npm install && npm install --workspaces`,
-                    `npm run build`,
+                    ...buildSteps,
                     `npm run test -w chris`,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
                 ],
@@ -33,8 +34,7 @@ if (touched("apps/oliver")) {
             {
                 label: ":pig: Build and deploy Oliver's website",
                 commands: [
-                    `npm install && npm install --workspaces`,
-                    `npm run build`,
+                    ...buildSteps,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
                 ],
             },
