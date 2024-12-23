@@ -22,7 +22,6 @@ if (touched("apps/chris")) {
                     `npm run test -w chris`,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
                 ],
-                depends_on: "build",
             },
         ],
     );
@@ -38,7 +37,6 @@ if (touched("apps/oliver")) {
                     `npm run build`,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
                 ],
-                depends_on: "build",
             },
         ],
     );
