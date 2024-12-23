@@ -55,13 +55,13 @@ export class BuildkiteCluster extends pulumi.ComponentResource {
         const pipeline = new buildkite.pipeline.Pipeline(
             "pipeline",
             {
-                name: "chris.nunciato.org",
-                description: "Ship it. :rocket:",
+                name: "nunciato.org",
+                description: ":metal: Ship it.",
                 clusterId: args.clusterId,
                 repository: args.repoUrl,
                 defaultBranch: "main",
                 steps: pipelineSteps,
-                emoji: ":buildkite:",
+                emoji: ":floppy_disk:",
             },
             { parent: this },
         );
