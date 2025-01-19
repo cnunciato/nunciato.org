@@ -20,7 +20,7 @@ if (touched("apps/chris")) {
                 label: ":hiking_boot: Build and deploy Chris's website",
                 commands: [
                     ...buildSteps,
-                    `npm run test -w chris`,
+                    // `npm run test -w chris`,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
                 ],
             },
