@@ -1,0 +1,84 @@
+---
+import type { PaginateFunction } from "astro";
+import { getCollection } from "astro:content";
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { byDate, noDrafts } from "../../utils";
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+    return paginate((await getCollection("videos", noDrafts)).sort(byDate), {
+        pageSize: 100,
+    });
+}
+
+const { page } = Astro.props;
+---
+
+<DefaultLayout title="Videos" , description="All the videos">
+    <ol class="mt-8 flex flex-col md:flex-row md:flex-wrap gap-4 justify-evenly">
+        {
+            page.data.map(p => {
+                const { title, video } = p.data;
+                const { body } = p;
+
+                const wordCount = body
+                    .trim()
+                    .split(" ")
+                    .map(w => w.trim())
+                    .filter(w => w !== "").length;
+
+                return (
+                    <li class="gap-2">
+                        <div class="p-6 shadow-lg rounded-lg border border-basecolor-200">
+                            <a class="block" href={`/videos/${p.slug}`}>
+                                <img
+                                    loading="lazy"
+                                    src={video?.preview?.replace(
+                                        "s3/",
+                                        "https://s3.amazonaws.com/cnunciato-website-media/",
+                                    )}
+                                    class="block rounded-lg shadow-inner border border-basecolor-100 overflow-hidden md:w-80 md:h-52 object-cover top"
+                                    alt={title}
+                                />
+                            </a>
+                            <div class="text-sm mt-4 flex justify-between">
+                                <FormattedDate date={p.data.date} />
+
+                                {wordCount > 0 && (
+                                    <span>
+                                        {wordCount}
+                                        {wordCount === 1 ? "word" : "words"}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                    </li>
+                );
+            })
+        }
+    </ol>
+    <ol
+        class="flex justify-center my-12 gap-2 text-2xl mx-auto lg:fixed lg:bottom-0 lg:px-4 lg:py-6 lg:left-1/2 lg:-translate-x-1/2 lg:bg-basecolor-50 lg:rounded-lg lg:shadow-xl"
+    >
+        <li>
+            <a class="rounded bg-basecolor-200 p-2 px-6 no-underline" href={page.url.first}
+                >&laquo;</a
+            >
+        </li>
+        <li>
+            <a class="rounded bg-basecolor-200 p-2 px-6 no-underline" href={page.url.prev}
+                >&lsaquo;</a
+            >
+        </li>
+        <li>
+            <a class="rounded bg-basecolor-200 p-2 px-6 no-underline" href={page.url.next}
+                >&rsaquo;</a
+            >
+        </li>
+        <li>
+            <a class="rounded bg-basecolor-200 p-2 px-6 no-underline" href={page.url.last}
+                >&raquo;</a
+            >
+        </li>
+    </ol>
+</DefaultLayout>
