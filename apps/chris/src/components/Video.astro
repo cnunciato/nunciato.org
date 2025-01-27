@@ -3,9 +3,5 @@ const { file, poster } = Astro.props;
 const videoUrl = `https://s3.amazonaws.com/cnunciato-website-media/video/${file}`;
 ---
 
-<video
-    id="player"
-    controls
-    class="rounded-lg shadow w-full block mt-2"
-    src={videoUrl}
-    poster={poster}></video>
+<video id="player" controls class="rounded-lg shadow w-full block" src={videoUrl} poster={poster}
+></video>

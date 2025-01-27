@@ -1,46 +1,93 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+import Prose from "../../components/Prose.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
-import { noDrafts } from "../../utils";
-import VideoLayout from "../../layouts/VideoLayout.astro";
+import { byDate, noDrafts } from "../../utils";
+import Video from "../../components/Video.astro";
 
 export async function getStaticPaths() {
-    const videos = await getCollection("videos", noDrafts);
+    const videos = (await getCollection("videos", noDrafts)).sort(byDate);
 
-    return videos.map(video => ({
-        params: {
-            slug: video.slug,
-        },
-        props: { video: video },
-    }));
+    return videos.map(photo => {
+        return {
+            params: {
+                slug: photo.slug,
+            },
+            props: { photo },
+        };
+    });
 }
 
-const { video } = Astro.props;
-const { slug } = Astro.params;
-const { Content } = await video.render();
+const { photo: props } = Astro.props;
+const { title, description, video, date } = props.data;
+const { Content } = await props.render();
+const url = video?.url?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/");
+
+const videos = (await getCollection("videos", noDrafts)).sort(byDate);
+const videoIndex = videos.findIndex(p => p.slug === props.slug);
+
+let previousVideo: CollectionEntry<"videos"> | undefined;
+let nextVideo: CollectionEntry<"videos"> | undefined;
+
+if (videoIndex > 0) {
+    previousVideo = videos.at(videoIndex - 1);
+}
+
+if (videoIndex < videos.length - 1) {
+    nextVideo = videos.at(videoIndex + 1);
+}
 ---
 
-<VideoLayout
-    title={video.data.title}
-    description={video.data.description}
-    date={video.data.date}
-    slug={slug}
-    video={video.data.video}
->
-    <!-- {
-        video.data.video?.preview && (
-            <div class="md:float-right md:w-80 md:ml-4 md:mb-4">
-                <img
-                    class="mt-0"
-                    src={video.data.video.preview.replace(
-                        "s3/",
-                        "https://s3.amazonaws.com/cnunciato-website-media/",
-                    )}
-                />
+<DefaultLayout title={title} description={description || ""}>
+    <div class="container mx-auto flex relative">
+        <div class="hidden md:block w-1/12 text-center sticky top-0">
+            {
+                previousVideo && (
+                    <a
+                        class="inline-block rounded-lg bg-basecolor-200 p-2 px-6 no-underline text-2xl"
+                        href={`/videos/${previousVideo.slug}`}
+                    >
+                        &lsaquo;
+                    </a>
+                )
+            }
+        </div>
+        <div class="md:w-10/12">
+            <div>
+                {
+                    video.url && (
+                        <Video
+                            file={video.url.replace("s3/video/", "")}
+                            poster={video.preview?.replace(
+                                "s3/",
+                                "https://s3.amazonaws.com/cnunciato-website-media/",
+                            )}
+                        />
+                    )
+                }
             </div>
-        )
-    } -->
-    <h1>{video.data.title}</h1>
-    <FormattedDate date={video.data.date} />
-    <Content />
-</VideoLayout>
+            <div class="my-12">
+                <Prose>
+                    <h2>{title}</h2>
+                    <div><FormattedDate date={date} /></div>
+                    <Content />
+                </Prose>
+            </div>
+        </div>
+        <div class="hidden md:block w-1/12 text-center sticky top-0">
+            {
+                nextVideo && (
+                    <a
+                        class="inline-block rounded-lg bg-basecolor-200 p-2 px-6 no-underline text-2xl"
+                        href={`/videos/${nextVideo.slug}`}
+                    >
+                        &rsaquo;
+                    </a>
+                )
+            }
+        </div>
+    </div>
+    <div class="max-w-6xl mx-auto"></div>
+</DefaultLayout>
