@@ -23,6 +23,38 @@ const photos = defineCollection({
     }),
 });
 
+const sounds = defineCollection({
+    type: "content",
+    schema: z.object({
+        title: z.string(),
+        date: z.coerce.date(),
+        draft: z.boolean().optional(),
+        description: z.string().optional(),
+        sound: z.object({
+            url: z.string(),
+            preview: z.string().optional(),
+            thumb: z.string().optional(),
+            duration: z.number(),
+        }),
+    }),
+});
+
+const videos = defineCollection({
+    type: "content",
+    schema: z.object({
+        title: z.string(),
+        date: z.coerce.date(),
+        draft: z.boolean().optional(),
+        description: z.string().optional(),
+        video: z.object({
+            url: z.string(),
+            preview: z.string().optional(),
+            thumb: z.string().optional(),
+            duration: z.number(),
+        }),
+    }),
+});
+
 const words = defineCollection({
     type: "content",
     schema: z.object({
@@ -47,24 +79,9 @@ const words = defineCollection({
     }),
 });
 
-const sounds = defineCollection({
-    type: "content",
-    schema: z.object({
-        title: z.string(),
-        date: z.coerce.date(),
-        draft: z.boolean().optional(),
-        description: z.string().optional(),
-        sound: z.object({
-            url: z.string(),
-            preview: z.string().optional(),
-            thumb: z.string().optional(),
-            duration: z.number(),
-        }),
-    }),
-});
-
 export const collections = {
     photos,
     sounds,
+    videos,
     words,
 };

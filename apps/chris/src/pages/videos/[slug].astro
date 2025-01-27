@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { noDrafts } from "../../utils";
+import VideoLayout from "../../layouts/VideoLayout.astro";
+
+export async function getStaticPaths() {
+    const videos = await getCollection("videos", noDrafts);
+
+    return videos.map(video => ({
+        params: {
+            slug: video.slug,
+        },
+        props: { video: video },
+    }));
+}
+
+const { video } = Astro.props;
+const { slug } = Astro.params;
+const { Content } = await video.render();
+---
+
+<VideoLayout
+    title={video.data.title}
+    description={video.data.description}
+    date={video.data.date}
+    slug={slug}
+    video={video.data.video}
+>
+    {
+        video.data.video?.preview && (
+            <div class="md:float-right md:w-80 md:ml-4 md:mb-4">
+                <img
+                    class="mt-0"
+                    src={video.data.video.preview.replace(
+                        "s3/",
+                        "https://s3.amazonaws.com/cnunciato-website-media/",
+                    )}
+                />
+            </div>
+        )
+    }
+    <h1>{video.data.title}</h1>
+    <FormattedDate date={video.data.date} />
+    <Content />
+</VideoLayout>

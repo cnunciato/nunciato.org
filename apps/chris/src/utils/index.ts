@@ -2,8 +2,9 @@ import type { CollectionEntry } from "astro:content";
 
 type CollectionItem =
     | CollectionEntry<"photos">
-    | CollectionEntry<"words">
-    | CollectionEntry<"sounds">;
+    | CollectionEntry<"videos">
+    | CollectionEntry<"sounds">
+    | CollectionEntry<"words">;
 
 export const noDrafts = (item: CollectionItem) => item.data.draft !== true || import.meta.env.DEV;
 
