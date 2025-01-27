@@ -15,7 +15,7 @@ const { Content } = await video.render();
     slug={video.slug}
     video={video.data.video}
 >
-    {
+    <!-- {
         video.data.video?.preview && (
             <div class="md:float-right md:w-80 md:ml-4 md:mb-4">
                 <img
@@ -27,7 +27,7 @@ const { Content } = await video.render();
                 />
             </div>
         )
-    }
+    } -->
     <h1>{video.data.title}</h1>
     <FormattedDate date={video.data.date} />
     <Content />

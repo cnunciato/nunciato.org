@@ -44,10 +44,18 @@ const videos = (await getCollection("videos", noDrafts)).sort(byDate);
                     <slot />
                 </Prose>
 
-                <div
-                    class="mx-auto clear-both mt-8 rounded-lg shadow-lg p-2 border border-basecolor-300"
-                >
-                    {video.url && <Video file={video.url.replace("s3/video/", "")} />}
+                <div class="mx-auto clear-both mt-8 rounded-lg shadow-lg">
+                    {
+                        video.url && (
+                            <Video
+                                file={video.url.replace("s3/video/", "")}
+                                poster={video.preview?.replace(
+                                    "s3/",
+                                    "https://s3.amazonaws.com/cnunciato-website-media/",
+                                )}
+                            />
+                        )
+                    }
                 </div>
             </article>
         </div>
