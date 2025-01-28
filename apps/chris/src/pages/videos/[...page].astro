@@ -57,8 +57,9 @@ const { page } = Astro.props;
             })
         }
     </ol>
+    <!-- We don't need this until we actually need to support pages of videos. -->
     <ol
-        class="flex justify-center my-12 gap-2 text-2xl mx-auto lg:fixed lg:bottom-0 lg:px-4 lg:py-6 lg:left-1/2 lg:-translate-x-1/2 lg:bg-basecolor-50 lg:rounded-lg lg:shadow-xl"
+        class="hidden flex justify-center my-12 gap-2 text-2xl mx-auto lg:fixed lg:bottom-0 lg:px-4 lg:py-6 lg:left-1/2 lg:-translate-x-1/2 lg:bg-basecolor-50 lg:rounded-lg lg:shadow-xl"
     >
         <li>
             <a class="rounded bg-basecolor-200 p-2 px-6 no-underline" href={page.url.first}
