@@ -34,7 +34,7 @@ const audioUrl = `/audio/${file}`;
         }
     });
 
-    fetchWaveform(dataUrl).then(data => {
+    fetchWaveform(audioUrl).then(data => {
         const waveform = document.querySelector("#waveform");
 
         data.map(value => {
