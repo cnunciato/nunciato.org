@@ -12,7 +12,7 @@ import path from "path";
  * @param publicUrl
  * @param parent
  *
- * Deploys to Amazon AppRunner
+ * Deploys to Amazon S3 and CloudFront.
  */
 export function getStaticSite(
     domain: string,
@@ -20,6 +20,13 @@ export function getStaticSite(
     domainName: string,
     sourcePath: string,
     publicUrl: string,
+    bucketProxies:
+        | {
+              requestPath: string;
+              destinationBucket: string;
+              region: string;
+          }[]
+        | null,
     parent: pulumi.ComponentResource,
 ) {
     const indexDocument = "index.html";
@@ -105,38 +112,83 @@ export function getStaticSite(
         { parent },
     );
 
+    const baseCacheBehavior = {
+        targetOriginId: bucket.arn,
+        viewerProtocolPolicy: "redirect-to-https",
+        allowedMethods: ["GET", "HEAD", "OPTIONS"],
+        cachedMethods: ["GET", "HEAD", "OPTIONS"],
+        defaultTtl: 600,
+        maxTtl: 600,
+        minTtl: 600,
+        forwardedValues: {
+            queryString: true,
+            cookies: {
+                forward: "all",
+            },
+        },
+    };
+
+    const origins: aws.types.input.cloudfront.DistributionOrigin[] = [
+        {
+            originId: bucket.arn,
+            domainName: bucket.websiteEndpoint,
+            customOriginConfig: {
+                originProtocolPolicy: "http-only",
+                httpPort: 80,
+                httpsPort: 443,
+                originSslProtocols: ["TLSv1.2"],
+            },
+        },
+    ];
+
+    if (bucketProxies) {
+        bucketProxies.forEach(proxy => {
+            origins.push({
+                originId: `arn:aws:s3:::${proxy.destinationBucket}`,
+                domainName: `${proxy.destinationBucket}.s3.${proxy.region}.amazonaws.com`,
+                customOriginConfig: {
+                    originProtocolPolicy: "http-only",
+                    httpPort: 80,
+                    httpsPort: 443,
+                    originSslProtocols: ["TLSv1.2"],
+                },
+            });
+        });
+    }
+
+    let orderedCacheBehaviors: aws.types.input.cloudfront.DistributionOrderedCacheBehavior[] = [];
+
+    if (bucketProxies) {
+        bucketProxies.forEach(proxy => {
+            orderedCacheBehaviors.push({
+                ...baseCacheBehavior,
+                targetOriginId: `arn:aws:s3:::${proxy.destinationBucket}`,
+                pathPattern: `${proxy.requestPath}/*`,
+                forwardedValues: {
+                    cookies: {
+                        forward: "none",
+                    },
+                    queryString: false,
+                    headers: [
+                        "Origin",
+                        "Access-Control-Request-Headers",
+                        "Access-Control-Request-Method",
+                    ],
+                },
+            });
+        });
+    }
+
     // Create a CloudFront CDN to distribute and cache the website.
     const cdn = new aws.cloudfront.Distribution(
         "cdn",
         {
             enabled: true,
-            origins: [
-                {
-                    originId: bucket.arn,
-                    domainName: bucket.websiteEndpoint,
-                    customOriginConfig: {
-                        originProtocolPolicy: "http-only",
-                        httpPort: 80,
-                        httpsPort: 443,
-                        originSslProtocols: ["TLSv1.2"],
-                    },
-                },
-            ],
+            origins,
             defaultCacheBehavior: {
-                targetOriginId: bucket.arn,
-                viewerProtocolPolicy: "redirect-to-https",
-                allowedMethods: ["GET", "HEAD", "OPTIONS"],
-                cachedMethods: ["GET", "HEAD", "OPTIONS"],
-                defaultTtl: 600,
-                maxTtl: 600,
-                minTtl: 600,
-                forwardedValues: {
-                    queryString: true,
-                    cookies: {
-                        forward: "all",
-                    },
-                },
+                ...baseCacheBehavior,
             },
+            orderedCacheBehaviors,
             priceClass: "PriceClass_100",
             customErrorResponses: [
                 {

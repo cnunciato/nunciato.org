@@ -14,7 +14,7 @@
         "deploy:dev": "npm run build && pulumi up --yes --stack dev",
         "deploy:production": "npm run build && pulumi up --yes --stack production",
         "destroy:dev": "pulumi destroy --yes --stack dev",
-        "destroy:production": "pulumi destroy --yes --stack production",
+        "destroy:production": "pulumi destroy --yes --stack production --refresh",
         "logs:dev": "pulumi logs --follow --stack dev",
         "logs:production": "pulumi logs --follow --stack production"
     }

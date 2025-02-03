@@ -7,6 +7,11 @@ interface AstroSiteArgs {
     domain: string;
     subdomain: string;
     output: "static" | "server";
+    bucketProxies?: {
+        requestPath: string;
+        destinationBucket: string;
+        region: string;
+    }[];
 }
 
 export class AstroSite extends pulumi.ComponentResource {
@@ -19,12 +24,21 @@ export class AstroSite extends pulumi.ComponentResource {
         const subdomain = args.subdomain;
         const domainName = `${subdomain}.${domain}`;
         const publicUrl = `https://${subdomain}.${domain}`;
+        const s3BucketMapping = args.bucketProxies;
         const sourcePath = args.sourcePath;
 
         if (args.output === "server") {
             getServerSite(domain, subdomain, domainName, sourcePath, publicUrl, this);
         } else {
-            getStaticSite(domain, subdomain, domainName, sourcePath, publicUrl, this);
+            getStaticSite(
+                domain,
+                subdomain,
+                domainName,
+                sourcePath,
+                publicUrl,
+                s3BucketMapping || null,
+                this,
+            );
         }
 
         this.url = pulumi.output(publicUrl);

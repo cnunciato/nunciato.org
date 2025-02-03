@@ -25,6 +25,13 @@ const site = new AstroSite("site", {
     domain,
     subdomain,
     output,
+    bucketProxies: [
+        {
+            requestPath: "/audio",
+            destinationBucket: "cnunciato-website-media",
+            region: "us-east-1",
+        },
+    ],
 });
 
 log.info("Deploying media processor...");

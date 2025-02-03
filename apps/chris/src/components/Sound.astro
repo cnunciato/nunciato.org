@@ -1,7 +1,6 @@
 ---
 const { file } = Astro.props;
-const dataUrl = `/api/audio?f=${file}`;
-const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}`;
+const audioUrl = `/audio/${file}`;
 ---
 
 <div class="relative h-56 w-full">
@@ -14,7 +13,7 @@ const audioUrl = `https://s3.amazonaws.com/cnunciato-website-media/audio/${file}
 
 <audio id="player" controls class="rounded shadow w-full block mt-2" src={audioUrl}></audio>
 
-<script define:vars={{ dataUrl }}>
+<script define:vars={{ audioUrl }}>
     const player = document.querySelector("#player");
     const samples = 1000;
 
