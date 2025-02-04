@@ -10,17 +10,17 @@ import Video from "../../components/Video.astro";
 export async function getStaticPaths() {
     const videos = (await getCollection("videos", noDrafts)).sort(byDate);
 
-    return videos.map(photo => {
+    return videos.map(video => {
         return {
             params: {
-                slug: photo.slug,
+                slug: video.slug,
             },
-            props: { photo },
+            props: { video },
         };
     });
 }
 
-const { photo: props } = Astro.props;
+const { video: props } = Astro.props;
 const { title, description, video, date } = props.data;
 const { Content } = await props.render();
 

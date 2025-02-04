@@ -7,12 +7,13 @@ import Prose from "../components/Prose.astro";
 import { noDrafts, byDate } from "../utils";
 
 type Props = CollectionEntry<"words">["data"] & { slug: string };
-const { title, description, slug, canonical } = Astro.props;
+const { title, description, slug, canonical, photo } = Astro.props;
 
 const words = (await getCollection("words", noDrafts)).sort(byDate);
+const preview = photo?.preview?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/");
 ---
 
-<DefaultLayout title={title} description={description || ""} canonical={canonical}>
+<DefaultLayout title={title} description={description || ""} image={preview} canonical={canonical}>
     <div class="flex flex-col lg:flex-row">
         <nav class="lg:w-2/12 order-last lg:order-first mt-4 lg:mt-0 lg:pr-4">
             <ol class="list-none list-outside">
