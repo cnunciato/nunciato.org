@@ -10,7 +10,7 @@ type Props = CollectionEntry<"words">["data"] & { slug: string };
 const { title, description, slug, canonical, photo } = Astro.props;
 
 const words = (await getCollection("words", noDrafts)).sort(byDate);
-const preview = photo?.preview?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/");
+const preview = photo.preview?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/");
 ---
 
 <DefaultLayout title={title} description={description || ""} image={preview} canonical={canonical}>

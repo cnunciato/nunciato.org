@@ -2,6 +2,8 @@
 title: Whoa! Has it really been that long?
 date: 2024-09-02
 draft: true
+photo:
+    preview:
 ---
 
 Two years ago now -- two _years!_ -- I [wrote a post](/words/its-way-too-quiet-in-here) about how I was totally going to start writing more blog posts. I was feeling pretty good about it, too. I'd just started a new, more content-focused role at work (so I was gearing up to do a bunch more writing in general), I was ready to pick things back up with [my book](https://leanpub.com/pulumi), I'd just put together the beginnings of a [companion site](https://pulumibook.info/) for it, and had rewritten this site in Hugo, having spent a year or two wrestling with Next.js and finally deciding it was too big a pain to deal with anymore. I was excited and ready to get going.

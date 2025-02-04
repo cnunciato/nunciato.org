@@ -63,16 +63,14 @@ const words = defineCollection({
         summary: z.string().optional(),
         date: z.coerce.date(),
         draft: z.boolean().optional(),
-        photo: z
-            .object({
-                title: z.string().optional().nullable(),
-                caption: z.string().optional().nullable(),
-                preview: z.string().optional().nullable(),
-                thumb: z.string().optional().nullable(),
-                url: z.string().optional().nullable(),
-                created: z.coerce.date().optional().nullable(),
-            })
-            .optional(),
+        photo: z.object({
+            title: z.string().optional().nullable(),
+            caption: z.string().optional().nullable(),
+            preview: z.string().optional().nullable(),
+            thumb: z.string().optional().nullable(),
+            url: z.string().optional().nullable(),
+            created: z.coerce.date().optional().nullable(),
+        }),
         links: z.any().optional(),
         drop: z.any().optional(),
         canonical: z.string().optional(),
