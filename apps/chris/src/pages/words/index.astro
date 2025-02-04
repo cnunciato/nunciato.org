@@ -8,7 +8,13 @@ const [post] = (await getCollection("words", noDrafts)).sort(byDate);
 const { Content } = await post.render();
 ---
 
-<BlogLayout title="Words" description="All the blog posts." date={post.data.date} slug={post.slug}>
+<BlogLayout
+    title="Words"
+    description="All the blog posts."
+    date={post.data.date}
+    slug={post.slug}
+    photo={post.data.photo}
+>
     {
         post.data.photo?.preview && (
             <div class="md:float-right md:w-80 md:ml-2 md:mb-2">
