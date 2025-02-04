@@ -15,13 +15,8 @@ interface Props {
 }
 
 const { url, props } = Astro;
-const [_, collection, slug] = url.pathname.split("/");
-const {
-    title,
-    description,
-    image = `/api/og.png?type=${collection}&id=${slug}`,
-    canonical,
-} = props;
+
+const { title, description, image, canonical } = props;
 
 let canonicalURL = new URL(Astro.url.pathname, Astro.site);
 if (canonical) {
