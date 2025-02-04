@@ -23,7 +23,8 @@ export async function getStaticPaths() {
 const { photo: props } = Astro.props;
 const { title, description, video, date } = props.data;
 const { Content } = await props.render();
-const url = video?.url?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/");
+
+const preview = video?.preview?.replace("s3/", "https://s3.amazonaws.com/cnunciato-website-media/");
 
 const videos = (await getCollection("videos", noDrafts)).sort(byDate);
 const videoIndex = videos.findIndex(p => p.slug === props.slug);
@@ -40,7 +41,7 @@ if (videoIndex < videos.length - 1) {
 }
 ---
 
-<DefaultLayout title={title} description={description || ""}>
+<DefaultLayout title={title} description={description || ""} image={preview}>
     <div class="container mx-auto flex relative">
         <div class="hidden md:block w-1/12 text-center sticky top-0">
             {

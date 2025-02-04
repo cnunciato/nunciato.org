@@ -4,7 +4,6 @@
 import { siteTitle } from "../consts";
 import "../styles/global.css";
 
-// import { ViewTransitions } from "astro:transitions";
 import { SEO } from "astro-seo";
 
 interface Props {
@@ -16,11 +15,16 @@ interface Props {
 
 const { url, props } = Astro;
 
-const { title, description, image, canonical } = props;
+const { title, description, canonical } = props;
 
 let canonicalURL = new URL(Astro.url.pathname, Astro.site);
 if (canonical) {
     canonicalURL = new URL(canonical);
+}
+
+let { image } = props;
+if (!image) {
+    image = "";
 }
 ---
 
@@ -82,5 +86,3 @@ if (canonical) {
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <link rel="stylesheet" href="/styles/code.css" />
-
-<!-- <ViewTransitions /> -->
