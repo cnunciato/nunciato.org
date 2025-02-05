@@ -10,6 +10,7 @@ interface Props {
     title: string;
     description: string;
     image?: string;
+    video?: string;
     canonical?: string;
 }
 
@@ -22,9 +23,14 @@ if (canonical) {
     canonicalURL = new URL(canonical);
 }
 
-let { image } = props;
+let { image, video } = props;
+
 if (!image) {
     image = "";
+}
+
+if (!video) {
+    video = "";
 }
 ---
 
@@ -55,6 +61,7 @@ if (!image) {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
+<meta property="og:video" content={video} />
 
 <!-- RSS feeds -->
 <link

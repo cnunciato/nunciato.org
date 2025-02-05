@@ -8,14 +8,21 @@ type Props = {
     description: string;
     canonical?: string;
     image?: string;
+    video?: string;
 };
 
-const { title, description, canonical, image } = Astro.props;
+const { title, description, canonical, image, video } = Astro.props;
 ---
 
 <html lang="en">
     <head>
-        <BaseHead title={title} description={description} canonical={canonical} image={image} />
+        <BaseHead
+            title={title}
+            description={description}
+            canonical={canonical}
+            image={image}
+            video={video}
+        />
     </head>
     <body>
         <Header />
