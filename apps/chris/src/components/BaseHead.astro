@@ -11,26 +11,16 @@ interface Props {
     description: string;
     image?: string;
     video?: string;
+    audio?: string;
     canonical?: string;
 }
 
 const { url, props } = Astro;
-
-const { title, description, canonical } = props;
+const { title, description, canonical, image, video, audio } = props;
 
 let canonicalURL = new URL(Astro.url.pathname, Astro.site);
 if (canonical) {
     canonicalURL = new URL(canonical);
-}
-
-let { image, video } = props;
-
-if (!image) {
-    image = "";
-}
-
-if (!video) {
-    video = "";
 }
 ---
 
@@ -60,8 +50,9 @@ if (!video) {
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={image} />
-<meta property="og:video" content={video} />
+<meta property="og:image" content={image || ""} />
+<meta property="og:video" content={video || ""} />
+<meta property="og:audio" content={audio || ""} />
 
 <!-- RSS feeds -->
 <link
@@ -76,11 +67,14 @@ if (!video) {
         basic: {
             title: title,
             type: "website",
-            image,
+            image: image || "",
+
             url: url,
         },
         optional: {
             description,
+            video,
+            audio,
         },
     }}
 />
@@ -90,6 +84,6 @@ if (!video) {
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={image ? new URL(image, Astro.url) : ""} />
 
 <link rel="stylesheet" href="/styles/code.css" />

@@ -9,9 +9,10 @@ type Props = {
     canonical?: string;
     image?: string;
     video?: string;
+    audio?: string;
 };
 
-const { title, description, canonical, image, video } = Astro.props;
+const { title, description, canonical, image, video, audio } = Astro.props;
 ---
 
 <html lang="en">
@@ -22,6 +23,7 @@ const { title, description, canonical, image, video } = Astro.props;
             canonical={canonical}
             image={image}
             video={video}
+            audio={audio}
         />
     </head>
     <body>
