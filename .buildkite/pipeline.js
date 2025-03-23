@@ -12,6 +12,7 @@ const buildSteps = [
     `mise trust && mise install`,
     `export PATH="$(mise where node)/bin:$PATH"`,
     `export PATH="$(mise where pulumi)/bin:$PATH"`,
+    `echo $PATH`,
     `pulumi whoami`,
     `npm install && npm install --workspaces`,
     `npm run build`,
