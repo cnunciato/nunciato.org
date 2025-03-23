@@ -5,6 +5,7 @@ const pipeline = {
 };
 
 const buildSteps = [
+    `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
     `export PATH="/root/.local/bin:$PATH"`,
     `export PATH="/root/.local/share/mise/bin:$PATH"`,
