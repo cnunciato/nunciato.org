@@ -20,7 +20,7 @@ function touched(filePath) {
         .some(file => file.includes(filePath));
 }
 
-if (touched("apps/chris")) {
+if (touched("apps/chris") || true) {
     pipeline.steps.push(
         ...[
             {
@@ -28,8 +28,8 @@ if (touched("apps/chris")) {
                 commands: [
                     ...buildSteps,
                     // `npm run test -w chris`,
-                    `pulumi install`,
-                    `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
+                    // `pulumi install`,
+                    // `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
                 ],
             },
         ],
