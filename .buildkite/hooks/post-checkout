@@ -4,5 +4,4 @@ set -euo pipefail
 
 # curl -fsSL https://get.pulumi.com | sh
 curl https://mise.run | sh
-eval "$(mise activate bash)"
 # export PATH="/root/.local/bin:$PATH"
