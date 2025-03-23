@@ -5,10 +5,11 @@ const pipeline = {
 };
 
 const buildSteps = [
+    `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
-    `export PATH=/root/.local/bin:$PATH`,
-    `echo $PATH`,
-    `eval "$(mise activate)"`,
+    // `export PATH=/root/.local/bin:$PATH`,
+    // `echo $PATH`,
+    `eval "$(mise activate bash)"`,
     `echo $PATH`,
     `mise trust && mise install`,
     // `mise activate bash`,
