@@ -6,9 +6,10 @@ const pipeline = {
 
 const buildSteps = [
     `mise trust && mise install`,
-    `mise use --global node@latest && mise use --global pulumi@latest`,
+    // `mise use --global node@latest && mise use --global pulumi@latest`,
     // `which node && which pulumi`,
-    `pulumi whoami`,
+    // `pulumi whoami`,
+    `echo $PATH`,
     `npm install && npm install --workspaces`,
     `npm run build`,
 ];

@@ -4,5 +4,5 @@ set -euo pipefail
 
 # export PATH="/.pulumi/bin:$PATH" # Does this ever do anything? Suspect not.
 # export PATH="/root/.pulumi/bin:$PATH"
-export PATH="/root/.local/bin:$PATH"
+# export PATH="/root/.local/bin:$PATH"
 export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
