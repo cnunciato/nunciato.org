@@ -11,7 +11,7 @@ const buildSteps = [
     // `echo $PATH`,
     `eval "$(mise activate bash)"`,
     `echo $PATH`,
-    `mise trust && mise install`,
+    `mise trust && mise install --global node && mise install --global pulumi`,
     // `mise activate bash`,
 
     // `ls -al /root/.local/bin`,
