@@ -20,7 +20,7 @@ const buildSteps = [
 
     `echo "Installing workspaces..."`,
     `which npm`,
-    `npm install && npm install --workspaces`,
+    `npm install && npm install --workspaces && npm run build`,
 ];
 
 function touched(filePath) {
