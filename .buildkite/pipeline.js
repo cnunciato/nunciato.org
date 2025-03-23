@@ -9,6 +9,7 @@ const buildSteps = [
     `cp /root/.pulumi/bin/pulumi /usr/local/bin/`,
     `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
     `pulumi whoami`,
+    `pulumi install`,
     `npm install && npm install --workspaces`,
     `npm run build`,
 ];
