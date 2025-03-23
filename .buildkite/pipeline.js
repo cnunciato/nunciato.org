@@ -14,6 +14,8 @@ const buildSteps = [
     `export PATH="$$(mise where node)/bin:$$PATH"`,
     `export PATH="$$(mise where pulumi)/bin:$$PATH"`,
     `echo $$PATH`,
+    `ls -al $$(mise where pulumi)/bin/pulumi`,
+    `ls -al $$(mise where pulumi)/bin/node`,
     `pulumi whoami`,
     `mise activate `,
     // `npm install && npm install --workspaces`,
