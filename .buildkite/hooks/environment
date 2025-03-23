@@ -2,10 +2,10 @@
 
 set -euo pipefail
 
-export MISE_INSTALL_PATH="/usr/local/bin/mise"
-curl https://mise.run | sh
+# export MISE_INSTALL_PATH="/usr/local/bin/mise"
+# curl https://mise.run | sh
 
-mise install
-export PATH="$$(mise where pulumi)/pulumi:$$PATH"
-export PATH="$$(mise where node)/bin:$$PATH"
-export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
+# mise install
+# export PATH="$$(mise where pulumi)/pulumi:$$PATH"
+# export PATH="$$(mise where node)/bin:$$PATH"
+# export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"

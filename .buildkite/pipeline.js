@@ -5,12 +5,12 @@ const pipeline = {
 };
 
 const buildSteps = [
-    // `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
-    // `curl https://mise.run | sh`,
-    // `mise install`,
-    // `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
-    // `export PATH="$$(mise where node)/bin:$$PATH"`,
-    // `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
+    `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
+    `curl https://mise.run | sh`,
+    `mise install`,
+    `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
+    `export PATH="$$(mise where node)/bin:$$PATH"`,
+    `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
     `npm install && npm install --workspaces`,
 ];
 
@@ -28,7 +28,6 @@ if (touched("apps/chris") || true) {
                 label: ":hiking_boot: Build and deploy Chris's website",
                 commands: [
                     ...buildSteps,
-                    // `npm run test -w chris`,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
                 ],
             },
