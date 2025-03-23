@@ -8,7 +8,7 @@ const buildSteps = [
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
     `export PATH="/root/.local/bin:$PATH"`,
-    `export PATH="/root/.local/share/mise/bin:$PATH"`,
+    `export PATH="/root/.local/share/mise/installs/bin:$PATH"`,
     `mise trust && mise install`,
     `mise which pulumi`,
     `pulumi whoami`,
