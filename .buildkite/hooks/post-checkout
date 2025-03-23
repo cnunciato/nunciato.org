@@ -15,4 +15,7 @@ echo "Signing into Pulumi..."
 export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
 pulumi whoami
 
-npm install && npm install --workspaces && npm run build
+echo "Installing and building..."
+npm install
+npm install --workspaces
+npm run build
