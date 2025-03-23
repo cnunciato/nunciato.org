@@ -6,9 +6,9 @@ const pipeline = {
 
 const buildSteps = [
     `curl https://mise.run | bash`,
+    `eval "$(/root/.local/bin/mise activate bash)"`,
     `mise trust && mise install`,
     // `mise activate bash`,
-    `eval "$(/root/.local/bin/mise activate bash)"`,
     `echo $PATH`,
     `ls -al /root/.local/bin`,
     `npm install && npm install --workspaces`,
