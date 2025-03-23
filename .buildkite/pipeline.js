@@ -7,8 +7,8 @@ const pipeline = {
 const buildSteps = [
     `curl -fsSL https://get.pulumi.com | sh`,
     `cp /root/.pulumi/bin/pulumi /usr/local/bin/`,
-    `pulumi whoami`,
     `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
+    `pulumi whoami`,
     `npm install && npm install --workspaces`,
     `npm run build`,
 ];
