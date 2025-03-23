@@ -17,6 +17,7 @@ const buildSteps = [
     `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
     `which mise`,
     `mise reshim`,
+    `pulumi whoami`,
     // `npm install && npm install --workspaces`,
     // `npm run build`,
 ];
