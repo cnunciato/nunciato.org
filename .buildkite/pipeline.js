@@ -6,8 +6,8 @@ const pipeline = {
 
 const buildSteps = [
     `mise trust && mise install`,
-    `mise activate bash`,
-    `eval "$(mise activate bash)"`,
+    `mise activate sh`,
+    `eval "$(mise activate sh)"`,
     `echo $PATH`,
     `ls -al /root/.local/bin`,
     `npm install && npm install --workspaces`,
