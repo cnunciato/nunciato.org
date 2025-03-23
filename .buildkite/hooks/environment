@@ -2,6 +2,6 @@
 
 set -euo pipefail
 
-export PATH="/root/.local/bin"
-export PATH="/root/.local/share/mise/bin"
+export PATH="/root/.local/bin:$PATH"
+export PATH="/root/.local/share/mise/bin:$PATH"
 export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
