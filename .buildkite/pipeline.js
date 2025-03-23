@@ -5,7 +5,7 @@ const pipeline = {
 };
 
 const buildSteps = [
-    `export MISE_DATA_DIR="/usr/local/share/mise"`,
+    // `export MISE_DATA_DIR="/usr/local/share/mise"`,
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
     `eval "$(mise activate bash)"`,
@@ -20,6 +20,7 @@ const buildSteps = [
     `whoami`,
     `echo $HOME`,
     `echo $PATH`,
+    `export PATH="/usr/local/share/mise/bin:$PATH"`,
     `pulumi whoami`,
     `mise activate `,
     // `npm install && npm install --workspaces`,
