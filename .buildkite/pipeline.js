@@ -17,7 +17,8 @@ const buildSteps = [
     // `pulumi whoami`,
     // `echo "Installing workspaces..."`,
     // `which npm`,
-    `npm install && npm install --workspaces && npm run build`,
+    // `npm install && npm install --workspaces && npm run build`,
+    // `npm run build`,
 ];
 
 function touched(filePath) {
