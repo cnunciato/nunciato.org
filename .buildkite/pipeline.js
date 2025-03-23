@@ -9,8 +9,7 @@ const buildSteps = [
     `curl https://mise.run | sh`,
     `eval "$$(mise activate bash)"`,
     `mise install`,
-    `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
-    `export PATH="/usr/local/share/mise/bin:$$PATH"`,
+
     `export PATH="$$(mise where node)/bin:$$PATH"`,
     `export PATH="$$(mise where pulumi)/bin:$$PATH"`,
     `echo $$PATH`,
@@ -20,6 +19,7 @@ const buildSteps = [
     `ls -al $$(mise where node)/bin`,
     `pulumi whoami`,
     `mise activate `,
+    // `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
     // `npm install && npm install --workspaces`,
     // `npm run build`,
 ];
