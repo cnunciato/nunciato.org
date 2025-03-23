@@ -5,6 +5,8 @@
         "start": "npm run dev",
         "build": "turbo build",
         "dev": "turbo dev",
+        "chris": "npm run dev -w chris",
+        "oliver": "npm run dev -w oliver",
         "lint": "turbo lint",
         "format": "prettier . --write --config ./prettier.config.json",
         "clean": "git clean -fdX"
