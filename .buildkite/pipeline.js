@@ -13,6 +13,7 @@ const buildSteps = [
     `export PATH="$(mise where node)/bin:$PATH"`,
     `export PATH="$(mise where pulumi)/bin:$PATH"`,
     `echo $PATH`,
+    `curl -fsSL https://get.pulumi.com | sh`,
     `pulumi whoami`,
     `npm install && npm install --workspaces`,
     `npm run build`,
