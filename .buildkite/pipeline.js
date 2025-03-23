@@ -9,7 +9,7 @@ const buildSteps = [
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
     `eval "$(mise activate bash)"`,
-    `mise install`,
+    `mise install && pulumi whoami`,
     // `ls -al $(mise where node)/bin/`,
     // `cp "$(mise where node)/bin/node /usr/local/bin/"`,
     // `cp "$(mise where node)/bin/npm /usr/local/bin/"`,
