@@ -7,17 +7,12 @@ const pipeline = {
 const buildSteps = [
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
-    // `eval "$$(mise activate bash)"`,
     `mise install`,
     `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
     `export PATH="$$(mise where node)/bin:$$PATH"`,
     `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
-    `pulumi whoami`,
-    `which node`,
-    `which npm`,
-    `which npx`,
-    // `npm install && npm install --workspaces`,
-    // `npm run build`,
+    `npm install && npm install --workspaces`,
+    `npm run build`,
 ];
 
 function touched(filePath) {
