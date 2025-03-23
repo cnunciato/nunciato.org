@@ -7,14 +7,9 @@ const pipeline = {
 const buildSteps = [
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
-    // `export PATH=/root/.local/bin:$PATH`,
-    // `echo $PATH`,
-    `eval "$(mise activate bash)"`,
-    `echo $PATH`,
-    `mise trust && mise install && mise use --global node && mise use --global pulumi`,
-    // `mise activate bash`,
-
-    // `ls -al /root/.local/bin`,
+    `mise trust && mise install`,
+    `mise which pulumi`,
+    `pulumi whoami`,
     `npm install && npm install --workspaces`,
     `npm run build`,
 ];
