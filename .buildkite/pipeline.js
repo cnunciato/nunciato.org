@@ -7,11 +7,8 @@ const pipeline = {
 const buildSteps = [
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
-    `eval "$$(mise activate bash)"`,
+    // `eval "$$(mise activate bash)"`,
     `mise install`,
-    `mise where pulumi`,
-    `ls -al $$(mise where pulumi)/pulumi/`,
-    `ls -al $$(mise where node)/bin/`,
     `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
     `export PATH="$$(mise where node)/bin:$$PATH"`,
     `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
