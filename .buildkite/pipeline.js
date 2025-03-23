@@ -6,8 +6,8 @@ const pipeline = {
 
 const buildSteps = [
     `curl https://mise.run | sh`,
-    // `export PATH="/root/.local/bin"`,
-    // `export PATH="/root/.local/share/mise/bin"`,
+    `export PATH="/root/.local/bin:$PATH"`,
+    `export PATH="/root/.local/share/mise/bin:$PATH"`,
     `mise trust && mise install`,
     `mise which pulumi`,
     `pulumi whoami`,
