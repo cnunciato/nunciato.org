@@ -5,11 +5,11 @@ const pipeline = {
 };
 
 const buildSteps = [
-    `curl -fsSL https://get.pulumi.com | sh`,
-    `cp /root/.pulumi/bin/pulumi /usr/local/bin/`,
+    `export export MISE_DATA_DIR=/usr/local/share/mise`,
+    `curl https://mise.run | sh,`,
     `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
-    `npm install && npm install --workspaces`,
-    `npm run build`,
+    // `npm install && npm install --workspaces`,
+    // `npm run build`,
 ];
 
 function touched(filePath) {
@@ -19,7 +19,7 @@ function touched(filePath) {
         .some(file => file.includes(filePath));
 }
 
-if (touched("apps/chris") || true) {
+if (touched("apps/chris")) {
     pipeline.steps.push(
         ...[
             {
