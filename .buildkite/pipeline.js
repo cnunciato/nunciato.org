@@ -5,6 +5,7 @@ const pipeline = {
 };
 
 const buildSteps = [
+    `curl https://mise.run | bash`,
     `mise trust && mise install`,
     // `mise activate bash`,
     // `eval "$(mise activate bash)"`,
