@@ -11,6 +11,8 @@ const buildSteps = [
     `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
     `export PATH="$$(mise where node)/bin:$$PATH"`,
     `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
+    `pulumi whoami`,
+    `echo "Installing.."`,
     `npm install && npm install --workspaces`,
 ];
 
