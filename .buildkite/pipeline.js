@@ -5,14 +5,11 @@ const pipeline = {
 };
 
 const buildSteps = [
-    `which node`,
-    `which npm`,
-    `export PATH=/nope:$PATH`,
-    `echo $PATH`,
     `export MISE_DATA_DIR="/usr/local/share/mise"`,
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
     `mise install`,
+    `mise where node`,
     `cp "$(mise where node)/bin/node /usr/local/bin/"`,
     `cp "$(mise where node)/bin/npm /usr/local/bin/"`,
     `cp "$(mise where node)/bin/pulumi /usr/local/bin/"`,
