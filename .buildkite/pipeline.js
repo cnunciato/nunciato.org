@@ -5,11 +5,11 @@ const pipeline = {
 };
 
 const buildSteps = [
-    `Installing Mise...`,
+    `echo "Installing Mise..."`,
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
 
-    `Installing Mise-managed tooling...`,
+    `echo "Installing Mise-managed tooling..."`,
     `mise install`,
     `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
     `export PATH="$$(mise where node)/bin:$$PATH"`,
