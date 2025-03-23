@@ -10,7 +10,7 @@ export PATH="$$(mise where pulumi)/pulumi:$$PATH"
 export PATH="$$(mise where node)/bin:$$PATH"
 export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
 
-which node
-which npm
-which npx
-which pulumi
+# which node
+# which npm
+# which npx
+# which pulumi
