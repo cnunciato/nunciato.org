@@ -6,6 +6,6 @@ set -euo pipefail
 # export PATH="/root/.pulumi/bin:$PATH"
 # export PATH="/root/.local/bin:$PATH"
 # eval "$(mise activate bash)"
-eval "$(/root/.local/bin/mise activate bash)"
+# eval "$(/root/.local/bin/mise activate bash)"
 # echo "eval \"\$(/root/.local/bin/mise activate bash)\"" >> ~/.bashrc
 export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"

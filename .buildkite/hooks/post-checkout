@@ -3,6 +3,6 @@
 set -euo pipefail
 
 # curl -fsSL https://get.pulumi.com | sh
-curl https://mise.run | bash
-echo "eval \"\$(/root/.local/bin/mise activate bash)\"" >> ~/.bashrc
+# curl https://mise.run | bash
+# echo "eval \"\$(/root/.local/bin/mise activate bash)\"" >> ~/.bashrc
 # export PATH="/root/.local/bin:$PATH"
