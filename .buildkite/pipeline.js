@@ -9,9 +9,9 @@ const buildSteps = [
     `curl https://mise.run | sh`,
     `eval "$$(mise activate bash)"`,
     `mise install`,
-
-    `export PATH="$$(mise where node)/bin:$$PATH"`,
-    `export PATH="$$(mise where pulumi)/bin:$$PATH"`,
+    `mise where pulumi`,
+    // `export PATH="$$(mise where node)/bin:$$PATH"`,
+    // `export PATH="$$(mise where pulumi)/bin:$$PATH"`,
     `echo $$PATH`,
     // `ls -al $$(mise where pulumi)/bin/pulumi`,
     // `ls -al $$(mise where node)/bin/node`,
