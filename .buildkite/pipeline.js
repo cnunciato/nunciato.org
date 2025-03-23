@@ -10,6 +10,7 @@ const buildSteps = [
     // `which node && which pulumi`,
     // `pulumi whoami`,
     `echo $PATH`,
+    `ls -al /root/.local/bin`,
     `npm install && npm install --workspaces`,
     `npm run build`,
 ];
