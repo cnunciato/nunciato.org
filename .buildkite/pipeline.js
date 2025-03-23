@@ -5,13 +5,19 @@ const pipeline = {
 };
 
 const buildSteps = [
+    `Installing Mise...`,
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
+
+    `Installing Mise-managed tooling...`,
     `mise install`,
     `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
     `export PATH="$$(mise where node)/bin:$$PATH"`,
+
+    `Signing into Pulumi...`,
     `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
     `pulumi whoami`,
+
     `echo "Installing.."`,
     `npm install && npm install --workspaces`,
 ];
