@@ -1,10 +1,14 @@
 const { execSync } = require("child_process");
 
 const pipeline = {
-    steps: ["mise trust", "mise install"],
+    steps: [],
 };
 
-const buildSteps = [`npm install && npm install --workspaces`, `npm run build`];
+const buildSteps = [
+    `mise trust && mise install`,
+    `npm install && npm install --workspaces`,
+    `npm run build`,
+];
 
 function touched(filePath) {
     return execSync("git diff --name-only HEAD~1 HEAD")
