@@ -6,10 +6,13 @@ const pipeline = {
 
 const buildSteps = [
     `curl https://mise.run | sh`,
-    `eval "$(/root/.local/bin/mise activate)"`,
+    `export PATH=/root/.local/bin:$PATH`,
+    `echo $PATH`,
+    `eval "$(mise activate)"`,
+    `echo $PATH`,
     `mise trust && mise install`,
     // `mise activate bash`,
-    `echo $PATH`,
+
     `ls -al /root/.local/bin`,
     `npm install && npm install --workspaces`,
     `npm run build`,
