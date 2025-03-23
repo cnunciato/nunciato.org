@@ -4,5 +4,5 @@ set -euo pipefail
 
 # curl -fsSL https://get.pulumi.com | sh
 curl https://mise.run | sh
-mise trust
-mise install
+
+export PATH="/root/.local/bin:$PATH"

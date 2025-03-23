@@ -1,7 +1,7 @@
 const { execSync } = require("child_process");
 
 const pipeline = {
-    steps: [],
+    steps: ["mise trust", "mise install"],
 };
 
 const buildSteps = [`npm install && npm install --workspaces`, `npm run build`];
