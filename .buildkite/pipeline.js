@@ -8,8 +8,6 @@ const buildSteps = [
     `curl -fsSL https://get.pulumi.com | sh`,
     `cp /root/.pulumi/bin/pulumi /usr/local/bin/`,
     `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
-    `pulumi whoami`,
-    `pulumi install`,
     `npm install && npm install --workspaces`,
     `npm run build`,
 ];
@@ -29,7 +27,7 @@ if (touched("apps/chris") || true) {
                 commands: [
                     ...buildSteps,
                     // `npm run test -w chris`,
-                    `pwd`,
+                    `pulumi install`,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
                 ],
             },
