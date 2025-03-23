@@ -6,7 +6,7 @@ const pipeline = {
 
 const buildSteps = [
     `export export MISE_DATA_DIR=/usr/local/share/mise`,
-    `curl https://mise.run | sh,`,
+    `curl https://mise.run | sh`,
     `mise install`,
     `export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
     // `npm install && npm install --workspaces`,
