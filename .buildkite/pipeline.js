@@ -10,6 +10,8 @@ const buildSteps = [
     `eval "$$(mise activate bash)"`,
     `mise install`,
     `mise where pulumi`,
+    `ls -al $$(mise where pulumi)`,
+    `ls -al $$(mise where node)`,
     `export PATH="$$(mise where pulumi):$$PATH"`,
     `export PATH="$$(mise where node):$$PATH"`,
     `echo $$PATH`,
