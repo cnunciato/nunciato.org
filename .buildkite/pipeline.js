@@ -5,6 +5,8 @@ const pipeline = {
 };
 
 const buildSteps = [
+    `which node`,
+    `which npm`,
     `export PATH=/nope:$PATH`,
     `echo $PATH`,
     `export MISE_DATA_DIR="/usr/local/share/mise"`,
