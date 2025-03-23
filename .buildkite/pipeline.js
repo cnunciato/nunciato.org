@@ -8,6 +8,7 @@ const buildSteps = [
     `export MISE_DATA_DIR="/usr/local/share/mise"`,
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
+    `eval "$(mise activate bash)"``mise install`,
     `mise use --global node@latest`,
     `mise use --global npm@latest`,
     `mise use --global pulumi@latest`,
