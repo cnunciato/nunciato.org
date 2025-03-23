@@ -13,6 +13,7 @@ const buildSteps = [
     `export PATH="/usr/local/share/mise/bin:$$PATH"`,
     `export PATH="$$(mise where node)/bin:$$PATH"`,
     `export PATH="$$(mise where pulumi)/bin:$$PATH"`,
+    `echo $$PATH`,
     `pulumi whoami`,
     `mise activate `,
     // `npm install && npm install --workspaces`,
