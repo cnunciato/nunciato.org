@@ -5,7 +5,6 @@ const pipeline = {
 };
 
 const buildSteps = [
-    // `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
     `mise trust && mise install`,
     `mise which pulumi`,
