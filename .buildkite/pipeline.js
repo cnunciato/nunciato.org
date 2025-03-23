@@ -10,7 +10,7 @@ const buildSteps = [
     `eval "$$(mise activate bash)"`,
     `mise install`,
     `mise where pulumi`,
-    `ls -al $$(mise where pulumi)`,
+    `ls -al $$(mise where pulumi)/pulumi`,
     // `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
     // `npm install && npm install --workspaces`,
     // `npm run build`,
