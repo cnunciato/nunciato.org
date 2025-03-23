@@ -19,6 +19,7 @@ const buildSteps = [
     `pulumi whoami`,
 
     `echo "Installing.."`,
+    `which npm`,
     `npm install && npm install --workspaces`,
 ];
 
