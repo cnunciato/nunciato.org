@@ -4,7 +4,25 @@ const pipeline = {
     steps: [],
 };
 
-const buildSteps = [];
+const buildSteps = [
+    `echo "Installing Mise..."`,
+    `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
+    `curl https://mise.run | sh`,
+
+    `echo "Installing Mise-managed tooling..."`,
+    `mise install`,
+    `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
+    `export PATH="$$(mise where node)/bin:$$PATH"`,
+
+    `echo "Signing into Pulumi..."`,
+    `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
+    `pulumi whoami`,
+
+    `echo "Installing workspaces..."`,
+    `npm install`,
+    `npm install --workspaces`,
+    `npm run build`,
+];
 
 function touched(filePath) {
     return execSync("git diff --name-only HEAD~1 HEAD")
@@ -13,7 +31,7 @@ function touched(filePath) {
         .some(file => file.includes(filePath));
 }
 
-if (touched("apps/chris")) {
+if (touched("apps/chris") || true) {
     pipeline.steps.push(
         ...[
             {

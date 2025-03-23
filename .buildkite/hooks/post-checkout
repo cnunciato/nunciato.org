@@ -2,20 +2,22 @@
 
 set -euo pipefail
 
-echo "Installing Mise..."
-export MISE_INSTALL_PATH="/usr/local/bin/mise"
-curl https://mise.run | sh
+# This works, but then you have to run it ever time.
 
-echo "Installing Mise-managed tooling..."
-mise install
-export PATH="$(mise where pulumi)/pulumi:$PATH"
-export PATH="$(mise where node)/bin:$PATH"
+# echo "Installing Mise..."
+# export MISE_INSTALL_PATH="/usr/local/bin/mise"
+# curl https://mise.run | sh
 
-echo "Signing into Pulumi..."
-export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
-pulumi whoami
+# echo "Installing Mise-managed tooling..."
+# mise install
+# export PATH="$(mise where pulumi)/pulumi:$PATH"
+# export PATH="$(mise where node)/bin:$PATH"
 
-echo "Installing and building..."
-npm install
-npm install --workspaces
-npm run build
+# echo "Signing into Pulumi..."
+# export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
+# pulumi whoami
+
+# echo "Installing and building..."
+# npm install
+# npm install --workspaces
+# npm run build
