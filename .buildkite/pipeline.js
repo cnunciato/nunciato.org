@@ -21,6 +21,7 @@ if (touched("apps/chris") || true) {
                 commands: [
                     ...buildSteps,
                     // `npm run test -w chris`,
+                    `pwd`,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
                 ],
             },
