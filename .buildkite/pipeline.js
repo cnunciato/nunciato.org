@@ -14,7 +14,7 @@ const buildSteps = [
     `mise trust && mise install`,
     // `mise activate bash`,
 
-    `ls -al /root/.local/bin`,
+    // `ls -al /root/.local/bin`,
     `npm install && npm install --workspaces`,
     `npm run build`,
 ];
