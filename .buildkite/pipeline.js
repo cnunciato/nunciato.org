@@ -13,7 +13,7 @@ function touched(filePath) {
         .some(file => file.includes(filePath));
 }
 
-if (touched("apps/chris") || true) {
+if (touched("apps/chris")) {
     pipeline.steps.push(
         ...[
             {
