@@ -4,18 +4,18 @@ const pipeline = {
     steps: [],
 };
 
-const buildSteps = [
+const installAndBuildCommands = [
     `echo "Installing Mise..."`,
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
 
     `echo "Installing Mise-managed tooling..."`,
     `mise install`,
-    `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
-    `export PATH="$$(mise where node)/bin:$$PATH"`,
+    `export PATH="\$(mise where pulumi)/pulumi:\$PATH"`,
+    `export PATH="\$(mise where node)/bin:\$PATH"`,
 
     `echo "Signing into Pulumi..."`,
-    `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
+    `export PULUMI_ACCESS_TOKEN="\$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
     `pulumi whoami`,
 
     `echo "Installing workspaces..."`,
@@ -37,7 +37,7 @@ if (touched("apps/chris") || true) {
             {
                 label: ":hiking_boot: Build and deploy Chris's website",
                 commands: [
-                    ...buildSteps,
+                    ...installAndBuildCommands.join(" && "),
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
                 ],
             },
@@ -51,7 +51,7 @@ if (touched("apps/oliver")) {
             {
                 label: ":pig: Build and deploy Oliver's website",
                 commands: [
-                    ...buildSteps,
+                    ...installAndBuildCommands.join(" && "),
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
                 ],
             },

@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # This works, but then you have to run it ever time, which makes the initial
-# pipeline-upload step unnecessarily slow.
+# pipeline-upload step unnecessarily slow. So
 
 # echo "Installing Mise..."
 export MISE_INSTALL_PATH="/usr/local/bin/mise"
