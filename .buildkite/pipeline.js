@@ -4,6 +4,8 @@ const pipeline = {
     steps: [],
 };
 
+// NB: Escaping dollar signs here pretty much has to use "$$", as "\$" doesn't
+// work (or would presumably have to be double-escaped as "\\$" in JS).
 const installAndBuildCommands = [
     `echo "Installing Mise..."`,
     `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
