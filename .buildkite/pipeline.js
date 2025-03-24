@@ -37,7 +37,7 @@ pipeline.steps.push(
         {
             label: ":hiking_boot: Build and deploy Chris's website",
             commands: [
-                ...installAndBuildCommands.join(" && "),
+                ...installAndBuildCommands,
                 `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
             ],
         },
@@ -50,7 +50,7 @@ if (touched("apps/oliver")) {
             {
                 label: ":pig: Build and deploy Oliver's website",
                 commands: [
-                    ...installAndBuildCommands.join(" && "),
+                    ...installAndBuildCommands,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
                 ],
             },
