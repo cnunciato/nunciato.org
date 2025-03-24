@@ -31,19 +31,18 @@ function touched(filePath) {
         .some(file => file.includes(filePath));
 }
 
-if (touched("apps/chris") || true) {
-    pipeline.steps.push(
-        ...[
-            {
-                label: ":hiking_boot: Build and deploy Chris's website",
-                commands: [
-                    ...installAndBuildCommands.join(" && "),
-                    `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
-                ],
-            },
-        ],
-    );
-}
+// Build my site on every push.
+pipeline.steps.push(
+    ...[
+        {
+            label: ":hiking_boot: Build and deploy Chris's website",
+            commands: [
+                ...installAndBuildCommands.join(" && "),
+                `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
+            ],
+        },
+    ],
+);
 
 if (touched("apps/oliver")) {
     pipeline.steps.push(
