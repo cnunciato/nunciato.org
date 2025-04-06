@@ -7,7 +7,7 @@ export MISE_INSTALL_PATH="$(pwd)/tools/mise"
 export MISE_DATA_DIR="${MISE_INSTALL_PATH}"
 export MISE_CONFIG_DIR="${MISE_INSTALL_PATH}"
 export MISE_CACHE_DIR="${MISE_INSTALL_PATH}/cache"
-export PATH="${MISE_INSTALL_PATH}/bin:$PATH"
+export PATH="${MISE_INSTALL_PATH}:$PATH"
 echo $PATH
 curl https://mise.run | sh
 ls -al $MISE_INSTALL_PATH
