@@ -11,7 +11,7 @@ export MISE_CONFIG_DIR="/mise"
 export MISE_CACHE_DIR="/mise/cache"
 export MISE_INSTALL_PATH="/usr/local/bin/mise"
 export PATH="/mise/shims:$PATH"
-RUN curl https://mise.run | sh
+curl https://mise.run | sh
 
 # echo "Installing Mise-managed tooling..."
 mise install
