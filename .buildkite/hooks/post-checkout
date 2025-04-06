@@ -2,11 +2,11 @@
 
 set -euo pipefail
 
-# This works, but then you have to run it ever time, which makes the initial
-# pipeline-upload step unnecessarily slow. So
-
 # echo "Installing Mise..."
 export MISE_INSTALL_PATH="$(pwd)/tools/mise"
+export MISE_DATA_DIR="${MISE_INSTALL_PATH}"
+export MISE_CONFIG_DIR="${MISE_INSTALL_PATH}"
+export MISE_CACHE_DIR="${MISE_INSTALL_PATH}/cache"
 export PATH="${MISE_INSTALL_PATH}/bin:$PATH"
 curl https://mise.run | sh
 
