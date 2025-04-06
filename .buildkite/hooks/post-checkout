@@ -10,6 +10,7 @@ export MISE_DATA_DIR="/mise"
 export MISE_CONFIG_DIR="/mise"
 export MISE_CACHE_DIR="/mise/cache"
 export MISE_INSTALL_PATH="/usr/local/bin/mise"
+echo $PATH
 export PATH="/mise/shims:$PATH"
 curl https://mise.run | sh
 
