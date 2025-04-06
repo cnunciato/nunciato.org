@@ -9,7 +9,7 @@ const pipeline = {
 const installAndBuildCommands = [
     `echo "Installing Mise..."`,
     `curl https://mise.run | sh`,
-    `export PATH="/Users/agent/.local/bin:$$PATH"`,
+    `export PATH="$$HOME/.local/bin:$$PATH"`,
 
     `echo "Installing Mise-managed tooling..."`,
     `mise activate --shims`,
