@@ -8,6 +8,7 @@ set -euo pipefail
 # echo "Installing Mise..."
 export MISE_INSTALL_PATH="$(pwd)/tools/mise"
 export PATH="${MISE_INSTALL_PATH}/bin:$PATH"
+curl https://mise.run | sh
 
 # echo "Installing Mise-managed tooling..."
 mise install
