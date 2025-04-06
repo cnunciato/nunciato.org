@@ -8,6 +8,7 @@ export MISE_DATA_DIR="${MISE_INSTALL_PATH}"
 export MISE_CONFIG_DIR="${MISE_INSTALL_PATH}"
 export MISE_CACHE_DIR="${MISE_INSTALL_PATH}/cache"
 export PATH="${MISE_INSTALL_PATH}/bin:$PATH"
+echo $PATH
 curl https://mise.run | sh
 
 # echo "Installing Mise-managed tooling..."
