@@ -3,11 +3,11 @@
 set -euo pipefail
 
 # echo "Installing Mise..."
-curl https://mise.run | MISE_INSTALL_PATH="$(pwd)/tools/mise" sh
+curl https://mise.run | sh
 
-# echo "Installing Mise-managed tooling..."
-$(pwd)/tools/mise install
+# # echo "Installing Mise-managed tooling..."
+# $(pwd)/tools/mise generate bootstrap
 
-export PATH="$(mise where node)/bin:$PATH"
+# export PATH="$(mise where node)/bin:$PATH"
 which node
 node -v
