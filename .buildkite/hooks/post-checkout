@@ -5,7 +5,9 @@ set -euo pipefail
 # echo "Installing Mise..."
 curl https://mise.run | sh
 echo "eval \"\$(/Users/agent/.local/bin/mise activate zsh)\"" >> "/Users/agent/.zshrc"
-source "/Users/agent/.zshrc"
+# source "/Users/agent/.zshrc"
+export PATH="$(pwd)/.local/bin:$PATH"
+which mise
 
 which node
 node -v
