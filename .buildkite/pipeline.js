@@ -4,9 +4,7 @@ const pipeline = {
     steps: [],
 };
 
-// NB: The only way to escape the dollar signs (is necessary) here is using`
-// "$$". Backslash ("\$") doesn't work (or would presumably have to be
-// double-escaped as "\\$" in JS).
+// NB: The only way to escape the dollar signs here is using` "$$".
 // https://buildkite.com/docs/agent/v3/cli-pipeline#environment-variable-substitution
 const installAndBuildCommands = [
     `echo "Installing Mise..."`,
