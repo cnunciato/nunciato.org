@@ -6,6 +6,7 @@ set -euo pipefail
 curl https://mise.run | sh
 export PATH="/Users/agent/.local/bin:$PATH"
 
+mise activate
 mise install
 
 which node
