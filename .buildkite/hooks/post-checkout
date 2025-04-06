@@ -3,9 +3,7 @@
 set -euo pipefail
 
 # echo "Installing Mise..."
-export MISE_INSTALL_PATH="$(pwd)/tools/mise"
-curl https://mise.run | sh
-./tools/mise activate zsh | source
+curl https://mise.run | MISE_INSTALL_PATH="$(pwd)/tools/mise" sh
 
 # echo "Installing Mise-managed tooling..."
 mise install
