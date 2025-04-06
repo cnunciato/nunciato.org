@@ -7,6 +7,6 @@ curl https://mise.run | sh
 export PATH="/Users/agent/.local/bin:$PATH"
 
 echo $PATH
-
+which mise
 which node
 node -v
