@@ -6,7 +6,7 @@ set -euo pipefail
 curl https://mise.run | MISE_INSTALL_PATH="$(pwd)/tools/mise" sh
 
 # echo "Installing Mise-managed tooling..."
-mise install
+$(pwd)/tools/mise install
 
 export PATH="$(mise where node)/bin:$PATH"
 which node
