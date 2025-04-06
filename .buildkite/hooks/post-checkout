@@ -4,7 +4,7 @@ set -euo pipefail
 
 # echo "Installing Mise..."
 curl https://mise.run | sh
-export PATH="$(pwd)/.local/bin:$PATH"
+export PATH="/Users/agent/.local/bin:$PATH"
 
 echo $PATH
 
