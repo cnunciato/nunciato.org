@@ -6,11 +6,11 @@ set -euo pipefail
 # pipeline-upload step unnecessarily slow. So
 
 # echo "Installing Mise..."
-ENV MISE_DATA_DIR="/mise"
-ENV MISE_CONFIG_DIR="/mise"
-ENV MISE_CACHE_DIR="/mise/cache"
-ENV MISE_INSTALL_PATH="/usr/local/bin/mise"
-ENV PATH="/mise/shims:$PATH"
+export MISE_DATA_DIR="/mise"
+export MISE_CONFIG_DIR="/mise"
+export MISE_CACHE_DIR="/mise/cache"
+export MISE_INSTALL_PATH="/usr/local/bin/mise"
+export PATH="/mise/shims:$PATH"
 RUN curl https://mise.run | sh
 
 # echo "Installing Mise-managed tooling..."
