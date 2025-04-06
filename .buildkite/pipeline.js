@@ -10,13 +10,14 @@ const pipeline = {
 // https://buildkite.com/docs/agent/v3/cli-pipeline#environment-variable-substitution
 const installAndBuildCommands = [
     `echo "Installing Mise..."`,
-    `export MISE_INSTALL_PATH="/usr/local/bin/mise"`,
     `curl https://mise.run | sh`,
+    `export PATH="/Users/agent/.local/bin:$$PATH"`,
 
     `echo "Installing Mise-managed tooling..."`,
+    `mise activate --shims`,
     `mise install`,
-    `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
-    `export PATH="$$(mise where node)/bin:$$PATH"`,
+    // `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
+    // `export PATH="$$(mise where node)/bin:$$PATH"`,
 
     `echo "Signing into Pulumi..."`,
     `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
