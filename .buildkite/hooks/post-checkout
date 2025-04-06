@@ -6,7 +6,7 @@ set -euo pipefail
 # pipeline-upload step unnecessarily slow. So
 
 # echo "Installing Mise..."
-export MISE_INSTALL_PATH="/usr/local/bin/mise"
+# export MISE_INSTALL_PATH="/usr/local/bin/mise"
 curl https://mise.run | sh
 
 # echo "Installing Mise-managed tooling..."
