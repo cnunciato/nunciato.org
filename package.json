@@ -7,7 +7,7 @@
         "dev": "turbo dev",
         "chris": "npm run dev -w chris",
         "oliver": "npm run dev -w oliver",
-        "lint": "turbo lint",
+        "lint": "turbo lint && prettier . --check --config ./prettier.config.json",
         "format": "prettier . --write --config ./prettier.config.json",
         "clean": "git clean -fdX"
     },

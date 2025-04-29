@@ -24,6 +24,7 @@ const installAndBuildCommands = [
     `echo "Installing workspaces..."`,
     `npm install`,
     `npm install --workspaces`,
+    `npm run lint`,
     `npm run build`,
 ];
 
