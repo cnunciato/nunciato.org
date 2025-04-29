@@ -1,1 +1,1 @@
-export { default as IconGithub } from './IconGithub.astro'
+export { default as IconGithub } from "./IconGithub.astro";

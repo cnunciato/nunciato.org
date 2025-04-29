@@ -1,9 +1,13 @@
 ---
-import { SITE_COPYRIGHT_AUTHOR, SITE_COPYRIGHT_LINK } from '@/constants'
-const today = new Date()
+import { SITE_COPYRIGHT_AUTHOR, SITE_COPYRIGHT_LINK } from "@/constants";
+const today = new Date();
 ---
 
 <p class="relative text-neutral-500 text-sm text-center leading-none">
-  Created by <a href={SITE_COPYRIGHT_LINK} class="text-neutral-400 hover:text-neutral-200" target="_blank">{SITE_COPYRIGHT_AUTHOR}</a>
-  &copy; {today.getFullYear()} All rights reserved
+    Created by <a
+        href={SITE_COPYRIGHT_LINK}
+        class="text-neutral-400 hover:text-neutral-200"
+        target="_blank">{SITE_COPYRIGHT_AUTHOR}</a
+    >
+    &copy; {today.getFullYear()} All rights reserved
 </p>
