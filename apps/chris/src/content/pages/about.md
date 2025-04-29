@@ -2,7 +2,7 @@
 title: About
 ---
 
-Hi! I'm Christian Nunciato. I live in Seattle (well, technically just _outside_ Seattle) and based solely on number-of-hours-logged, you could say I'm a dad, programmer, photographer, writer and occasional maker of silly little movies. By day, I work at an awesome little startup called [Pulumi](https://pulumi.com/). By night, owing to my dadness, I sleep.
+Hi! I'm Christian Nunciato. I live in Seattle (well, technically just _outside_ Seattle) and based solely on number-of-hours-logged, you could say I'm a dad, programmer, photographer, writer and occasional maker of silly little movies. By day, I work at [Buildkite](https://buildkite.com/). By night, owing to my dadness, I sleep.
 
 This site is still fairly new, so there isn't all that much to say about what it _is_ yet, but if I had to guess, I'd say it'll probably consist mostly of pictures (I take a lot of pictures), videos (I shoot a lot of those, too) and a few words from time to time, mostly on non-technical subjects, much of which you probably won't find all that interesting. (But of course, I hope you do.)
 
