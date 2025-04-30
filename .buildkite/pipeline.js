@@ -35,11 +35,16 @@ function touched(filePath) {
         .some(file => file.includes(filePath));
 }
 
+// Determine if this is a PR or a push to main
+const isMainBranch = process.env.BUILDKITE_BRANCH === "main";
+const operationType = isMainBranch ? "deploy" : "preview";
+const buildLabel = isMainBranch ? "Build and deploy" : "Build and Pulumi preview for";
+
 // Build my site on every push.
 pipeline.steps.push(
     ...[
         {
-            label: ":hiking_boot: Build and deploy Chris's website",
+            label: `:hiking_boot: ${buildLabel} Chris's website`,
             commands: [
                 ...installAndBuildCommands,
                 `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
@@ -52,7 +57,7 @@ if (touched("apps/oliver")) {
     pipeline.steps.push(
         ...[
             {
-                label: ":pig: Build and deploy Oliver's website",
+                label: `:pig: ${buildLabel} Oliver's website`,
                 commands: [
                     ...installAndBuildCommands,
                     `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
