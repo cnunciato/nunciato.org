@@ -38,7 +38,7 @@ function touched(filePath) {
 // Determine if this is a PR or a push to main
 const isMainBranch = process.env.BUILDKITE_BRANCH === "main";
 const operationType = isMainBranch ? "deploy" : "preview";
-const buildLabel = isMainBranch ? "Build and deploy" : "Build and Pulumi preview for";
+const buildLabel = isMainBranch ? "Build and deploy" : "Build and preview for";
 
 // Build my site on every push.
 pipeline.steps.push(
