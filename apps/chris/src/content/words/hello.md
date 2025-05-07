@@ -4,10 +4,10 @@ date: 2018-02-11
 description: It's the first post! Kind of.
 summary: Wherein I write something interesting to serve as my summary, and it is interesting.
 photo:
-    preview: /media/images/mossyfern.jpg
+  preview: /media/images/mossyfern.jpg
 links:
-    - name: Redmond Watershed Preserve
-      url: https://www.wta.org/go-hiking/hikes/redmond-watershed-preserve
+  - name: Redmond Watershed Preserve
+    url: https://www.wta.org/go-hiking/hikes/redmond-watershed-preserve
 ---
 
 First post! Exciting, right?

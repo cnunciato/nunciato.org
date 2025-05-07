@@ -4,8 +4,8 @@ date: 2022-09-20
 description: The obligatory post about vowing to write more posts
 summary: The obligatory post about vowing to write more posts
 photo:
-    preview: s3/previews/2018-05-30-10-51-20.jpg
-    caption: Morning on Kauai (May, 2018)
+  preview: s3/previews/2018-05-30-10-51-20.jpg
+  caption: Morning on Kauai (May, 2018)
 ---
 
 A friend once told me -- or rather announced to the group of friends with we happened to be standing around at the time, in line for a roller coaster in Southern California -- that I didn't have enough "stick-to-it-ness" to be a writer.

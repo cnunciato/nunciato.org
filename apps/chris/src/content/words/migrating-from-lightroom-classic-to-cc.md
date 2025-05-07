@@ -4,7 +4,7 @@ date: 2018-04-02
 description: How I managed to migrate from Lightroom to Lightroom CC
 summary: Wherein I write something interesting to serve as my summary, and it is interesting.
 photo:
-    preview: /media/images/lightroom-classic.jpg
+  preview: /media/images/lightroom-classic.jpg
 ---
 
 I've been a user of [Adobe Lightroom](https://www.adobe.com/products/photoshop-lightroom.html) for several years now, and I've generally been happy with it. While I've never been in love with the Lightroom interface -- it works, but design-wise it's a bit on the clunky side, and dated, and it often performs sluggishy even on my newish Macbook Pro -- but it's generally gotten the job done, and there aren't, even in 2018, many photo-management apps that can handle tens of thousands of photos and videos.
@@ -83,9 +83,9 @@ done
 
 The script accepts three arguments:
 
--   the path to your `Exports` folder
--   the path to your Lightroom Classic originals
--   the path to your `Originals` folder
+- the path to your `Exports` folder
+- the path to your Lightroom Classic originals
+- the path to your `Originals` folder
 
 As I mentioned, I had exported my **No Date** files into a folder on my desktop called `Exports`. My originals were located on an external drive called `Elements`, and the empty destination folder, `Originals`, was on my desktop alongside `Exports`. So the command I ran was:
 
@@ -150,9 +150,9 @@ exiftool -P -O ./Output/ '-datetimeoriginal<filemodifydate' -if '(not $datetimeo
 
 This is essentially the same command you ran above, but with some additional options instructing `exiftool` to _do some stuff:_
 
--   `-P` means "preserve my originals"
--   `-O ./Output/` means "put the modified copies into the `./Output/` directory"
--   `'-datetimeoriginal<filemodifydate'` means "set the capture date using the date the file was last modified" (which for me was also the date it was created)
+- `-P` means "preserve my originals"
+- `-O ./Output/` means "put the modified copies into the `./Output/` directory"
+- `'-datetimeoriginal<filemodifydate'` means "set the capture date using the date the file was last modified" (which for me was also the date it was created)
 
 If you'd like to use a different algorithm for setting your own EXIF capture dates (or even just learn more about what this awesome little program can do for you), [check out the `exiftool` docs](https://www.sno.phy.queensu.ca/~phil/exiftool/exiftool_pod.html).
 

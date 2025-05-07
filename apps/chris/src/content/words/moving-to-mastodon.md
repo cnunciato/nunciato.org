@@ -4,8 +4,8 @@ date: 2022-11-20
 description: So long, Twitter! It was was fun while it lasted, kinda.
 summary: So long, Twitter! It was was fun while it lasted, kinda.
 photo:
-    preview: s3/previews/2022-11-21-08-37-07.jpg
-    caption: Here we go.
+  preview: s3/previews/2022-11-21-08-37-07.jpg
+  caption: Here we go.
 ---
 
 I'll be honest: I don't _fully_ know what I'm doing, [bailing on Twitter](https://twitter.com/cnunciato/status/1594361226066563072) and [moving to Mastodon](https://hachyderm.io/@cnunciato), except that it feels like the right thing to do, and it definitely feels like the right time to do it.

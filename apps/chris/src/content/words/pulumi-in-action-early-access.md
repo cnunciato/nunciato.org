@@ -4,7 +4,7 @@ date: 2020-07-12
 description: Pulumi in Action is available now in early access.
 summary: Wherein I write something interesting to serve as my summary, and it is interesting.
 photo:
-    preview: /media/images/pulumi-in-action-cover.jpg
+  preview: /media/images/pulumi-in-action-cover.jpg
 ---
 
 Good news, friends! I'm writing a book.

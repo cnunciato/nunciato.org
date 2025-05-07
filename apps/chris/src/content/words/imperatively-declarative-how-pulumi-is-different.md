@@ -4,8 +4,8 @@ date: 2021-08-09
 description: How Pulumi is different.
 summary: How Pulumi is different.
 photo:
-    preview: /media/images/awsx.jpg
-    caption: A Pulumi program defining an Amazon API Gateway REST API
+  preview: /media/images/awsx.jpg
+  caption: A Pulumi program defining an Amazon API Gateway REST API
 canonical: https://pulumibook.info/imperatively-declarative-how-pulumi-is-different/
 ---
 
@@ -22,8 +22,8 @@ It's worth mentioning that Brian is the creator of [arc.codes](https://arc.codes
 ```yaml
 app: "hello-world"
 http:
-    - get: "/thing1"
-    - get: "/thing2"
+  - get: "/thing1"
+  - get: "/thing2"
 ```
 
 In Arc, this bit of YAML states that at the end of an Arc run, two publicly accessible HTTP endpoints should exist in [AWS Lambda](https://aws.amazon.com) (at a URL dynamically assigned by AWS) at the paths `/thing1` and `/thing2`, and that both endpoints should be wired up to respond to HTTP `GET`s. When you run this file with the Arc CLI --- assuming you've stashed your AWS credentials in the right place, and put your JavaScript functions in a nearby subfolder --- that'll indeed be the case: a minute or so later, those endpoints _will_ exist, and all will be right with the world. Easy.
@@ -35,11 +35,11 @@ Moreover, if you were to run that code a _second_ time (having made no changes t
 ```html
 ...
 <section id="things">
-    <ol>
-        <li>Thing 1</li>
-        <li>Thing 2</li>
-        <li>Thing 3</li>
-    </ol>
+  <ol>
+    <li>Thing 1</li>
+    <li>Thing 2</li>
+    <li>Thing 3</li>
+  </ol>
 </section>
 ...
 ```
@@ -69,18 +69,18 @@ const { S3Client, CreateBucketCommand, ListBucketsCommand } = require("@aws-sdk/
 const client = new S3Client({ region: "us-west-2" });
 
 (async () => {
-    // Name a couple of buckets.
-    const desiredBuckets = ["bucket-1", "bucket-2"].map(
-        bucket => `some-interestingly-named-${bucket}`,
-    );
+  // Name a couple of buckets.
+  const desiredBuckets = ["bucket-1", "bucket-2"].map(
+    bucket => `some-interestingly-named-${bucket}`,
+  );
 
-    // Imperatively create them, by calling the AWS S3 API directly.
-    desiredBuckets.forEach(async bucket => {
-        await client.send(new CreateBucketCommand({ Bucket: bucket }));
-    });
+  // Imperatively create them, by calling the AWS S3 API directly.
+  desiredBuckets.forEach(async bucket => {
+    await client.send(new CreateBucketCommand({ Bucket: bucket }));
+  });
 
-    // Finally, list all buckets, including the two you just created.
-    console.log((await client.send(new ListBucketsCommand({}))).Buckets);
+  // Finally, list all buckets, including the two you just created.
+  console.log((await client.send(new ListBucketsCommand({}))).Buckets);
 })();
 ```
 
@@ -115,24 +115,24 @@ UnhandledPromiseRejectionWarning: BucketAlreadyOwnedByYou
 // ...
 
 (async () => {
-    const desiredBuckets = ["bucket-1", "bucket-2"].map(
-        bucket => `some-interestingly-named-${bucket}`,
-    );
+  const desiredBuckets = ["bucket-1", "bucket-2"].map(
+    bucket => `some-interestingly-named-${bucket}`,
+  );
 
-    // First, fetch a list of all buckets.
-    const allBuckets = await client.send(new ListBucketsCommand({}));
-    const allBucketNames = allBuckets.Buckets.map(b => b.Name);
+  // First, fetch a list of all buckets.
+  const allBuckets = await client.send(new ListBucketsCommand({}));
+  const allBucketNames = allBuckets.Buckets.map(b => b.Name);
 
-    // Create the new buckets...
-    desiredBuckets
+  // Create the new buckets...
+  desiredBuckets
 
-        // ...but only if they haven't been created already.
-        .filter(name => !allBucketNames.includes(name))
+    // ...but only if they haven't been created already.
+    .filter(name => !allBucketNames.includes(name))
 
-        .forEach(async bucket => {
-            await client.send(new CreateBucketCommand({ Bucket: bucket }));
-        });
-    // ...
+    .forEach(async bucket => {
+      await client.send(new CreateBucketCommand({ Bucket: bucket }));
+    });
+  // ...
 })();
 ```
 
@@ -150,20 +150,20 @@ I haven't always been a big breakfast person, but these days, I am, and for me, 
 
 ```json
 {
-    "breakfast": {
-        "eggs": {
-            "count": 1,
-            "kind": "scrambled"
-        },
-        "toast": {
-            "count": 1,
-            "kind": "multi-grain"
-        },
-        "juice": {
-            "count": 1,
-            "kind": "orange"
-        }
+  "breakfast": {
+    "eggs": {
+      "count": 1,
+      "kind": "scrambled"
+    },
+    "toast": {
+      "count": 1,
+      "kind": "multi-grain"
+    },
+    "juice": {
+      "count": 1,
+      "kind": "orange"
     }
+  }
 }
 ```
 
@@ -177,9 +177,9 @@ Static text like JSON and YAML aren't the only ways to declare a desired breakfa
 import { Breakfast, Eggs, Toast, Juice } from "some-menu-or-something";
 
 const breakfast = new Breakfast({
-    eggs: new Eggs(1, "scrambled"),
-    toast: new Toast(1, "multi-grain"),
-    juice: new Juice(1, "orange"),
+  eggs: new Eggs(1, "scrambled"),
+  toast: new Toast(1, "multi-grain"),
+  juice: new Juice(1, "orange"),
 });
 ```
 
@@ -311,7 +311,7 @@ import * as dayjs from "dayjs";
 
 // Keep a bucket for each of the last 7 days.
 for (let i = 0; i < 7; i++) {
-    new aws.s3.Bucket(dayjs().subtract(i, "day").format("YYYY-MM-DD"));
+  new aws.s3.Bucket(dayjs().subtract(i, "day").format("YYYY-MM-DD"));
 }
 ```
 
@@ -359,32 +359,32 @@ Think of [React](https://reactjs.org/). Why do we have it? Because HTML alone is
 const offices = ["Akron", "Nashua", "Rochester", "Scranton", "Syracuse", "Utica"];
 
 export default function DunderMifflinBranchOffices() {
-    // ... declaratively rendered...
-    return (
-        <ul>
-            {offices.map(office => (
-                <li>
-                    <span>{office}</span>
-                    {office === "Scranton" && <span>← The best one</span>}
-                </li>
-            ))}
-        </ul>
-    );
+  // ... declaratively rendered...
+  return (
+    <ul>
+      {offices.map(office => (
+        <li>
+          <span>{office}</span>
+          {office === "Scranton" && <span>← The best one</span>}
+        </li>
+      ))}
+    </ul>
+  );
 }
 ```
 
 ```html
 ...
 <html>
-    <body>
-        <aside>
-            <nav>
-                <!-- ... and composed. -->
-                <DunderMifflinBranchOffices />
-            </nav>
-        </aside>
-        <main>...</main>
-    </body>
+  <body>
+    <aside>
+      <nav>
+        <!-- ... and composed. -->
+        <DunderMifflinBranchOffices />
+      </nav>
+    </aside>
+    <main>...</main>
+  </body>
 </html>
 ```
 
