@@ -21,6 +21,12 @@
             }
         },
         {
+            "files": "apps/chris/src/content/{videos,photos,sounds}/*.md",
+            "options": {
+                "singleQuote": true
+            }
+        },
+        {
             "files": ["*.yaml", "*.yml"],
             "options": {
                 "tabWidth": 2

@@ -1,12 +1,12 @@
 ---
-title: "Kids Eating Shave Ice"
+title: 'Kids Eating Shave Ice'
 date: 2018-06-08T12:47:47Z
 draft: false
 description: In case you were wondering what that sounded like.
 sound:
   url: s3/audio/shave-ice.mp3
-  preview: "s3/previews/2018-05-29-16-06-43.jpg"
-  thumb: "s3/thumbs/2018-05-29-16-06-43.jpg"
+  preview: 's3/previews/2018-05-29-16-06-43.jpg'
+  thumb: 's3/thumbs/2018-05-29-16-06-43.jpg'
   duration: 111
 links:
   - name: The Fresh Shave

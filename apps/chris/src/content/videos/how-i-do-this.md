@@ -1,26 +1,26 @@
 ---
-title: "How I Do This"
+title: 'How I Do This'
 date: 2018-05-26T16:34:22Z
 draft: false
 description: Behind the scenes at nunciato.org.
 video:
-  url: "s3/video/2018-05-26-16-30-59.mp4"
-  preview: "s3/previews/2018-05-26-16-30-59.jpg"
-  thumb: "s3/thumbs/2018-05-26-16-30-59.jpg"
+  url: 's3/video/2018-05-26-16-30-59.mp4'
+  preview: 's3/previews/2018-05-26-16-30-59.jpg'
+  thumb: 's3/thumbs/2018-05-26-16-30-59.jpg'
   created: 2018-05-26 16:30:59
   exif:
-    make: "Apple"
-    model: "MacBookPro (QuickTime)"
-    lens: ""
-    iso: ""
-    aperture: ""
-    shutter_speed: ""
-    focal_length: ""
-  title: ""
-  caption: ""
+    make: 'Apple'
+    model: 'MacBookPro (QuickTime)'
+    lens: ''
+    iso: ''
+    aperture: ''
+    shutter_speed: ''
+    focal_length: ''
+  title: ''
+  caption: ''
   controls: true
   duration: 654
-  poster: "s3/posters/2018-05-26-16-30-59.jpg"
+  poster: 's3/posters/2018-05-26-16-30-59.jpg'
 links:
   - name: Hugo
     url: https://gohugo.io/
