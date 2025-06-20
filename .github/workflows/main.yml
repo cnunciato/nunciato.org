@@ -1,0 +1,19 @@
+name: Complex CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm test
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm run build
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo "deploying"
