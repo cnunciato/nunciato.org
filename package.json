@@ -9,7 +9,8 @@
         "oliver": "npm run dev -w oliver",
         "lint": "turbo lint && prettier . --check --config ./prettier.config.json",
         "format": "prettier . --write --config ./prettier.config.json",
-        "clean": "git clean -fdX"
+        "clean": "git clean -fdX",
+        "test": "echo 'haha no'"
     },
     "devDependencies": {
         "prettier": "^3.2.5",
