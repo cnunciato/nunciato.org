@@ -2,7 +2,7 @@
 
 [![Build status](https://badge.buildkite.com/727d92766892a97881afaca437f57e8ad71683229c5e9f446d.svg)](https://buildkite.com/cnunciato/chris-dot-nunciato-dot-org)
 
-The monorepo I use to manage [my website](https://chris.nunciato.org) and other things. :rocket:
+The monorepo I use to manage [my website](https://chris.nunciato.org) and other things! :rocket:
 
 ## Handy commands
 
