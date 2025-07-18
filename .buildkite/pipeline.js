@@ -45,7 +45,7 @@ pipeline.steps.push(
     ...[
         {
             label: `:hiking_boot: ${buildLabel} Chris's website`,
-            plugins: ["praneetloke/setup-pulumi#2979bb7"],
+            plugins: ["cnunciato/setup-pulumi#53d31a0"],
             commands: [
                 ...installAndBuildCommands,
                 `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
