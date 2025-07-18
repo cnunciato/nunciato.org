@@ -45,7 +45,7 @@ pipeline.steps.push(
     ...[
         {
             label: `:hiking_boot: ${buildLabel} Chris's website`,
-            plugins: ["cnunciato/setup-pulumi"],
+            plugins: ["equinixmetal-buildkite/trivy"],
             commands: [
                 ...installAndBuildCommands,
                 `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
