@@ -40,12 +40,12 @@ const isMainBranch = process.env.BUILDKITE_BRANCH === "main";
 const operationType = isMainBranch ? "deploy" : "preview";
 const buildLabel = isMainBranch ? "Build and deploy" : "Build and preview for";
 
-// Build my site on every push. Test.
+// Build my site on every push.
 pipeline.steps.push(
     ...[
         {
             label: `:hiking_boot: ${buildLabel} Chris's website`,
-            plugins: ["cnunciato/setup-pulumi#v0.0.1"],
+            plugins: ["praneetloke/setup-pulumi#v0.0.1"],
             commands: [
                 ...installAndBuildCommands,
                 `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
