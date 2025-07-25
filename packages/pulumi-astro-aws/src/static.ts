@@ -105,7 +105,7 @@ export function getStaticSite(
         {
             name: validationOption!.resourceRecordName,
             type: validationOption!.resourceRecordType,
-            records: [validationOption!.resourceRecordValue],
+            records: validationOption!.resourceRecordValue.apply(v => [v]),
             zoneId: zone.zoneId,
             ttl: 60,
         },
