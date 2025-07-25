@@ -17,8 +17,8 @@ const installAndBuildCommands = [
     // `export PATH="$$(mise where pulumi)/pulumi:$$PATH"`,
     // `export PATH="$$(mise where node)/bin:$$PATH"`,
 
-    `echo "Signing into Pulumi..."`,
-    `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
+    // `echo "Signing into Pulumi..."`,
+    // `export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"`,
     `pulumi whoami`,
 
     `echo "Installing workspaces..."`,
