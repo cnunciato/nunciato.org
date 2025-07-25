@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-
-export PATH="/Users/agent/.local/bin:$PATH"

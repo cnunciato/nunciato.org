@@ -34,10 +34,10 @@ pipeline.steps.push(
             plugins: [
                 {
                     "praneetloke/setup-pulumi": {
-                        "use-oidc": true,
+                        use_oidc: true,
                         audience: "urn:pulumi:org:cnunciato",
-                        "pulumi-token-type": "urn:pulumi:token-type:access_token:personal",
-                        "pulumi-token-scope": "user:cnunciato",
+                        pulumi_token_type: "urn:pulumi:token-type:access_token:personal",
+                        pulumi_token_scope: "user:cnunciato",
                     },
                 },
             ],
