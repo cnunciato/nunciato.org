@@ -2,7 +2,8 @@
     "name": "pipeline",
     "version": "0.0.1",
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "generate": "node dist/pipeline.js"
     },
     "devDependencies": {
         "@buildkite/buildkite-sdk": "^0.3.0"
