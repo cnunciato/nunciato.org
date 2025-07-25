@@ -6,7 +6,8 @@ const pipeline = {
 
 const installAndBuildCommands = [
     `pulumi whoami`,
-    `eval "$(pulumi env open cnunciato/default/personal --format shell)"``echo "Installing workspaces..."`,
+
+    `echo "Installing workspaces..."`,
     `npm install`,
     `npm install --workspaces`,
     `npm run lint`,
@@ -21,15 +22,15 @@ function touched(filePath) {
 }
 
 // Determine if this is a PR or a push to main
-const isMainBranch = process.env.BUILDKITE_BRANCH === "main";
-const operationType = isMainBranch ? "deploy" : "preview";
-const buildLabel = isMainBranch ? "Build and deploy" : "Build and preview for";
+const isMain = process.env.BUILDKITE_BRANCH === "main";
+const action = isMain ? "deploy" : "preview";
+const label = isMain ? "Build and deploy" : "Build and preview for";
 
 // Build my site on every push.
 pipeline.steps.push(
     ...[
         {
-            label: `:hiking_boot: ${buildLabel} Chris's website`,
+            label: `:hiking_boot: ${label} Chris's website`,
             plugins: [
                 {
                     "praneetloke/setup-pulumi": {
@@ -40,10 +41,7 @@ pipeline.steps.push(
                     },
                 },
             ],
-            commands: [
-                ...installAndBuildCommands,
-                `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
-            ],
+            commands: [...installAndBuildCommands, `npm run ${action}:production -w infra.chris`],
         },
     ],
 );
@@ -52,11 +50,11 @@ if (touched("apps/oliver")) {
     pipeline.steps.push(
         ...[
             {
-                label: `:pig: ${buildLabel} Oliver's website`,
+                label: `:pig: ${label} Oliver's website`,
                 plugins: ["praneetloke/setup-pulumi"],
                 commands: [
                     ...installAndBuildCommands,
-                    `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.oliver`,
+                    `npm run ${action}:production -w infra.oliver`,
                 ],
             },
         ],
