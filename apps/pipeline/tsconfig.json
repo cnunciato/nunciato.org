@@ -1,0 +1,9 @@
+{
+    "extends": "@repo/typescript-config/base.json",
+    "files": ["pipeline.ts"],
+    "include": ["apps/pipeline/**/*"],
+    "compilerOptions": {
+        "emitDeclarationOnly": false,
+        "outDir": "dist"
+    }
+}
