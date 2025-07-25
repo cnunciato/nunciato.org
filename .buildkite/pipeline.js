@@ -45,7 +45,16 @@ pipeline.steps.push(
     ...[
         {
             label: `:hiking_boot: ${buildLabel} Chris's website`,
-            plugins: ["cnunciato/setup-pulumi"],
+            plugins: [
+                {
+                    "praneetloke/setup-pulumi": {
+                        "use-oidc": true,
+                        audience: "urn:pulumi:org:cnunciato",
+                        "pulumi-token-type": "urn:pulumi:token-type:access_token:personal",
+                        "pulumi-token-scope": "user:cnunciato",
+                    },
+                },
+            ],
             commands: [
                 ...installAndBuildCommands,
                 `npm run $([ "$BUILDKITE_BRANCH" == "main" ] && echo "deploy" || echo "preview"):production -w infra.chris`,
