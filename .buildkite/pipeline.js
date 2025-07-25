@@ -6,8 +6,7 @@ const pipeline = {
 
 const installAndBuildCommands = [
     `pulumi whoami`,
-
-    `echo "Installing workspaces..."`,
+    `eval "$(pulumi env open cnunciato/default/personal --format shell)"``echo "Installing workspaces..."`,
     `npm install`,
     `npm install --workspaces`,
     `npm run lint`,
