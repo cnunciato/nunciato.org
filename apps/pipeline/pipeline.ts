@@ -12,7 +12,7 @@ const installAndBuild = [
 
 const plugins: { [key: string]: any }[] = [
     {
-        "praneetloke/setup-pulumi": {
+        pulumi: {
             use_oidc: true,
             audience: "urn:pulumi:org:cnunciato",
             pulumi_token_type: "urn:pulumi:token-type:access_token:personal",
