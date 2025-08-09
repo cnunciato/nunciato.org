@@ -10,7 +10,7 @@
         "lint": "turbo lint && prettier . --check --config ./prettier.config.json",
         "format": "prettier . --write --config ./prettier.config.json",
         "clean": "git clean -fdX",
-        "test": "echo 'haha no'"
+        "test": "concurrently 'npm test -w chris'"
     },
     "devDependencies": {
         "prettier": "^3.2.5",
@@ -26,5 +26,8 @@
         "apps/*",
         "infra/*",
         "packages/*"
-    ]
+    ],
+    "dependencies": {
+        "concurrently": "^9.2.0"
+    }
 }
